@@ -1,6 +1,6 @@
 # Oracles network wiki
 
-## Oracles Dapps setup
+## Dapps setup
 
 1. Get [Google Chrome plugin](https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn) or [Mozilla Firefox Addon](https://addons.mozilla.org/en-US/firefox/addon/ether-metamask/) of MetaMask client.
 
@@ -11,6 +11,8 @@
 To check, who are already have authority in Oracles network, go to [Validators Dapp](https://oraclesorg.github.io/oracles-dapps-validators/).
 
 ## Join the network
+
+Joining to the Oracles network is managing by [Governance Dapp](https://oraclesorg.github.io/oracles-dapps-voting/).
 
 ## Ceremony
 
