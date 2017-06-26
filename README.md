@@ -4,7 +4,9 @@
 
 1. Get [Google Chrome plugin](https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn) or [Mozilla Firefox Addon](https://addons.mozilla.org/en-US/firefox/addon/ether-metamask/) of MetaMask client.
 
-2. Choose Oralces Network from the list in MetaMask.
+2. Choose Oralces Dev Network from the list in MetaMask.
+
+![](./Choose_Oracles_network.png)
 
 ## Current members
 
