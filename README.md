@@ -8,7 +8,7 @@
 
 ![](./Choose_Oracles_network.png)
 
-3. Import your key.
+3. Import your initial (if you have) or payout/voting keys.
 
 ![](./Key_addition_1.png)
 
@@ -26,7 +26,7 @@ Joining to the Oracles network is managing by [Governance Dapp](https://oracleso
 
 If you have an invitation from Oracles network, you'll be able to generate your production keys through [Ceremony Dapp](https://oraclesorg.github.io/oracles-dapps-keys-generation/) 
 
-1. Import your initial key to MetaMask: browse keystore file, received from invitation, and enter password for the key.
+1. Import your initial key to MetaMask: browse keystore file, received from invitation, and enter password for the key (See [Dapps setup](#dapps-setup)).
 
 2. Open Ceremony Dapp page and follow dapp's instructions. You'll get your production keys (mining, payout, voting) at the end of process.
 
