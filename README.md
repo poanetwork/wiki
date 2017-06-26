@@ -2,14 +2,14 @@
 
 ## Dapps setup
 
-1. Get [Google Chrome plugin](https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn) or [Mozilla Firefox Addon](https://addons.mozilla.org/en-US/firefox/addon/ether-metamask/) of MetaMask client.
+### Installing of custom MetaMask plugin
+Get [Google Chrome plugin](https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn) or [Mozilla Firefox Addon](https://addons.mozilla.org/en-US/firefox/addon/ether-metamask/) of MetaMask client.
 
-2. Choose Oralces Dev Network from the list in MetaMask.
 
+### Choosing of Oralces Network
 ![](./Choose_Oracles_network.png)
 
-3. Import your initial (if you have) or payout/voting keys.
-
+### Importing of keys
 ![](./Key_addition_1.png)
 
 ![](./Key_addition_2.png)
@@ -26,7 +26,7 @@ Joining to the Oracles network is managing by [Governance Dapp](https://oracleso
 
 If you have an invitation from Oracles network, you'll be able to generate your production keys through [Ceremony Dapp](https://oraclesorg.github.io/oracles-dapps-keys-generation/) 
 
-1. Import your initial key to MetaMask: browse keystore file, received from invitation, and enter password for the key (See [Dapps setup](#dapps-setup)).
+1. Import your initial key to MetaMask: browse keystore file, received from invitation, and enter password for the key (See [Importing of keys](#importing-of-keys)).
 
 2. Open Ceremony Dapp page and follow dapp's instructions. You'll get your production keys (mining, payout, voting) at the end of process.
 
@@ -39,7 +39,7 @@ If you are successfully generated production keys in previous step, you may crea
 
 ## Governance
 
-1. Import your payout and voting keys to MetaMask: browse keystore files and enter passwords for the keys
+1. Import your payout and voting keys to MetaMask (See [Importing of keys](#importing-of-keys)): browse keystore files and enter passwords for the keys
 
      a) received from [Ceremony Dapp](https://oraclesorg.github.io/oracles-dapps-keys-generation/) , if you are invited person
      
