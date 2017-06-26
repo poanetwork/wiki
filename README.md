@@ -8,6 +8,12 @@
 
 ![](./Choose_Oracles_network.png)
 
+3. Import your key.
+
+![](./Key_addition_1.png)
+
+![](./Key_addition_2.png)
+
 ## Current members
 
 To check, who are already have authority in Oracles network, go to [Validators Dapp](https://oraclesorg.github.io/oracles-dapps-validators/).
