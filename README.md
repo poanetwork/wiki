@@ -3,7 +3,7 @@
 ## Dapps setup
 
 ### Installing of custom MetaMask plugin
-Get [Google Chrome plugin](https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn) or [Mozilla Firefox Addon](https://addons.mozilla.org/en-US/firefox/addon/ether-metamask/) of MetaMask client.
+Get [Google Chrome plugin](https://chrome.google.com/webstore/detail/oracles/jbdaocneiiinmjbjlgalhcelgbejmnid) of Oracles client.
 
 
 ### Choosing of Oralces Network
