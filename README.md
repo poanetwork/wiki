@@ -2,7 +2,7 @@
 
 ## Dapps setup
 
-### Installing of custom MetaMask plugin
+### Installing of Oracles plugin
 Get [Google Chrome plugin](https://chrome.google.com/webstore/detail/oracles/jbdaocneiiinmjbjlgalhcelgbejmnid) of Oracles client.
 
 
