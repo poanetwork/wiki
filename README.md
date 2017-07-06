@@ -7,12 +7,12 @@ Get [Google Chrome plugin](https://chrome.google.com/webstore/detail/oracles/jbd
 
 
 ### Choosing of Oralces Network
-![](./Choose_Oracles_network.png)
+![](./docs/Choose_Oracles_network.png)
 
 ### Importing of keys
-![](./Key_addition_1.png)
+![](./docs/Key_addition_1.png)
 
-![](./Key_addition_2.png)
+![](./docs/Key_addition_2.png)
 
 ## Current members
 
