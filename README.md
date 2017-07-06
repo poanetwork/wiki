@@ -2,6 +2,10 @@
 
 ## Dapps setup
 
+### Supported browsers
+
+Google Chrome v 59.0.3071.115+
+
 ### Installing of Oracles plugin
 Get [Google Chrome plugin](https://chrome.google.com/webstore/detail/oracles/jbdaocneiiinmjbjlgalhcelgbejmnid) of Oracles network.
 
