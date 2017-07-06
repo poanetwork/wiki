@@ -3,7 +3,7 @@
 ## Dapps setup
 
 ### Installing of Oracles plugin
-Get [Google Chrome plugin](https://chrome.google.com/webstore/detail/oracles/jbdaocneiiinmjbjlgalhcelgbejmnid) of Oracles client.
+Get [Google Chrome plugin](https://chrome.google.com/webstore/detail/oracles/jbdaocneiiinmjbjlgalhcelgbejmnid) of Oracles network.
 
 
 ### Choosing of Oralces Network
