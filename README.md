@@ -41,6 +41,8 @@ If you have an invitation from Oracles network, you'll be able to generate your 
 
 If you are successfully generated production keys in previous step, you may create mining node from [template](https://github.com/oraclesorg/test-templates), using generated mining key.
 
+Guide to create new mining node is [here](https://github.com/oraclesorg/test-templates/blob/master/Ceremony/ceremony.md).
+
 ## Governance
 
 1. Import your payout and voting keys to Oracles plugin (See [Importing of keys](#importing-of-keys)): browse keystore files and enter passwords for the keys
