@@ -1,6 +1,6 @@
 # Oracles network wiki
 
-## Dapps setup
+## Oracles plugin setup
 
 ### Supported browsers
 
@@ -53,3 +53,7 @@ Choose payout key in Oracles plugin and transfer some coins to voting key.
 3. Choose voting key in Oracles plugin.
 
 4. Open [Governance Dapp](https://oraclesorg.github.io/oracles-dapps-voting/) page. You'll be able to create ballots for adding or removing notaries and vote for them.
+
+## Boot node setup
+
+Please, use this [Boot node setup guide](./bootnode-setup.md) to setup your own Oracles network.
