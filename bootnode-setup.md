@@ -29,7 +29,7 @@ ssh-keygen -t rsa
 4. Click the "Generate" button.
 5. You'll need to randomly move your mouse in the area below the progress bar. These movements will be used to generate random numbers for the cryptographic functions. Continue until the progress bar is full.
 6. Type a passphrase (password) into the "Key passphrase" and "Confirm passphrase" fields. You can use this keypair without a passphrase, however, it is recommended that you provide a strong passphrase.
-![PuTTY](./docs/bootnodeSetup/Docs/Putty.png)
+![PuTTY](./docs/bootnodeSetup/Putty.png)
 
 7. Click the "Save private key" button, select the folder you want to save this file to, enter filename, e.g. "private.ppk" and save the fule. Please note, that this file should be saved to a folder only you can access.
 8. Click the "Save public key" button, select the folder you want to save this file to, enter filename, e.g. "public.ppk" and save the file.
