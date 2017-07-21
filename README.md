@@ -36,6 +36,8 @@ If you have an invitation from Oracles network, you'll be able to generate your 
 
 3. Download keystore files of the generated keys and save paswords for the keys in a safe place.
 
+4. [Deploy azure virtual machine](./ceremony.md).
+
 
 ## Mining node creation
 
