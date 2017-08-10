@@ -1,8 +1,8 @@
 # Oracles network wiki
 
-## Oracles plugin setup
+## Installing MetaMask plugin and connecting to the Oracles network.
 
-Please, check [Oracles plugin setup](./plugin-setup.md) section
+Please, check [MetaMask plugin and keys](./MetaMask-connect.md) section
 
 ## Current members
 
@@ -20,6 +20,6 @@ Please, check [Ceremony](./ceremony.md) section.
 
 Please, check [Governance](./governance.md) section.
 
-## Boot node setup
+## Boot node setup (creating your own network)
 
-Please, use this [Boot node setup guide](./bootnode-setup.md) to setup your own Oracles network.
+If you want to create a separate network based on Oracles, please use this [Boot node setup guide](./bootnode-setup.md) to setup your own Oracles network.

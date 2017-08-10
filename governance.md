@@ -1,6 +1,6 @@
 # Governance
 
-1. Import your payout and voting keys to Oracles plugin (See [Importing of keys](#importing-of-keys)): browse keystore files and enter passwords for the keys
+1. Import your payout and voting keys to Oracles plugin (See [Importing of keys](./MetaMask-connect.md#importing-of-keys)): browse keystore files and enter passwords for the keys
 
      a) received from [Ceremony Dapp](https://oraclesorg.github.io/oracles-dapps-keys-generation/) , if you are invited person
      
