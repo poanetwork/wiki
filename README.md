@@ -14,16 +14,7 @@ Joining to the Oracles network is managing by [Governance Dapp](https://oracleso
 
 ## Ceremony
 
-If you have an invitation from Oracles network, you'll be able to generate your production keys through [Ceremony Dapp](https://oraclesorg.github.io/oracles-dapps-keys-generation/) 
-
-1. Import your initial key to Oracles plugin: browse keystore file, received from invitation, and enter password for the key (See [Importing of keys](#importing-of-keys)).
-
-2. Open Ceremony Dapp page and follow dapp's instructions. You'll get your production keys (mining, payout, voting) at the end of process.
-
-3. Download keystore files of the generated keys and save paswords for the keys in a safe place.
-
-4. If you are successfully generated production keys in previous step, you may create a mining node from the template, using generated mining key. See, how to [deploy azure virtual machine](./ceremony.md).
-
+Please, check [Ceremony](./ceremony.md) section.
 
 ## Governance
 

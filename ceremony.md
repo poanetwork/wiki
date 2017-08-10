@@ -1,14 +1,26 @@
-# Steps to deploy azure virtual machine to join Oracles-PoA network
+# Ceremony
 
-## 1. Create azure account
+If you have an invitation from Oracles network, you'll be able to generate your production keys through [Ceremony Dapp](https://oraclesorg.github.io/oracles-dapps-keys-generation/) 
+
+1. Import your initial key to Oracles plugin: browse keystore file, received from invitation, and enter password for the key (See [Importing of keys](#importing-of-keys)).
+
+2. Open Ceremony Dapp page and follow dapp's instructions. You'll get your production keys (mining, payout, voting) at the end of process.
+
+3. Download keystore files of the generated keys and save paswords for the keys in a safe place.
+
+4. If you are successfully generated production keys in previous step, you may create a mining node from the template, using generated mining key. See, how to do this below.
+
+## Steps to deploy azure virtual machine to join Oracles-PoA network
+
+### 1. Create azure account
 If you already have Microsoft Azure account, you should [login](https://azure.microsoft.com/en-us/features/azure-portal/) and then skip this section.  
 To signup to Microsoft Azure follow the link above and click "New to Azure". Follow the steps of the registration process. You will need to provide and verify your email address and your credit card information.  
 After registration is complete, do not sign out.
 
-## 2. Generate SSH keys
+### 2. Generate SSH keys
 SSH keys is a pair of cryptographic keys that will be used to access your virtual machine. Each pair consists of a _public key_ and a _private key_. Both of them will be stored on your current laptop/PC in separate files. Public key will then be copied to the virtual machine and used to verify your identity when you try to access it. As a consequence, the first connection can be made only from your current laptop/PC. While public key may be shared with anybody, you should never share your private key. Later, if need be, you'll be able to create additional key pairs on your other devices and access the virtual machine from them as well.
 
-### Mac OS X
+#### Mac OS X
 1. Open "Finder", choose Utilities from the "Go" menu.
 2. Find the "Terminal.app" in the "Utilities" window.
 3. Double-click to open the "Terminal.app".
@@ -22,7 +34,7 @@ ssh-keygen -t rsa
 6. Next you'll be prompted for a passphrase (password). You can just hit ENTER to use this keypair without a passphrase, however, it is recommended that you provide a strong passphrase.
 7. This completes the SSH keys generation procedure and you should see the confirmation in the terminal window. Do not close Terminal just yet.
 
-### Windows PC
+#### Windows PC
 1. Download _PuTTY_ from its [official web page](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html). Under "Package files" select 32-bit or 64-bit version depending on your laptop/PC processor type and operating system edition. If unsure, download 32-bit version. After download is complete, double-click on the msi file and follow the installation steps.
 2. Open the PuTTYgen program.
 3. For "Type of key to generate", select RSA, for "Number of bits in a generated key" leave default value `2048`. 
@@ -35,7 +47,7 @@ ssh-keygen -t rsa
 8. Click the "Save public key" button, select the folder you want to save this file to, enter filename, e.g. "public.ppk" and save the file.
 9. Do not close PuTTY just yet.
 
-## 3. Virtual machine setup.
+### 3. Virtual machine setup.
 This is the final step, on which you will create azure virtual machine from a template by filling in a number of fields with data obtained on previous steps. After virtual machine deployment is complete, it will automatically join the Oracles-PoA network and all corresponding activities (voting, payout) will become available to you.
 
 1. Hold <kbd>cmd ⌘</kbd> (on Mac OS X) or <kbd>CTRL</kbd> (on Windows PC) and click on the "Deploy to Azure" button below. This will open a separate browser tab, lead you to azure portal and launch "Custom deployment" wizard (alternatively, you can right-click on the button and select "Open in New Tab")  
