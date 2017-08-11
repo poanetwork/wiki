@@ -4,6 +4,10 @@
 
 Please, check [MetaMask plugin and keys](./MetaMask-connect.md) section
 
+## Ceremony
+
+Please, check [Ceremony](./ceremony.md) section.
+
 ## Current members
 
 To check, who are already have authority in Oracles network, go to [Validators Dapp](https://oraclesorg.github.io/oracles-dapps-validators/).
@@ -11,10 +15,6 @@ To check, who are already have authority in Oracles network, go to [Validators D
 ## Join the network
 
 Joining to the Oracles network is managing by [Governance Dapp](https://oraclesorg.github.io/oracles-dapps-voting/).
-
-## Ceremony
-
-Please, check [Ceremony](./ceremony.md) section.
 
 ## Governance
 
