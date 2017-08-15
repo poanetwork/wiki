@@ -9,10 +9,10 @@ _Note that this plugin is currently available only for Google Chrome v59.0.3071.
 1. Click on the Network name next to the head of the fox in the upper left corner and select "Custom RPC" from the dropdown list
 
 ![Step1](./docs/metaMaskConnect/DefaultMM_Step1.png)
-RPC URL: `http://testnet.oracles.org:8545`
-2. Enter the RPC connection url (it should have been provided to you by the master of the ceremony).
 
-Note: _url on the screenshot below is just an example, use the one provided to you_
+2. Enter the RPC connection url `http://testnet.oracles.org:8545` (however, if master of the ceremony explicitly provided you with another connection url you should use it).
+
+Note: _url on the screenshot below is just an example_
 
 ![Step2](./docs/metaMaskConnect/DefaultMM_Step2.png)
 
@@ -24,6 +24,8 @@ Note: _url on the screenshot below is just an example, use the one provided to y
 
 2. In "Select Type" dropdown choose "JSON file" option. Then click on "Select file" and browse your filesystem to locate the keyfile. Enter password for the keyfile and click "Import".
 
-Note: _name of the file on the screenshot below is just an example, it will different in your case_
+Note: _name of the file on the screenshot below is just an example, it will be different in your case_
 
 ![Step3](./docs/metaMaskConnect/DefaultMM_Step4.png)
+
+3. Click on the account icon in the right upper corner again and select the newly created account (usually the newest one is the lowest one in that list, however you should check the address `0x...` field below account name).
