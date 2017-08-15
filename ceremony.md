@@ -4,7 +4,10 @@ If you have an invitation from Oracles network, you'll be able to generate your 
 
 1. Import your initial key to Oracles plugin: browse keystore file, received from invitation, and enter password for the key (See [Importing of keys](./MetaMask-connect.md#importing-of-keys)).
 
-2. Open Ceremony Dapp page and follow dapp's instructions. You'll get your production keys (mining, payout, voting) at the end of process.
+2. Open Ceremony Dapp page and follow dapp's instructions. You need to fill the form with your contact and license details. Please double check this information before proceeding.  
+When you have filled the form, click "Upload your initial key" button and select the keyfile you have been provided with. This will start a process of exchanging your initial keys for three new keys, namely _mining key_, _payout key_ and _voting key_. During this process you will need to confirm three transactions to send ether from your initial account to each newly created account. Three MetaMask confirmation windows will appear one after another, you need to click "Submit" button each time.  
+You'll get your production keys (mining, payout, voting) at the end of process.  
+Your initial keys will become unusable after the process is complete. Please make sure you save the output data (copy all three address, passwords and download all keyfiles).
 
 3. Download keystore files of the generated keys and save paswords for the keys in a safe place.
 
