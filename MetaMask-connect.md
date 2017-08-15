@@ -9,7 +9,7 @@ _Note that this plugin is currently available only for Google Chrome v59.0.3071.
 1. Click on the Network name next to the head of the fox in the upper left corner and select "Custom RPC" from the dropdown list
 
 ![Step1](./docs/metaMaskConnect/DefaultMM_Step1.png)
-
+RPC URL: `http://testnet.oracles.org:8545`
 2. Enter the RPC connection url (it should have been provided to you by the master of the ceremony).
 
 Note: _url on the screenshot below is just an example, use the one provided to you_
