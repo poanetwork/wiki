@@ -22,3 +22,5 @@ In this case, click "Resource groups" on the left sidebar. A list of all your re
 4. wait until you get notification that the resource group was successfully deleted.
 
 5. unpin resource group shortcut from Azure dashboard
+
+![Unpin](./docs/deleteNode/DelNode-Unpin.png)
