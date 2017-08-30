@@ -137,7 +137,7 @@ bootnodes=["enode://<128 hex characters>@ip_address:30300"]
 ```
 Save the file, commit it and push changes to your github repo. 
 
-### Generate initial keys for first users
+### Generate initial keys for your first notaries
 Connect to the virtual machine, `cd oracles-initial-keys` and run the following command to generate initial keys
 ```
 node ./generateInitialKey.js
