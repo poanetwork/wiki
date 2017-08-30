@@ -108,6 +108,7 @@ sudo systemctl restart oracles-parity
 Logs are appended to `~/logs/parity.log`.
 
 * `chain-explorer` and `eth-netstats` are started via systemd but then work under `pm2`. You can check documentation on pm2 [here](https://github.com/Unitech/pm2). The simplest commands are
+
 `pm2 list` - to list running services and check their status
 ![pm2_list](./docs/bootnodeSetup/bns_pm2_list.png)
 
