@@ -122,7 +122,7 @@ journalctl -u oracles-dashboard
 Next important step is to find the public url of the bootnode and set it as `bootnodes` parameter for the miners.  
 Simplest way to do this is to grep it from parity log file:
 ```
-sudo fgrep enode logs/parity.*
+fgrep enode logs/parity.*
 ```
 This is an example output:
 
