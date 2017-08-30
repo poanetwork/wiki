@@ -108,12 +108,12 @@ sudo systemctl restart oracles-parity
 Logs are appended to `~/logs/parity.log`.
 
 * `chain-explorer` and `eth-netstats` are started via systemd but then work under `pm2`. You can check documentation on pm2 [here](https://github.com/Unitech/pm2). The simplest commands are
-* `pm2 list` - to list running services and check their status
+`pm2 list` - to list running services and check their status
 ![pm2_list](./docs/bootnodeSetup/bns_pm2_list.png)
 
-* `pm2 restart all` - to restart all services, you can also specify service's name or id instead of "all". Note that it takes few seconds to a minute for services to reconnect and become fully operational after restart.
+`pm2 restart all` - to restart all services, you can also specify service's name or id instead of "all". Note that it takes few seconds to a minute for services to reconnect and become fully operational after restart.
 
-`dashboard` is managed via systemd service `oracles-dashboard`. However, dashboard does not support custom log files at the present moment, as a result, logs are stored by systemd and can be fetched with this command
+* `dashboard` is managed via systemd service `oracles-dashboard`. However, dashboard does not support custom log files at the present moment, as a result, logs are stored by systemd and can be fetched with this command
 ```
 journalctl -u oracles-dashboard
 ```
