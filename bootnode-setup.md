@@ -89,41 +89,45 @@ instead of `$ADMIN_USERNAME` substitute the admin username you have provided at 
 ### Have a look around
 When you connect to the virtual machine you will find yourself in the home directory of the admin user (e.g. `/home/azureuser`). This is the listing of this directory:
 
-![ls_home](./docs/bootnodeSetup/ls_home.png)
+![ls_home](./docs/bootnodeSetup/bns_ls_home.png)
 
 * `install.sh` is the installation file. In general, you should not attempt to rerun it, as it will fail due to duplicate installation of several services.
 * DApps should be available at 8180 port (e.g. http://8.8.8.8:8180).
-* all `*.start` files are used to start/restart individual services. You can inspect the details by running `cat dashboard.start` etc. You can invoke them simply by running `./dashboard.start`.
-* `chain-explorer` is listening on 4000 port (e.g. http://8.8.8.8:4000). It displays the list of most recent blocks and transactions. It is run via [pm2](https://github.com/Unitech/pm2) under `root` (because is has to access files created by docker).
-* `eth-netstats` is listening on 3000 (e.g. http://8.8.8.8:3000) port, it displays a dashboard with statistics about the network (nodes, peers per node, avg. block time, etc). It doesn't work under pm2, so is started via [dtach](http://dtach.sourceforge.net/). 
+* `chain-explorer` is listening on 4000 port (e.g. http://8.8.8.8:4000). It displays the list of most recent blocks and transactions. It is run via [pm2](https://github.com/Unitech/pm2).
+* `eth-netstats` a.k.a. _dashboard_ is listening on 3000 (e.g. http://8.8.8.8:3000) port, it displays a dashboard with statistics about the network (nodes, peers per node, avg. block time, etc). 
 * `eth-net-intelligence-api` is a service used to _send_ statistics to the dashboard. It is also run via [pm2](https://github.com/Unitech/pm2), but under normal user.
 * `node.pwd`, `node.toml` and `spec.json` are network and node configuration files used by Parity.
 * `parity` folder is data directory of the Parity. All files related to the blockchain (including account keys) are stored in it.
-* you can inspect `cat docker.start` to see how the port forwarding and volume mounting is configured.
-* to run any command related to docker you should prefix it with `sudo`, e.g. to check running docker containers run `sudo docker ps`.
-* logs are aggregated in `logs` folder:
+* logs (except for the dashboard) are aggregated in `logs` folder:
 
-![ls_logs](./docs/bootnodeSetup/ls_logs.png)
+### More details
+* `parity` is installed from one of official deb packages and started as a systemd service `oracles-parity`. As a result (and other services managed via systemd), parity should  automatically start on system boot. Basic commands to interact with systemd service are `stop`, `start` and `restart`, they can be invoked in the followin way:
+```
+sudo systemctl restart oracles-parity
+```
+Logs are appended to `~/logs/parity.log`.
 
-`chain-explorer`/`eth-netstats` are run via pm2. You can check documentation [here](https://github.com/Unitech/pm2). The simplest commands are
-* `pm2 list`/`sudo -u root -H pm2 list` - to list running services and check their status
-![pm2_list_azureuser](./docs/bootnodeSetup/pm2_list_azureuser.png)
-![pm2_list_root](./docs/bootnodeSetup/pm2_list_root.png)
+* `chain-explorer` and `eth-netstats` are started via systemd but then work under `pm2`. You can check documentation on pm2 [here](https://github.com/Unitech/pm2). The simplest commands are
 
-* `pm2 restart all`/`sudo -u root -H pm2 restart all` - to restart services. Note that it takes few seconds to a minute for the services to reconnect and become fully operational after restart.
+`pm2 list` - to list running services and check their status
+![pm2_list](./docs/bootnodeSetup/bns_pm2_list.png)
 
-`dashboard` is run via dtach. You can check documentation [here](http://dtach.sourceforge.net/). The simplest command to connect to the running process is `dtach -a dashboard` (should be run from home directory!). You can then stop it with `CTRL+C` and run `./dashboard.start` to start it again.  
-You can check its status in `logs/dashboard.err` and `logs/dashboard.out`.
+`pm2 restart all` - to restart all services, you can also specify service's name or id instead of "all". Note that it takes few seconds to a minute for services to reconnect and become fully operational after restart.
+
+* `dashboard` is managed via systemd service `oracles-dashboard`. However, dashboard does not support custom log files at the present moment, as a result, logs are stored by systemd and can be fetched with this command
+```
+journalctl -u oracles-dashboard
+```
 
 ### Change bootnodes enode for miners
 Next important step is to find the public url of the bootnode and set it as `bootnodes` parameter for the miners.  
 Simplest way to do this is to grep it from parity log file:
 ```
-sudo fgrep --color=auto enode logs/parity.log
+fgrep enode logs/parity.*
 ```
 This is an example output:
 
-![grep_enode](./docs/bootnodeSetup/grep_enode.png)
+![grep_enode](./docs/bootnodeSetup/bns_enode.png)
 
 copy enode url address, its format is `enode://<128 hex characters>@ip_address:30300`.  
 In repository, open file [`TestTestNet/mining-node/node.toml`](https://github.com/oraclesorg/test-templates/blob/dev/TestTestNet/mining-node/node.toml) and replace the value in `bootnodes` parameter with the url above like so:
@@ -132,18 +136,18 @@ In repository, open file [`TestTestNet/mining-node/node.toml`](https://github.co
 bootnodes=["enode://<128 hex characters>@ip_address:30300"]
 ...
 ```
-Save the file, commit it  and push to github. 
+Save the file, commit it and push changes to your github repo. 
 
-### Generate initial keys for first users
+### Generate initial keys for your first notaries
 Connect to the virtual machine, `cd oracles-initial-keys` and run the following command to generate initial keys
 ```
 node ./generateInitialKey.js
 ```
 
-Navigate to the DApps url in your browser (http://ip_address:8180) and confirm two transactions to the newly created accounts.
+Navigate to the DApps url in your browser (http://8.8.8.8:8180) and confirm two transactions to the newly created accounts.
 
 In the end, the script should print out the address, password and save private key to `initialKeysDemo` folder.
-![initial_keys_generated](./docs/bootnodeSetup/initial_keys_generated.png)
+![initial_keys_generated](./docs/bootnodeSetup/bns_new_initial_key.png)
 
 Repeat the procedure to generate as many keys as necessary (12 in the current contract). These are the keys you'll have to distribute among your first notaries.
 
@@ -155,11 +159,9 @@ It is important to note, that each deployment pulls some files from external rep
 * chain explorer is pulled from [this repo](https://github.com/oraclesorg/chain-explorer)
 * eth-net-intelligence-api is using this [repo](https://github.com/oraclesorg/eth-net-intelligence-api)
 * eth-netstats dashboard is pulled from [eth-netstats](https://github.com/oraclesorg/eth-netstats)
-* docker image used to periodically auto-update the container is pulled from [docker hub](https://hub.docker.com/r/oraclesorg/docker-run/), which uses [this repo](https://github.com/oraclesorg/docker-run) to rebuild the image
 * initial keys are generate using [this script](https://github.com/oraclesorg/oracles-initial-keys), which has a `config.json` file with contract definition in it.
 
 There are other repositories involved in the workflow:
-* [metamask plugin](https://github.com/oraclesorg/metamask-plugin)
 * DApps repositories: [voting](https://github.com/oraclesorg/oracles-dapps-voting), [key-generation](https://github.com/oraclesorg/oracles-dapps-keys-generation), [validators](https://github.com/oraclesorg/oracles-dapps-validators)
 * [faucet](https://github.com/oraclesorg/oracles-faucet)
 
