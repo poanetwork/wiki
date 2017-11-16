@@ -48,5 +48,10 @@ https://github.com/oraclesorg/oracles-initial-keys
 ## Chapter V - in which MoC uses all his secret powers to create initial keys
 
 ## Chapter VI - in which MoC takes a little break to update links in README
+Please update the button in README from master branch
+https://github.com/oraclesorg/test-templates
+
+Namely, you need to add _url-encoded_ link to _raw code_ of the validator's node template after https://portal.azure.com/#create/Microsoft.Template/uri/  
+You can use https://www.url-encode-decode.com/ to perform encoding.
 
 ## Chapter VII - in which MoC gives initial keys to first validators and hopes for the best
