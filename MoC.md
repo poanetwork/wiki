@@ -42,7 +42,8 @@ https://github.com/oraclesorg/oracles-initial-keys
 https://github.com/oraclesorg/test-templates
 
 #### What to replace:
-1. edit TestTestNet/common.vars and replace branch names where necessary
+0. open `TestTestNet/bootnodes.txt` and remove it's entire content
+1. edit `TestTestNet/common.vars` and replace branch names where necessary
 * `OWNER_ADDRESS`, e.g. `OWNER_ADDRESS="0xdd0bb0e2a1594240fed0c2f2c17c1e9ab4f87126"` - new address of the `owner`.
 * `SCRIPTS_BRANCH`, e.g. `SCRIPTS_BRANCH="sokol"` - branch to use in oracles-scripts
 * `DAPPS_BRANCH`, e.g. `DAPPS_BRANCH="master"` - branch to use in oracles-dapps-*
@@ -53,12 +54,12 @@ https://github.com/oraclesorg/test-templates
 * `PARITY_DEB_LOC`, e.g. `PARITY_DEB_LOC="https://parity-downloads-mirror.parity.io/v1.8.1/x86_64-unknown-linux-gnu/parity_1.8.1_amd64.deb"` - location of the deb package (used only if `PARITY_INSTALLATION_MODE="DEB"`)
 * `NODE_SOURCE_DEB`, e.g. `NODE_SROUCE_DEB="https://deb.nodesource.com/setup_6.x"` - location of the node.js package to use
 3. when you've done that, you will have to open each of azure templates one by one
-* TestTestNet/bootnode/template.json
-* TestTestNet/mining-node/template.json
-* TestTestNet/netstats-server/template.json
-* TestTestNet/owner/template.json
+* `TestTestNet/bootnode/template.json`
+* `TestTestNet/mining-node/template.json`
+* `TestTestNet/netstats-server/template.json`
+* `TestTestNet/owner/template.json`
 
-scroll down to `variables` section and change the TEMPLATES_BRANCH value to `NetworkName`, e.g.
+scroll down to `variables` section and change the `TEMPLATES_BRANCH` value to `NetworkName`, e.g.
 ```
 ...
   "variables": {
@@ -75,7 +76,22 @@ This is an example:
 ```
 
 ## Chapter III - in which MoC creates first nodes of the new network
-There is a "chicken or egg" problem here, because you first need to create bootnode and netstats server, however bootnode needs to send statistics to netstats and netstats needs to connect to a bootnode. It seems to be easier to start from netstats:
+There is a "chicken and egg" problem here, because you first need to create bootnode and netstats server, however bootnode needs to send statistics to netstats and netstats needs to connect to a bootnode. It seems to be easier to start from netstats.
+0. open README
+1. click on Netstats button. Fill all required fields, it is recommended to use a bigger `vmSize` for netstats. Set a strong `netstats password`. Wait till the node is created. After that, you should be able to access dashboard on http://1.2.3.4:3000 and access explorer on http://1.2.3.4:4000 . There will be nothing there yet though. **Write down netstats ip address**.
+2. click on Bootnode button. Fill all required fields, it is recommended to use a bigger `vmSize` for bootnode too. Wait till the node is created. Log in to the node, run this script to get bootnode's enode:
+```
+curl --data '{"method":"parity_enode","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+copy it and add to `TestTestNet/bootnodes.txt` on a separate line
+3. log out from bootnode and log back in to netstats server. Run this script in home folder to re-download bootnodes.txt:
+```
+curl -sLO https://github.com/oraclesorg/<Branch name>/TestTestNet/bootnodes.txt
+```
+restart parity
+```
+sudo systemctl restart oracles-parity
+```
 
 ## Chapter IV - in which MoC deploys governance contract
 
