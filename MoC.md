@@ -54,5 +54,4 @@ https://github.com/oraclesorg/test-templates
 Namely, you need to add _url-encoded_ link to _raw code_ of the validator's node template after https://portal.azure.com/#create/Microsoft.Template/uri/  
 You can use https://www.url-encode-decode.com/ to perform encoding.
 
-## Chapter VII - in which MoC gives initial keys to first validators
-and hopes for the best
+## Chapter VII - in which MoC gives initial keys to first validators and hopes for the best
