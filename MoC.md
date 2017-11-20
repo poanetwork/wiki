@@ -45,8 +45,8 @@ https://github.com/oraclesorg/test-templates
 1. edit TestTestNet/common.vars and replace branch names where necessary
 * `OWNER_ADDRESS`, e.g. `OWNER_ADDRESS="0xdd0bb0e2a1594240fed0c2f2c17c1e9ab4f87126"` - new address of the `owner`.
 * `SCRIPTS_BRANCH`, e.g. `SCRIPTS_BRANCH="sokol"` - branch to use in oracles-scripts
-* `DAPPS_BRANCH`, e.g. `DAPPS_BRANCH="sokol"` - branch to use in oracles-dapps-*
-* `IKEYS_BRANCH`, e.g. `IKEYS_BRANCH="sokol"` - branch to use in oracles-initial-keys
+* `DAPPS_BRANCH`, e.g. `DAPPS_BRANCH="master"` - branch to use in oracles-dapps-*
+* `IKEYS_BRANCH`, e.g. `IKEYS_BRANCH="master"` - branch to use in oracles-initial-keys
 2. you may also wish to update parity and node.js versions for the new network
 * `PARITY_INSTALLATION_MODE`, should be either `"BIN"` to install and use binary file directly; or `"DEB"` to `dpkg -i` from package, e.g. `PARITY_INSTALLATION_MODE="BIN"`
 * `PARITY_BIN_LOC`, e.g. `PARITY_BIN_LOC="https://transfer.sh/PhhDc/parity"` - location of the binary (used only if `PARITY_INSTALLATION_MODE="BIN"`)
