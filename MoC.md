@@ -65,18 +65,25 @@ scroll down to `variables` section and change the TEMPLATES_BRANCH value to `Net
     "TEMPLATES_BRANCH": "dev-mainnet",
 ...
 ```
+4. update links of buttons in README  
+Namely, in each button you need to replace _url encoded_ link to _raw code_ (https://raw.githubusercontent.com/...) of the node's template.json after https://portal.azure.com/#create/Microsoft.Template/uri/  
+You can use https://www.url-encode-decode.com/ to perform url encoding.
+
+This is an example:
+```
+[![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Foraclesorg%2Ftest-templates%2Fdev-mainnet%2FTestTestNet%2Fmining-node%2Ftemplate.json)
+```
 
 ## Chapter III - in which MoC creates first nodes of the new network
+There is a "chicken or egg" problem here, because you first need to create bootnode and netstats server, however bootnode needs to send statistics to netstats and netstats needs to connect to a bootnode. It seems to be easier to start from netstats:
 
 ## Chapter IV - in which MoC deploys governance contract
 
 ## Chapter V - in which MoC uses all his secret powers to create initial keys
 
 ## Chapter VI - in which MoC takes a little break to update links in README
-Please update the button in README from master branch
+If new network is of main-net variety, please update the button in README from master branch
 https://github.com/oraclesorg/test-templates
-
-Namely, you need to add _url-encoded_ link to _raw code_ of the validator's node template after https://portal.azure.com/#create/Microsoft.Template/uri/  
-You can use https://www.url-encode-decode.com/ to perform encoding.
+to point to the mining-node's template
 
 ## Chapter VII - in which MoC gives initial keys to first validators and hopes for the best
