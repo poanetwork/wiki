@@ -42,8 +42,8 @@ https://github.com/oraclesorg/oracles-initial-keys
 https://github.com/oraclesorg/test-templates
 
 #### What to replace:
-0. open `TestTestNet/bootnodes.txt` and remove it's entire content
-1. edit `TestTestNet/common.vars` and replace branch names where necessary
+0. open `nodes/bootnodes.txt` and remove it's entire content
+1. edit `nodes/common.vars` and replace branch names where necessary
 * `OWNER_ADDRESS`, e.g. `OWNER_ADDRESS="0xdd0bb0e2a1594240fed0c2f2c17c1e9ab4f87126"` - new address of the `owner`.
 * `SCRIPTS_BRANCH`, e.g. `SCRIPTS_BRANCH="sokol"` - branch to use in oracles-scripts
 * `DAPPS_BRANCH`, e.g. `DAPPS_BRANCH="master"` - branch to use in oracles-dapps-*
@@ -54,10 +54,10 @@ https://github.com/oraclesorg/test-templates
 * `PARITY_DEB_LOC`, e.g. `PARITY_DEB_LOC="https://parity-downloads-mirror.parity.io/v1.8.1/x86_64-unknown-linux-gnu/parity_1.8.1_amd64.deb"` - location of the deb package (used only if `PARITY_INSTALLATION_MODE="DEB"`)
 * `NODE_SOURCE_DEB`, e.g. `NODE_SROUCE_DEB="https://deb.nodesource.com/setup_6.x"` - location of the node.js package to use
 3. when you've done that, you will have to open each of azure templates one by one
-* `TestTestNet/bootnode/template.json`
-* `TestTestNet/mining-node/template.json`
-* `TestTestNet/netstats-server/template.json`
-* `TestTestNet/owner/template.json`
+* `nodes/bootnode/template.json`
+* `nodes/mining-node/template.json`
+* `nodes/netstats-server/template.json`
+* `nodes/owner/template.json`
 
 scroll down to `variables` section and change the `TEMPLATES_BRANCH` value to `NetworkName`, e.g.
 ```
@@ -84,7 +84,7 @@ There is a "chicken and egg" problem here, because you first need to create boot
 ```
 curl --data '{"method":"parity_enode","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
 ```
-copy it and add to `TestTestNet/bootnodes.txt` on a separate line
+copy it and add to `nodes/bootnodes.txt` on a separate line
 
 3. log out from bootnode and log back in to netstats server. Run this script in home folder to re-download bootnodes.txt:
 ```
