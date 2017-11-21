@@ -130,3 +130,10 @@ https://github.com/oraclesorg/test-templates
 to point to the mining-node's template
 
 ## Chapter VII - in which MoC gives initial keys to first validators and hopes for the best
+For each validator, you will need to provide:
+* initial key's address
+* initial key's keystore file
+* initial key's password
+* netstats server's IP
+* netstats password
+* link to the correct template's branch
