@@ -77,9 +77,10 @@ This is an example:
 
 ## Chapter III - in which MoC creates first nodes of the new network
 There is a "chicken and egg" problem here, because you first need to create bootnode and netstats server, however bootnode needs to send statistics to netstats and netstats needs to connect to a bootnode. It seems to be easier to start from netstats.
+
 0. open README
-1. click on Netstats button. Fill all required fields, it is recommended to use a bigger `vmSize` for netstats. Set a strong `netstats password`. Wait till the node is created. After that, you should be able to access dashboard on http://1.2.3.4:3000 and access explorer on http://1.2.3.4:4000 . There will be nothing there yet though. **Write down netstats ip address**.
-2. click on Bootnode button. Fill all required fields, it is recommended to use a bigger `vmSize` for bootnode too. Wait till the node is created. Log in to the node, run this script to get bootnode's enode:
+1. click on "Netstats server" button. Fill all required fields, it is recommended to use a bigger `vmSize` for netstats. Set a strong `netstats password`. Wait till the node is created. After that, you should be able to access dashboard on http://1.2.3.4:3000 and access explorer on http://1.2.3.4:4000 . There will be nothing there yet though. **Write down netstats ip address**.
+2. click on "Bootnode" button. Fill all required fields, it is recommended to use a bigger `vmSize` for bootnode too. Wait till the node is created. Log in to the node, run this script to get bootnode's enode:
 ```
 curl --data '{"method":"parity_enode","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
 ```
@@ -87,19 +88,44 @@ copy it and add to `TestTestNet/bootnodes.txt` on a separate line
 
 3. log out from bootnode and log back in to netstats server. Run this script in home folder to re-download bootnodes.txt:
 ```
-curl -sLO https://github.com/oraclesorg/<Branch name>/TestTestNet/bootnodes.txt
+curl -sLO https://github.com/oraclesorg/<***** Branch name *****>/TestTestNet/bootnodes.txt
+```
+then restart parity:
+```
+sudo systemctl restart oracles-parity
+```
+You may need to restart chain explorer, netstats daemon and dashboard, as they sometimes disconnect when parity disconnects
+```
+sudo systemctl restart oracles-dashboard
+pm2 restart all
+```
+
+4. go back to README and click on "Onwer" button. Fill all required fields, use keystore file and password that you generated in the first chapter.
+
+## Chapter IV - in which MoC deploys governance contract
+
+## Chapter V - in which MoC uses all his secret powers to create initial keys
+Log in to owner's node, open `node.toml` and temporarily add line in the `[account]` section
+```
+unlock=["0x..."] # owner's address
 ```
 restart parity
 ```
 sudo systemctl restart oracles-parity
 ```
 
-## Chapter IV - in which MoC deploys governance contract
+switch to `oracles-initial-keys` folder and run the script to generate initial key
+```
+node generateInitialKey.js
+```
+the script will output initial key's address, password and location of keystore file.
 
-## Chapter V - in which MoC uses all his secret powers to create initial keys
+Repeat this procedure as many times as necessary.
+
+Remove `unlock=...` line from `node.toml` and restart parity again.
 
 ## Chapter VI - in which MoC takes a little break to update links in README
-If new network is of main-net variety, please update the button in README from master branch
+If new network is of main-net variety, for user's convenience please update the link in the button in README from master branch
 https://github.com/oraclesorg/test-templates
 to point to the mining-node's template
 
