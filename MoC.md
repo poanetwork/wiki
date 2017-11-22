@@ -43,7 +43,7 @@ https://github.com/oraclesorg/oracles-scripts
 https://github.com/oraclesorg/oracles-initial-keys
 #### What to replace:
 1. in `config.json` replace `Ethereum.live.account` with address of the new `owner`
-2. if you updated contract's code, also replace `Ethereum.contracts.Oracles.bin` and `.abi`.
+2. if you updated contract's code, also replace `Ethereum.contracts.Oracles.abi`.
 
 ### Azure templates
 https://github.com/oraclesorg/deployment-azure
