@@ -35,11 +35,17 @@ https://github.com/oraclesorg/oracles-dapps-validators
 ### Payout script (also containig `chain.json`)
 https://github.com/oraclesorg/oracles-scripts
 
+#### What to replace:
+1. if you changed contract's code, in `scripts/config.json` update `Ethereum.contracts.Oracles.abi`.
+
 ### Initial keys
 https://github.com/oraclesorg/oracles-initial-keys
+#### What to replace:
+1. in `config.json` replace `Ethereum.live.account` with address of the new `owner`
+2. if you updated contract's code, also replace `Ethereum.contracts.Oracles.bin` and `.abi`.
 
 ### Azure templates
-https://github.com/oraclesorg/test-templates
+https://github.com/oraclesorg/deployment-azure
 
 #### What to replace:
 0. open `nodes/bootnodes.txt` and remove it's entire content
@@ -52,7 +58,7 @@ https://github.com/oraclesorg/test-templates
 * `PARITY_INSTALLATION_MODE`, should be either `"BIN"` to install and use binary file directly; or `"DEB"` to `dpkg -i` from package, e.g. `PARITY_INSTALLATION_MODE="BIN"`
 * `PARITY_BIN_LOC`, e.g. `PARITY_BIN_LOC="https://transfer.sh/PhhDc/parity"` - location of the binary (used only if `PARITY_INSTALLATION_MODE="BIN"`)
 * `PARITY_DEB_LOC`, e.g. `PARITY_DEB_LOC="https://parity-downloads-mirror.parity.io/v1.8.1/x86_64-unknown-linux-gnu/parity_1.8.1_amd64.deb"` - location of the deb package (used only if `PARITY_INSTALLATION_MODE="DEB"`)
-* `NODE_SOURCE_DEB`, e.g. `NODE_SROUCE_DEB="https://deb.nodesource.com/setup_6.x"` - location of the node.js package to use
+* `NODE_SOURCE_DEB`, e.g. `NODE_SOURCE_DEB="https://deb.nodesource.com/setup_6.x"` - location of the node.js package to use
 3. when you've done that, you will have to open each of azure templates one by one
 * `nodes/bootnode/template.json`
 * `nodes/mining-node/template.json`
@@ -72,7 +78,7 @@ You can use https://www.url-encode-decode.com/ to perform url encoding.
 
 This is an example:
 ```
-[![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Foraclesorg%2Ftest-templates%2Fdev-mainnet%2FTestTestNet%2Fmining-node%2Ftemplate.json)
+[![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Foraclesorg%2Fdeployment-azure%2Fdev-mainnet%2Fnodes%2Fmining-node%2Ftemplate.json)
 ```
 
 ## Chapter III - in which MoC creates first nodes of the new network
@@ -100,7 +106,7 @@ sudo systemctl restart oracles-dashboard
 pm2 restart all
 ```
 
-4. go back to README and click on "Onwer" button. Fill all required fields, use keystore file and password that you generated in the first chapter.
+4. go back to README and click on "Owner" button. Fill all required fields, use keystore file and password that you generated in the first chapter.
 
 ## Chapter IV - in which MoC deploys governance contract
 
