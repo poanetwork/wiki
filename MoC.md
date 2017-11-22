@@ -36,7 +36,8 @@ https://github.com/oraclesorg/oracles-dapps-validators
 https://github.com/oraclesorg/oracles-scripts
 
 #### What to replace:
-1. if you changed contract's code, in `scripts/config.json` update `Ethereum.contracts.Oracles.abi`.
+1. in `spec.json` update address for the `owner` in `accounts` section (so that `owner` has nonzero balance)
+2. if you changed contract's code, in `scripts/config.json` update `Ethereum.contracts.Oracles.abi`.
 
 ### Initial keys
 https://github.com/oraclesorg/oracles-initial-keys
