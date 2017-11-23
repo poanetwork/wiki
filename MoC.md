@@ -32,12 +32,20 @@ https://github.com/oraclesorg/oracles-dapps-validators
 2.
 3.
 
-### Repository with `chain.json` and contract's config
+### Repository with `chain.json`
 https://github.com/oraclesorg/oracles-chain-spec
 
 #### What to replace:
 1. in `spec.json` update address for the `owner` in `accounts` section (so that `owner` has nonzero balance)
-2. if you changed contract's code, in `config.json` update `Ethereum.contracts.Oracles.abi` and `.bin`.
+2. place new contract's code in the following accounts' `constructor` fields:
+```
+0xf472e0e43570b9afaab67089615080cf7c20018d
+0xbbeeea48d60b8c24eaefa334a503509e23d5e515
+0xeb1352fa30033da7f2a7b50a033ed47ef4b178a6
+0x8c9b4b504e6ffe7bc2f2811abc1fe0a2ef87fa5b
+0xdebe80f4800a23db154d023190d0658c1a6c033a
+0xfd3c58bc0dc90c4d09b79e99a7ef6318e2342100
+```
 
 ### Repository with scripts for `owner` node
 https://github.com/oraclesorg/oracles-scripts-owner
