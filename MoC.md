@@ -80,6 +80,9 @@ Unless you updated contract's code besides changing `owner`, you don't need to u
 ### Repository with scripts for `validator` node
 https://github.com/oraclesorg/oracles-scripts-validator
 
+#### What to replace:
+Unless you updated contract's code besides changing `owner`, you don't need to update anything, because only ABI is used in this repo.
+
 ### Azure templates
 https://github.com/oraclesorg/deployment-azure
 
