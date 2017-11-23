@@ -32,35 +32,25 @@ https://github.com/oraclesorg/oracles-dapps-validators
 2.
 3.
 
-### Payout script (also containig `chain.json`)
-https://github.com/oraclesorg/oracles-scripts
+### Repository with `chain.json` and contract's config
+https://github.com/oraclesorg/oracles-chain-spec
 
 #### What to replace:
 1. in `spec.json` update address for the `owner` in `accounts` section (so that `owner` has nonzero balance)
-2. if you changed contract's code, in `scripts/config.json` update `Ethereum.contracts.Oracles.abi`.
+2. if you changed contract's code, in `config.json` update `Ethereum.contracts.Oracles.abi` and `.bin`.
 
-### Initial keys
-https://github.com/oraclesorg/oracles-initial-keys
-#### What to replace:
-1. in `config.json` replace `Ethereum.live.account` with address of the new `owner`
-2. if you updated contract's code, also replace `Ethereum.contracts.Oracles.abi`.
+### Repository with scripts for `owner` node
+https://github.com/oraclesorg/oracles-scripts-owner
+
+### Repository with scripts for `validator` node
+https://github.com/oraclesorg/oracles-scripts-validator
 
 ### Azure templates
 https://github.com/oraclesorg/deployment-azure
 
 #### What to replace:
 0. open `nodes/bootnodes.txt` and remove it's entire content
-1. edit `nodes/common.vars` and replace branch names where necessary
-* `OWNER_ADDRESS`, e.g. `OWNER_ADDRESS="0xdd0bb0e2a1594240fed0c2f2c17c1e9ab4f87126"` - new address of the `owner`.
-* `SCRIPTS_BRANCH`, e.g. `SCRIPTS_BRANCH="sokol"` - branch to use in oracles-scripts
-* `DAPPS_BRANCH`, e.g. `DAPPS_BRANCH="master"` - branch to use in oracles-dapps-*
-* `IKEYS_BRANCH`, e.g. `IKEYS_BRANCH="master"` - branch to use in oracles-initial-keys
-2. you may also wish to update parity and node.js versions for the new network
-* `PARITY_INSTALLATION_MODE`, should be either `"BIN"` to install and use binary file directly; or `"DEB"` to `dpkg -i` from package, e.g. `PARITY_INSTALLATION_MODE="BIN"`
-* `PARITY_BIN_LOC`, e.g. `PARITY_BIN_LOC="https://transfer.sh/PhhDc/parity"` - location of the binary (used only if `PARITY_INSTALLATION_MODE="BIN"`)
-* `PARITY_DEB_LOC`, e.g. `PARITY_DEB_LOC="https://parity-downloads-mirror.parity.io/v1.8.1/x86_64-unknown-linux-gnu/parity_1.8.1_amd64.deb"` - location of the deb package (used only if `PARITY_INSTALLATION_MODE="DEB"`)
-* `NODE_SOURCE_DEB`, e.g. `NODE_SOURCE_DEB="https://deb.nodesource.com/setup_6.x"` - location of the node.js package to use
-3. when you've done that, you will have to open each of azure templates one by one
+1. when you've done that, you will have to open each of azure templates one by one
 * `nodes/bootnode/template.json`
 * `nodes/mining-node/template.json`
 * `nodes/netstats-server/template.json`
@@ -73,7 +63,18 @@ scroll down to `variables` section and change the `TEMPLATES_BRANCH` value to `N
     "TEMPLATES_BRANCH": "dev-mainnet",
 ...
 ```
-4. update links of buttons in README  
+If you forked the original repo to your account, also replace the `MAIN_REPO_FETCH` value to your account name, e.g.
+```
+...
+  "variables": {
+    "TEMPLATES_BRANCH": "dev-mainnet",
+    "MAIN_REPO_FETCH": "oraclesorg",
+...
+```
+
+2. edit `nodes/common.vars` and replace branch names of repositories where necessary
+
+3. update links of buttons in README.md  
 Namely, in each button you need to replace _url encoded_ link to _raw code_ (https://raw.githubusercontent.com/...) of the node's template.json after https://portal.azure.com/#create/Microsoft.Template/uri/  
 You can use https://www.url-encode-decode.com/ to perform url encoding.
 
