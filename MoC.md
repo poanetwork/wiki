@@ -136,9 +136,9 @@ curl --data '{"method":"parity_enode","params":[],"id":1,"jsonrpc":"2.0"}' -H "C
 ```
 copy it and add to `nodes/bootnodes.txt` on a separate line
 
-3. log out from bootnode and log back in to netstats server. Run this script in home folder to re-download bootnodes.txt:
+3. log out from bootnode and log back in to netstats server. Copy content of bootnodes.txt from repo or run this script in home folder to re-download it:
 ```
-curl -sLO https://github.com/oraclesorg/<***** Branch name *****>/TestTestNet/bootnodes.txt
+curl -sLO https://raw.githubusercontent.com/$MAIN_REPO_FETCH/deployment-azure/$TEMPLATES_BRANCH/nodes/bootnodes.txt
 ```
 then restart parity:
 ```
