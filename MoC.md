@@ -27,6 +27,9 @@ https://github.com/oraclesorg/oracles-dapps-voting
 3. Validators list  
 https://github.com/oraclesorg/oracles-dapps-validators
 
+#### What to replace:
+1. in each dapp go to `assets/javascripts/config.json` and change networkID to new network's `NetworkID`
+
 ### Contract
 https://github.com/oraclesorg/oracles-contract
 
@@ -70,6 +73,7 @@ https://github.com/oraclesorg/oracles-chain-spec
 0xdebe80f4800a23db154d023190d0658c1a6c033a - BallotsStorage
 0xfd3c58bc0dc90c4d09b79e99a7ef6318e2342100 - BallotsManager
 ```
+3. change `params.networkID` to new network's `NetworkID` in hex format.
 
 ### Repository with scripts for `owner` node
 https://github.com/oraclesorg/oracles-scripts-owner
