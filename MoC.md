@@ -74,6 +74,9 @@ https://github.com/oraclesorg/oracles-chain-spec
 ### Repository with scripts for `owner` node
 https://github.com/oraclesorg/oracles-scripts-owner
 
+#### What to replace:
+Unless you updated contract's code besides changing `owner`, you don't need to update anything, because only ABI is used in this repo.
+
 ### Repository with scripts for `validator` node
 https://github.com/oraclesorg/oracles-scripts-validator
 
