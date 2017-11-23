@@ -28,9 +28,25 @@ https://github.com/oraclesorg/oracles-dapps-voting
 https://github.com/oraclesorg/oracles-dapps-validators
 
 ### Contract
-1.
-2.
-3.
+https://github.com/oraclesorg/oracles-contract
+
+#### What to replace:
+1. open `src/Owned.sol` file and update `owner` variable in `function Owned()`
+2. clone the repository
+3. make sure you have the latest version of `truffle` installed:
+```
+sudo npm -g install truffle
+```
+3. do `npm install` in the repository
+4. open a new tab and run
+```
+make testrpc
+```
+5. in the first tab run
+```
+truffle compile
+```
+6. when compilation is completed go to `build/contracts` folder
 
 ### Repository with `chain.json`
 https://github.com/oraclesorg/oracles-chain-spec
