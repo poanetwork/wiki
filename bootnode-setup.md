@@ -39,7 +39,7 @@ ssh-keygen -t rsa
 On this step you will create azure virtual machine from a template by filling in a number of fields with data obtained on previous steps. After virtual machine deployment is complete, it will automatically start new Oracles-PoA network.
 
 1. Hold <kbd>cmd ⌘</kbd> (on Mac OS X) or <kbd>CTRL</kbd> (on Windows PC) and click on the "Deploy to Azure" button below. This will open a separate browser tab, lead you to azure portal and launch "Custom deployment" wizard (alternatively, you can right-click on the button and select "Open in New Tab")  
-[![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Foraclesorg%2Ftest-templates%2Fdev%2FTestTestNet%2Fbootnode%2Ftemplate.json)
+[![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Foraclesorg%2Fdeployment-azure%2FAlphaTestTestNet%2FTestTestNet%2Fbootnode%2Ftemplate.json)
 
 2. A new browser tab will be opened. Double-check address bar that you are connected to `https://portal.azure.com` and that secure connection sign is present (e.g. 🔒, exact representation may differ by browser). Fill the necessary fields as described below:
 3. **Subscription**: Select the azure subsciption you want to link virtual machine to.
@@ -70,7 +70,7 @@ This command will copy your public key to your clipboard. Then switch back to yo
 Second half of the fields should look similar to this (values will be different in your case)
 ![wizard-2](./docs/bootnodeSetup/deployment2.png)
 
-15. Click "Purchase". In case of errors please double check that you have completed the steps above and all fields are filled with correct values. If the error persists you can file a bug report [here](https://github.com/oraclesorg/test-templates/issues/new). Please provide as detailed a description as possible, one or several screenshots, so that values in all fields will be visible to us. Also provide a screenshot with the error message.
+15. Click "Purchase". In case of errors please double check that you have completed the steps above and all fields are filled with correct values. If the error persists you can file a bug report [here](https://github.com/oraclesorg/deployment-azure/issues/new). Please provide as detailed a description as possible, one or several screenshots, so that values in all fields will be visible to us. Also provide a screenshot with the error message.
 
 16. After that, you will be taken to your azure dashboard. Look for a box similar to this  
 ![Deployment in progress](./docs/bootnodeSetup/deploy_new_deployment.png)  
@@ -130,7 +130,7 @@ This is an example output:
 ![grep_enode](./docs/bootnodeSetup/bns_enode.png)
 
 copy enode url address, its format is `enode://<128 hex characters>@ip_address:30300`.  
-In repository, open file [`TestTestNet/mining-node/node.toml`](https://github.com/oraclesorg/test-templates/blob/dev/TestTestNet/mining-node/node.toml) and replace the value in `bootnodes` parameter with the url above like so:
+In repository, open file [`TestTestNet/mining-node/node.toml`](https://github.com/oraclesorg/deployment-azure/blob/AlphaTestTestNet/TestTestNet/mining-node/node.toml) and replace the value in `bootnodes` parameter with the url above like so:
 ```
 ...
 bootnodes=["enode://<128 hex characters>@ip_address:30300"]

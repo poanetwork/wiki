@@ -54,7 +54,7 @@ ssh-keygen -t rsa
 This is the final step, on which you will create azure virtual machine from a template by filling in a number of fields with data obtained on previous steps. After virtual machine deployment is complete, it will automatically join the Oracles-PoA network and all corresponding activities (voting, payout) will become available to you.
 
 1. Hold <kbd>cmd ⌘</kbd> (on Mac OS X) or <kbd>CTRL</kbd> (on Windows PC) and click on the "Deploy to Azure" button below. This will open a separate browser tab, lead you to azure portal and launch "Custom deployment" wizard (alternatively, you can right-click on the button and select "Open in New Tab")  
-[![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Foraclesorg%2Ftest-templates%2FAlphaTestTestNet%2FTestTestNet%2Fmining-node%2Ftemplate.json)
+[![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Foraclesorg%2Fdeployment-azure%2FAlphaTestTestNet%2FTestTestNet%2Fmining-node%2Ftemplate.json)
 
 2. You should see a window similar to this, preselected fields (subscription, location) may be different from yours.
 ![wizard-1a](./docs/ceremony/deploy_wizard1a.png)  
@@ -89,7 +89,7 @@ This command will copy your public key to your clipboard. Then switch back to yo
 Second half of the fields should look similar to this (values will be different in your case)
 ![wizard-2](./docs/ceremony/deploy_wizard2.png)
 
-17. Click "Purchase". In case of errors please double check that you have completed the steps above and all fields are filled with correct values. If the error persists you can file a bug report [here](https://github.com/oraclesorg/test-templates/issues/new). Please provide as detailed a description as possible, one or several screenshots, so that values in all fields will be visible to us. Also provide a screenshot with the error message.
+17. Click "Purchase". In case of errors please double check that you have completed the steps above and all fields are filled with correct values. If the error persists you can file a bug report [here](https://github.com/oraclesorg/deployment-azure/issues/new). Please provide as detailed a description as possible, one or several screenshots, so that values in all fields will be visible to us. Also provide a screenshot with the error message.
 
 18. After that, you will be taken to your azure dashboard. Look for a box similar to this  
 ![Deployment in progress](./docs/ceremony/deploy_new_deployment.png)  
