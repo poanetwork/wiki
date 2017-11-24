@@ -153,6 +153,11 @@ pm2 restart all
 4. go back to README and click on "Owner" button. Fill all required fields, use keystore file and password that you generated in the first chapter.
 
 ## Chapter IV - in which MoC deploys governance contract
+Log in to owner's node, go to `oracles-scripts-owner/joinContracts` folder and run
+```
+node joinContracts.js
+```
+you should receive output that contracts were joined.
 
 ## Chapter V - in which MoC uses all his secret powers to create initial keys
 Log in to owner's node, open `node.toml` and temporarily add line in the `[account]` section
@@ -164,7 +169,7 @@ restart parity
 sudo systemctl restart oracles-parity
 ```
 
-switch to `oracles-initial-keys` folder and run the script to generate initial key
+switch to `oracles-scripts-owner/generateInitialKey` folder and run the script to generate initial key
 ```
 node generateInitialKey.js
 ```
@@ -172,7 +177,7 @@ the script will output initial key's address, password and location of keystore 
 
 Repeat this procedure as many times as necessary.
 
-Remove `unlock=...` line from `node.toml` and restart parity again.
+Remove or comment `unlock=...` line from `node.toml` and restart parity again.
 
 ## Chapter VI - in which MoC takes a little break to update links in README
 If new network is of main-net variety, for user's convenience please update the link in the button in README from master branch
@@ -186,4 +191,4 @@ For each validator, you will need to provide:
 * initial key's password
 * netstats server's IP
 * netstats password
-* link to the correct template's branch
+* link to the correct README
