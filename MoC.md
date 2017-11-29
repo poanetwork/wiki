@@ -181,7 +181,7 @@ Remove or comment `unlock=...` line from `node.toml` and restart parity again.
 
 ## Chapter VI - in which MoC takes a little break to update links in README
 If new network is of main-net variety, for user's convenience please update the link in the button in README from master branch
-https://github.com/oraclesorg/test-templates
+https://github.com/oraclesorg/deployment-azure
 to point to the mining-node's template
 
 ## Chapter VII - in which MoC gives initial keys to first validators and hopes for the best
