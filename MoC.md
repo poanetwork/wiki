@@ -27,40 +27,72 @@ https://github.com/oraclesorg/oracles-dapps-voting
 3. Validators list  
 https://github.com/oraclesorg/oracles-dapps-validators
 
-### Contract
-1.
-2.
-3.
+#### What to replace:
+1. in each dapp go to `assets/javascripts/config.json` and change networkID to new network's `NetworkID`
 
-### Payout script (also containig `chain.json`)
-https://github.com/oraclesorg/oracles-scripts
+### Contract
+https://github.com/oraclesorg/oracles-contract
+
+#### What to replace:
+1. open `src/Owned.sol` file and update `owner` variable in `function Owned()`
+2. clone the repository
+3. make sure you have the latest version of `truffle` installed:
+```
+sudo npm -g install truffle
+```
+3. do `npm install` in the repository
+4. open a new tab and run
+```
+make testrpc
+```
+5. in the first tab run
+```
+truffle compile
+```
+6. when compilation is completed go to `build/contracts` folder, you will later need `bytecode` and `abi` properties from the following `json` files:
+```
+BallotsManager.json
+BallotsStorage.json
+KeysManager.json
+KeysStorage.json
+ValidatorsManager.json
+ValidatorsStorage.json
+```
+
+### Repository with `chain.json`
+https://github.com/oraclesorg/oracles-chain-spec
 
 #### What to replace:
 1. in `spec.json` update address for the `owner` in `accounts` section (so that `owner` has nonzero balance)
-2. if you changed contract's code, in `scripts/config.json` update `Ethereum.contracts.Oracles.abi`.
+2. place new contract's abi code in the following accounts' `constructor` fields:
+```
+0xf472e0e43570b9afaab67089615080cf7c20018d - ValidatorsStorage
+0xbbeeea48d60b8c24eaefa334a503509e23d5e515 - ValidatorsManager
+0xeb1352fa30033da7f2a7b50a033ed47ef4b178a6 - KeysStorage
+0x8c9b4b504e6ffe7bc2f2811abc1fe0a2ef87fa5b - KeysManager
+0xdebe80f4800a23db154d023190d0658c1a6c033a - BallotsStorage
+0xfd3c58bc0dc90c4d09b79e99a7ef6318e2342100 - BallotsManager
+```
+3. change `params.networkID` to new network's `NetworkID` in hex format.
 
-### Initial keys
-https://github.com/oraclesorg/oracles-initial-keys
+### Repository with scripts for `owner` node
+https://github.com/oraclesorg/oracles-scripts-owner
+
 #### What to replace:
-1. in `config.json` replace `Ethereum.live.account` with address of the new `owner`
-2. if you updated contract's code, also replace `Ethereum.contracts.Oracles.abi`.
+Unless you updated contract's code besides changing `owner`, you don't need to update anything, because only ABI is used in this repo.
+
+### Repository with scripts for `validator` node
+https://github.com/oraclesorg/oracles-scripts-validator
+
+#### What to replace:
+Unless you updated contract's code besides changing `owner`, you don't need to update anything, because only ABI is used in this repo.
 
 ### Azure templates
 https://github.com/oraclesorg/deployment-azure
 
 #### What to replace:
 0. open `nodes/bootnodes.txt` and remove it's entire content
-1. edit `nodes/common.vars` and replace branch names where necessary
-* `OWNER_ADDRESS`, e.g. `OWNER_ADDRESS="0xdd0bb0e2a1594240fed0c2f2c17c1e9ab4f87126"` - new address of the `owner`.
-* `SCRIPTS_BRANCH`, e.g. `SCRIPTS_BRANCH="sokol"` - branch to use in oracles-scripts
-* `DAPPS_BRANCH`, e.g. `DAPPS_BRANCH="master"` - branch to use in oracles-dapps-*
-* `IKEYS_BRANCH`, e.g. `IKEYS_BRANCH="master"` - branch to use in oracles-initial-keys
-2. you may also wish to update parity and node.js versions for the new network
-* `PARITY_INSTALLATION_MODE`, should be either `"BIN"` to install and use binary file directly; or `"DEB"` to `dpkg -i` from package, e.g. `PARITY_INSTALLATION_MODE="BIN"`
-* `PARITY_BIN_LOC`, e.g. `PARITY_BIN_LOC="https://transfer.sh/PhhDc/parity"` - location of the binary (used only if `PARITY_INSTALLATION_MODE="BIN"`)
-* `PARITY_DEB_LOC`, e.g. `PARITY_DEB_LOC="https://parity-downloads-mirror.parity.io/v1.8.1/x86_64-unknown-linux-gnu/parity_1.8.1_amd64.deb"` - location of the deb package (used only if `PARITY_INSTALLATION_MODE="DEB"`)
-* `NODE_SOURCE_DEB`, e.g. `NODE_SOURCE_DEB="https://deb.nodesource.com/setup_6.x"` - location of the node.js package to use
-3. when you've done that, you will have to open each of azure templates one by one
+1. when you've done that, you will have to open each of azure templates one by one
 * `nodes/bootnode/template.json`
 * `nodes/mining-node/template.json`
 * `nodes/netstats-server/template.json`
@@ -73,7 +105,18 @@ scroll down to `variables` section and change the `TEMPLATES_BRANCH` value to `N
     "TEMPLATES_BRANCH": "dev-mainnet",
 ...
 ```
-4. update links of buttons in README  
+If you forked the original repo to your account, also replace the `MAIN_REPO_FETCH` value to your account name, e.g.
+```
+...
+  "variables": {
+    "TEMPLATES_BRANCH": "dev-mainnet",
+    "MAIN_REPO_FETCH": "oraclesorg",
+...
+```
+
+2. edit `nodes/common.vars` and replace branch names of repositories where necessary
+
+3. update links of buttons in README.md  
 Namely, in each button you need to replace _url encoded_ link to _raw code_ (https://raw.githubusercontent.com/...) of the node's template.json after https://portal.azure.com/#create/Microsoft.Template/uri/  
 You can use https://www.url-encode-decode.com/ to perform url encoding.
 
@@ -110,6 +153,11 @@ pm2 restart all
 4. go back to README and click on "Owner" button. Fill all required fields, use keystore file and password that you generated in the first chapter.
 
 ## Chapter IV - in which MoC deploys governance contract
+Log in to owner's node, go to `oracles-scripts-owner/joinContracts` folder and run
+```
+node joinContracts.js
+```
+you should receive output that contracts were joined.
 
 ## Chapter V - in which MoC uses all his secret powers to create initial keys
 Log in to owner's node, open `node.toml` and temporarily add line in the `[account]` section
@@ -121,7 +169,7 @@ restart parity
 sudo systemctl restart oracles-parity
 ```
 
-switch to `oracles-initial-keys` folder and run the script to generate initial key
+switch to `oracles-scripts-owner/generateInitialKey` folder and run the script to generate initial key
 ```
 node generateInitialKey.js
 ```
@@ -129,7 +177,7 @@ the script will output initial key's address, password and location of keystore 
 
 Repeat this procedure as many times as necessary.
 
-Remove `unlock=...` line from `node.toml` and restart parity again.
+Remove or comment `unlock=...` line from `node.toml` and restart parity again.
 
 ## Chapter VI - in which MoC takes a little break to update links in README
 If new network is of main-net variety, for user's convenience please update the link in the button in README from master branch
@@ -143,4 +191,4 @@ For each validator, you will need to provide:
 * initial key's password
 * netstats server's IP
 * netstats password
-* link to the correct template's branch
+* link to the correct README
