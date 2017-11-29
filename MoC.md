@@ -192,3 +192,4 @@ For each validator, you will need to provide:
 * netstats server's IP
 * netstats password
 * link to the correct README
+* link to the KeysGenerator DApp
