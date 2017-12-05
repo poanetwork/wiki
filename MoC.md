@@ -105,7 +105,7 @@ scroll down to `variables` section and change the `TEMPLATES_BRANCH` value to `N
     "TEMPLATES_BRANCH": "dev-mainnet",
 ...
 ```
-If you forked the original repo to your account, also replace the `MAIN_REPO_FETCH` value to your account name, e.g.
+If you forked the original repo to your account, also replace the `MAIN_REPO_FETCH` value with your account name, e.g.
 ```
 ...
   "variables": {
@@ -125,9 +125,22 @@ This is an example:
 [![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Foraclesorg%2Fdeployment-azure%2Fdev-mainnet%2Fnodes%2Fmining-node%2Ftemplate.json)
 ```
 
+### Ansible playbook
+https://github.com/oraclesorg/deployment-playbooks
+
+#### What to replace:
+Open `group_vars/all.network` and replace with `NetworkName`
+* `TEMPLATES_BRANCH`
+* `SCRIPTS_OWNER_BRANCH` 
+* `SCRIPTS_VALIDATOR_BRANCH`
+* `GENESIS_BRANCH`
+
+If you forked the original repo to your account, also replace the `MAIN_REPO_FETCH` value with your account name.
+
 ## Chapter III - in which MoC creates first nodes of the new network
 There is a "chicken and egg" problem here, because you first need to create bootnode and netstats server, however bootnode needs to send statistics to netstats and netstats needs to connect to a bootnode. It seems to be easier to start from netstats.
 
+### (III.a) using Azure templates
 0. open README
 1. click on "Netstats server" button. Fill all required fields, it is recommended to use a bigger `vmSize` for netstats. Set a strong `netstats password`. Wait till the node is created. After that, you should be able to access dashboard on http://1.2.3.4:3000 and access explorer on http://1.2.3.4:4000 . There will be nothing there yet though. **Write down netstats ip address**.
 2. click on "Bootnode" button. Fill all required fields, it is recommended to use a bigger `vmSize` for bootnode too. Wait till the node is created. Log in to the node, run this script to get bootnode's enode:
@@ -151,6 +164,31 @@ pm2 restart all
 ```
 
 4. go back to README and click on "Owner" button. Fill all required fields, use keystore file and password that you generated in the first chapter.
+
+### (III.b) using Ansible playbooks
+0. make sure you have installed `python`, `ansible`, `aws` cli and configured aws access keys.  
+Create a file `files/admins.pub` and paste your public ssh key there `ssh-rsa AAA...`. The create copies of this file for all roles:
+
+1. copy network-wide settings from `group_vars/all.network` and extend them with role-specific settings
+```
+cat group_vars/all.network group_vars/netstat.example > group_vars/all
+```
+then edit `group_vars/all` and fill remaining fields.  
+Run ansible to create and launch EC2 instance
+```
+ansible-playbook netstat.yml
+```
+when the instance is launched, **note it's ip address** (let's assume ip is 1.2.3.4), then create file `hosts` with the following content
+```
+[netstat]
+1.2.3.4
+```
+and run ansible again to configure the instance
+```
+ansible-playbook -i hosts site.yml
+```
+
+2. 
 
 ## Chapter IV - in which MoC deploys governance contract
 Log in to owner's node, go to `oracles-scripts-owner/joinContracts` folder and run
