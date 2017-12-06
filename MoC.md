@@ -105,7 +105,7 @@ scroll down to `variables` section and change the `TEMPLATES_BRANCH` value to `N
     "TEMPLATES_BRANCH": "dev-mainnet",
 ...
 ```
-If you forked the original repo to your account, also replace the `MAIN_REPO_FETCH` value to your account name, e.g.
+If you forked the original repo to your account, also replace the `MAIN_REPO_FETCH` value with your account name, e.g.
 ```
 ...
   "variables": {
@@ -125,9 +125,23 @@ This is an example:
 [![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Foraclesorg%2Fdeployment-azure%2Fdev-mainnet%2Fnodes%2Fmining-node%2Ftemplate.json)
 ```
 
+### Ansible playbook
+https://github.com/oraclesorg/deployment-playbooks
+
+#### What to replace:
+Open `group_vars/all.network` and replace with `NetworkName`
+* `TEMPLATES_BRANCH`
+* `SCRIPTS_OWNER_BRANCH` 
+* `SCRIPTS_VALIDATOR_BRANCH`
+* `GENESIS_BRANCH`
+* `OWNER_ADDRESS`
+
+If you forked the original repo to your account, also replace the `MAIN_REPO_FETCH` value with your account name.
+
 ## Chapter III - in which MoC creates first nodes of the new network
 There is a "chicken and egg" problem here, because you first need to create bootnode and netstats server, however bootnode needs to send statistics to netstats and netstats needs to connect to a bootnode. It seems to be easier to start from netstats.
 
+### (III.a) using Azure templates
 0. open README
 1. click on "Netstats server" button. Fill all required fields, it is recommended to use a bigger `vmSize` for netstats. Set a strong `netstats password`. Wait till the node is created. After that, you should be able to access dashboard on http://1.2.3.4:3000 and access explorer on http://1.2.3.4:4000 . There will be nothing there yet though. **Write down netstats ip address**.
 2. click on "Bootnode" button. Fill all required fields, it is recommended to use a bigger `vmSize` for bootnode too. Wait till the node is created. Log in to the node, run this script to get bootnode's enode:
@@ -152,7 +166,141 @@ pm2 restart all
 
 4. go back to README and click on "Owner" button. Fill all required fields, use keystore file and password that you generated in the first chapter.
 
-## Chapter IV - in which MoC deploys governance contract
+### (III.b) using Ansible playbooks
+0. make sure you have installed `python`, `ansible`, `aws` cli and configured aws access keys.  
+Create a file `files/admins.pub` and paste your public ssh key there `ssh-rsa AAA...`. Then create copies of this file for all roles:
+```
+cp files/admins.pub files/ssh_netstat.pub
+cp files/admins.pub files/ssh_bootnode.pub
+cp files/admins.pub files/ssh_explorer.pub
+cp files/admins.pub files/ssh_owner.pub
+```
+
+1. To create netstat, copy network-wide settings from `group_vars/all.network` and extend them with role-specific settings
+```
+cat group_vars/all.network group_vars/netstat.example > group_vars/all
+```
+then edit `group_vars/all` and fill remaining fields.
+
+Run ansible to create and launch EC2 instance
+```
+ansible-playbook netstat.yml
+```
+when the instance is launched, **note it's ip address** (let's assume ip is 1.2.3.4), then create file `hosts` with the following content
+```
+[netstat]
+1.2.3.4
+```
+and run ansible again to configure the instance
+```
+ansible-playbook -i hosts site.yml -t netstat
+```
+If you see an error that host is unavailable over SSH, wait a few minutes and try again, as it probably has not yet completed rebooting.
+
+After process is completed, if you want to install custom ssl certificates, ssh to the host as root, stop nginx:
+```
+service nginx stop
+```
+switch to the nginx folder, make backup copies of current certificate and key, leave `dhparams` in place:
+```
+cd /etc/nginx
+mkdir -p ssl.orig
+mv ssl/server.crt ssl/server.key ssl.orig/
+```
+put your `server.crt` and `server.key` into the `ssl` folder and start nginx:
+```
+service nginx start
+```
+check that it's running:
+```
+ps aux | grep nginx
+```
+if not, check logs for errors.  
+After certificates are installed, open `group_vars/all.network` and update `NETSTAT_SERVER` with the correct https://... url, commit your change to `group_vars/all.network` and push it to github. **MAKE SURE you didn't commit group_vars/all and didn't accidently add your aws keys, owner keys or validator keys** 
+
+2. to create bootnode remove current `group_vars/all` and create a new one
+```
+rm group_vars/all
+cat group_vars/all.network group_vars/bootnode.example > group_vars/all
+```
+then edit `group_vars/all` and fill remaining fields.
+
+Run ansible to create and launch EC2 instance
+```
+ansible-playbook bootnode.yml
+```
+when the instance is launched, note it's ip address (let's assume ip is 1.2.3.4), then clear file `hosts` and add following lines
+```
+[bootnode]
+1.2.3.4
+```
+and run ansible again to configure the instance
+```
+ansible-playbook -i hosts site.yml -t bootnode
+```
+If you see an error that host is unavailable over SSH, wait a few minutes and try again, as it probably has not yet completed rebooting.
+
+Log in to the node, run this script to get bootnode's enode:
+```
+curl --data '{"method":"parity_enode","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+copy it and add to `https://github.com/${MAIN_REPO_FETCH}/deployment-azure/blob/${TEMPLATES_BRANCH}/nodes/bootnodes.txt` on a separate line.
+
+If you want to replace ssl certificates on bootnode, follow the procedure from step 1.
+
+If you see that bootnode periodically becomes offline on the netstat dashboard, ssh to netstat server over ssh and restart oracles-dashboard:
+```
+systemctl restart oracles-dashboard
+```
+that should fix the issue.
+
+3. to create a node with chain explorer remove current `group_vars/all` and create a new one
+```
+rm group_vars/all
+cat group_vars/all.network group_vars/explorer.example > group_vars/all
+```
+then edit `group_vars/all` and fill remaining fields.
+
+Run ansible to create and launch EC2 instance
+```
+ansible-playbook explorer.yml
+```
+when the instance is launched, note it's ip address (let's assume ip is 1.2.3.4), then clear file `hosts` and add following lines
+```
+[explorer]
+1.2.3.4
+```
+and run ansible again to configure the instance
+```
+ansible-playbook -i hosts site.yml -t explorer
+```
+If you see an error that host is unavailable over SSH, wait a few minutes and try again, as it probably has not yet completed rebooting.
+
+If you want to replace ssl certificates on explorer, follow the procedure from step 1.
+
+4. to create a node for master of ceremony remove current `group_vars/all` and create a new one
+```
+rm group_vars/all
+cat group_vars/all.network group_vars/owner.example > group_vars/all
+```
+then edit `group_vars/all` and fill remaining fields.
+
+Run ansible to create and launch EC2 instance
+```
+ansible-playbook owner.yml
+```
+when the instance is launched, note it's ip address (let's assume ip is 1.2.3.4), then clear file `hosts` and add following lines
+```
+[owner]
+1.2.3.4
+```
+and run ansible again to configure the instance
+```
+ansible-playbook -i hosts site.yml -t owner
+```
+If you see an error that host is unavailable over SSH, wait a few minutes and try again, as it probably has not yet completed rebooting.
+
+## Chapter IV - in which MoC joins governance contracts
 Log in to owner's node, go to `oracles-scripts-owner/joinContracts` folder and run
 ```
 node joinContracts.js
