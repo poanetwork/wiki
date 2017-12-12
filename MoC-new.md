@@ -107,7 +107,7 @@ backup current certificates:
 ```
 cp -R /etc/nginx/ssl /etc/nginx/ssl.orig
 ```
-then replace the content of `/etc/nginx/ssl/server.crt` and `/etc/nginx/ssl/server.key/` with your certificate and private key. Then start nginx again
+then replace the content of `/etc/nginx/ssl/server.crt` and `/etc/nginx/ssl/server.key` with your certificate and private key. Then start nginx again
 ```
 service nginx start
 ```
@@ -164,7 +164,7 @@ This should fix the problem from now on.
 ### Create a node for Explorer
 1. Create a file with a full config for this node:
 ```
-cat group_vars/all.network group_vars/explorer > group_vars/all
+cat group_vars/all.network group_vars/explorer.example > group_vars/all
 ```
 
 2. Fill missing values in the end of the file.
@@ -191,7 +191,7 @@ ansible-playbook -i hosts site.yml -t explorer
 ### Create MoC's instance and finish the deployment of consensus contracts
 1. Create a file with a full config for this node:
 ```
-cat group_vars/all.network group_vars/moc > group_vars/all
+cat group_vars/all.network group_vars/moc.example > group_vars/all
 ```
 
 2. Fill missing values in the end of the file. When setting `MOC_KEYFILE`, paste the entire json content of the keystore file and make sure it's enclosed in single quotes:
