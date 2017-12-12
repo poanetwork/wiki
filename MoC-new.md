@@ -82,16 +82,19 @@ cat group_vars/all.network group_vars/netstat.example > group_vars/all
 ansible-playbook netstat.yml
 ```
 Wait till the command completes, extract from logs and write down IP address and AWS InstanceID of the new node.
+
 4. Create file `hosts` with the following content (assuming new node's IP is 1.2.3.4)
 ```
 [netstat]
 1.2.3.4
 ```
+
 5. Configure the instance
 ```
 ansible-playbook -i hosts site.yml -t netstat
 ```
 If this command fails because host is unreachable over ssh, wait a minute and start again, it takes some time to reboot.
+
 6. If you plan on using Cloudflare and/or SSL Certificates for netstat, it's time to configure them. Then
 ```
 ssh root@1.2.3.4
