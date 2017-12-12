@@ -188,7 +188,7 @@ ansible-playbook -i hosts site.yml -t explorer
 
 6. If you plan on using Cloudflare/SSL Certificates for the explorer, this is the time to do it. Follow the procedure analogous to netstat server.
 
-### Create MoC's instance and finish the deployment of consensus contracts
+### Create MoC's instance, finish the deployment of consensus contracts and generate initial keys
 1. Create a file with a full config for this node:
 ```
 cat group_vars/all.network group_vars/moc.example > group_vars/all
@@ -216,9 +216,15 @@ Wait till the command completes, extract from logs and write down IP address and
 ```
 ansible-playbook -i hosts site.yml -t moc
 ```
-
-6. After node was created, connect to it via `ssh moc@...` and clone (via https) POA Network Consensus contract repository
+6. After node was created, connect to it via `ssh root@...` first, edit `node.toml` and uncomment `unlock=...` line
 ```
+nano /home/moc/node.toml
+systemctl restart oracles-parity
+```
+
+7. Then relogin as unpriviledged  user `moc` and clone (via https) POA Network Consensus contract repository
+```
+su moc
 git clone https://github.com/oraclesorg/poa-network-consensus-contracts.git
 git checkout  <correct branch name>
 cd poa-network-consensus-contracts
@@ -230,7 +236,7 @@ POA_NETWORK_CONSENSUS_ADDRESS=0xf472e0e43570b9afaab67089615080cf7c20018d MASTER_
 ```
 copy and save the output as it contains addresses to which other contracts were deployed.
 
-7. To distribute initial tokens, go to (you are under `moc` user, not `root`!)
+8. To distribute initial tokens, go to (you are under `moc` user, not `root`!)
 ```
 cd ~/oracles-scripts-owner/distributeTokens
 ```
@@ -240,7 +246,7 @@ node distribute.js
 ```
 to distribute tokens.
 
-8. **To generate initial keys** go to
+9. **To generate initial keys** go to
 ```
 cd ~/oracles-scripts-owner
 ```
@@ -253,13 +259,16 @@ Script will output initial key's address, password and location of keystore file
 
 Repeat this step as many times as necessary.
 
-9. Edit `~/node.toml` and comment out the `unlock=["0x...]` line, then restart parity:
+10. Edit `~/node.toml` and comment out the `unlock=["0x...]` line, then relogin back as `root` and restart parity:
 ```
+exit
 systemctl restart oracles-parity
 ```
-10. You may also have to restart `pm2` if it disconnects while parity restarts:
+11. You may also have to restart `pm2` if it disconnects while parity restarts:
 ```
+su moc
 pm2 restart all
+pm2 list
 ```
 
 ## Chapter IV - in which MoC prepares other repositories
