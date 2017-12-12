@@ -122,7 +122,7 @@ ps aux | grep nginx
 cat group_vars/all.network group_vars/bootnode.example > group_vars/all
 ```
 
-2. Fill missing values in the end of the file. Use `https://netstat.server.com` for `NETSTAT_SERVER` if you installed valid SSL certificates, or `http://192.0.2.1:3000` if you haven't.
+2. Fill missing values in the end of the file. Use `https://netstat.example.com` for `NETSTAT_SERVER` if you installed valid SSL certificates, or `http://192.0.2.1:3000` if you haven't.
 
 3. Create an instance
 ```
@@ -198,7 +198,7 @@ cat group_vars/all.network group_vars/moc.example > group_vars/all
 ```
 MOC_KEYFILE: '{"address": ... }'
 ```
-Use `https://netstat.server.com` for `NETSTAT_SERVER` if you installed valid SSL certificates, or `http://192.0.2.1:3000` if you haven't.
+Use `https://netstat.example.com` for `NETSTAT_SERVER` if you installed valid SSL certificates, or `http://192.0.2.1:3000` if you haven't.
 
 3. Create an instance
 ```
