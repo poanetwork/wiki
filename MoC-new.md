@@ -257,6 +257,10 @@ Repeat this step as many times as necessary.
 ```
 systemctl restart oracles-parity
 ```
+10. You may also have to restart `pm2` if it disconnects while parity restarts:
+```
+pm2 restart all
+```
 
 ## Chapter IV - in which MoC prepares other repositories
 
