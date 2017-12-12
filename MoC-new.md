@@ -28,11 +28,11 @@ https://github.com/oraclesorg/deployment-azure/tree/dev-mainnet
 ### POA Network Consensus contract
 https://github.com/oraclesorg/poa-network-consensus-contracts
 1. Create a separate branch named `NetworkName`
-2. Clone it on your local machine
+2. Clone it to your local machine
 3. Install `python3`, `pip3`, `solc`: **make sure to use binary package for solc, not the one from npm** http://solidity.readthedocs.io/en/develop/installing-solidity.html#binary-packages
 4. Install `pip3 install solidity-flattener`
 5. Run `npm install`
-6. Run `./make_flat.sh` to generate flat versions of contracts. They will saved to `flat/`
+6. Run `./make_flat.sh` to generate flat versions of contracts. They will be saved to `flat/`
 7. Open [Remix](http://remix.ethereum.org/) in your browser, copy-paste code of `PoaNetworkConsensus_flat`, press "Start to compile".
 8. On "Run" tab select "Javascript VM" as environment, "PoaNetworkConsensus" as your contract, in "Create" field paste MoC's address "0x..." and click "Create"
 9. After the contract is compiled click "Details" button and copy it's bytecode
@@ -47,7 +47,7 @@ https://github.com/oraclesorg/oracles-chain-spec
 ### Ansible playbook
 https://github.com/oraclesorg/deployment-playbooks
 1. Create a spearate branch named `NetworkName`
-2. Open `group_vars/all.network` and the following variables with corresponding branch names (should be `NetworkName` mostly)
+2. Open `group_vars/all.network` and replace the following variables with corresponding branch names (should be `NetworkName` mostly)
 * `SCRIPTS_MOC_BRANCH`
 * `SCRIPTS_VALIDATOR_BRANCH`
 * `TEMPLATES_BRANCH`
@@ -68,7 +68,7 @@ cp files/admins.pub files/ssh_netstat.pub
 cp files/admins.pub files/ssh_bootnode.pub
 cp files/admins.pub files/ssh_explorer.pub
 cp files/admins.pub files/ssh_moc.pub
-cp files/admins.pub files/ssh_validator.pu
+cp files/admins.pub files/ssh_validator.pub
 ```
 
 ### Start with netstat server
@@ -114,6 +114,108 @@ service nginx start
 and check if it's running
 ```
 ps aux | grep nginx
+```
+
+### Spawn bootnodes
+1. Create a file with a full config for this node:
+```
+cat group_vars/all.network group_vars/moc > group_vars/all
+```
+
+2. Fill missing values in the end of the file. When setting `MOC_KEYFILE`, paste the entire json content of the keystore file and make sure it's enclosed in single quotes:
+```
+MOC_KEYFILE: '{"address": ... }'
+```
+Use `https://netstat.server.com` for `NETSTAT_SERVER` if you installed valid SSL certificates, or `http://1.2.3.4:3000` if you haven't.
+
+3. Create an instance
+```
+ansible-playbook moc.yml
+```
+Wait till the command completes, extract from logs and write down IP address and AWS InstanceID of the new node.
+
+4. Create/replace file `hosts` with the following content (assuming new node's IP is 1.2.3.4)
+```
+[moc]
+1.2.3.4
+```
+
+5. Configure the instance
+```
+ansible-playbook -i hosts site.yml -t moc
+```
+
+6. When creating first few bootnodes, you need to update `nodes/bootnodes.txt` file in your branch of azure repository, as it will contain enodes of "public" bootnodes. To get enode, ssh to the node and run:
+```
+curl --data '{"method":"parity_enode","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+then open bootnodes.txt on azure and insert enode on a new line at the end of file
+
+7. When you're done creating as many public bootnodes as necessary, it is recommended to login to each one of them, update local version of `/home/bootnode/bootnodes.txt` and restart parity with
+```
+systemctl restart oracles-parity
+```
+
+8. You may also create a number of "decoy" bootnodes, that will serve to connect nodes of the network, but will not be listed in public file.
+
+### Create a node for Explorer
+1. Create a file with a full config for this node:
+```
+cat group_vars/all.network group_vars/explorer > group_vars/all
+```
+
+2. Fill missing values in the end of the file.
+
+3. Create an instance
+```
+ansible-playbook explorer.yml
+```
+Wait till the command completes, extract from logs and write down IP address and AWS InstanceID of the new node.
+
+4. Create/replace file `hosts` with the following content (assuming new node's IP is 1.2.3.4)
+```
+[explorer]
+1.2.3.4
+```
+
+5. Configure the instance
+```
+ansible-playbook -i hosts site.yml -t explorer
+```
+
+6. If you plan on using Cloudflare/SSL Certificates for the explorer, this is the time to do it. Follow the procedure analogous to netstat server.
+
+### Create MoC's instance and finish the deployment of consensus contracts
+1. Create a file with a full config for this node:
+```
+cat group_vars/all.network group_vars/bootnode > group_vars/all
+```
+
+2. Fill missing values in the end of the file. Use `https://netstat.server.com` for `NETSTAT_SERVER` if you installed valid SSL certificates, or `http://1.2.3.4:3000` if you haven't.
+
+3. Create an instance
+```
+ansible-playbook bootnode.yml
+```
+Wait till the command completes, extract from logs and write down IP address and AWS InstanceID of the new node.
+
+4. Create/replace file `hosts` with the following content (assuming new node's IP is 1.2.3.4)
+```
+[netstat]
+1.2.3.4
+```
+
+5. Configure the instance
+```
+ansible-playbook -i hosts site.yml -t bootnode
+``` 
+
+6. After node was created, connect to it via `ssh moc@...` and clone (via https) POA Network Consensus contract repository
+```
+git clone https://github.com/oraclesorg/poa-network-consensus-contracts.git
+git checkout  <correct branch name>
+cd poa-network-consensus-contracts
+npm install
 ```
 
 ### DApps
