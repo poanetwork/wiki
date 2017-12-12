@@ -83,10 +83,10 @@ ansible-playbook netstat.yml
 ```
 Wait till the command completes, extract from logs and write down IP address and AWS InstanceID of the new node.
 
-4. Create file `hosts` with the following content (assuming new node's IP is 1.2.3.4)
+4. Create file `hosts` with the following content (assuming new node's IP is 192.0.2.1)
 ```
 [netstat]
-1.2.3.4
+192.0.2.1
 ```
 
 5. Configure the instance
@@ -97,7 +97,7 @@ If this command fails because host is unreachable over ssh, wait a minute and st
 
 6. If you plan on using Cloudflare and/or SSL Certificates for netstat, it's time to configure them. Then
 ```
-ssh root@1.2.3.4
+ssh root@192.0.2.1
 ```
 stop nginx
 ```
@@ -122,7 +122,7 @@ ps aux | grep nginx
 cat group_vars/all.network group_vars/bootnode.example > group_vars/all
 ```
 
-2. Fill missing values in the end of the file. Use `https://netstat.server.com` for `NETSTAT_SERVER` if you installed valid SSL certificates, or `http://1.2.3.4:3000` if you haven't.
+2. Fill missing values in the end of the file. Use `https://netstat.server.com` for `NETSTAT_SERVER` if you installed valid SSL certificates, or `http://192.0.2.1:3000` if you haven't.
 
 3. Create an instance
 ```
@@ -130,10 +130,10 @@ ansible-playbook bootnode.yml
 ```
 Wait till the command completes, extract from logs and write down IP address and AWS InstanceID of the new node.
 
-4. Create/replace file `hosts` with the following content (assuming new node's IP is 1.2.3.4)
+4. Create/replace file `hosts` with the following content (assuming new node's IP is 192.0.2.1)
 ```
 [bootnode]
-1.2.3.4
+192.0.2.1
 ```
 
 5. Configure the instance
@@ -175,10 +175,10 @@ ansible-playbook explorer.yml
 ```
 Wait till the command completes, extract from logs and write down IP address and AWS InstanceID of the new node.
 
-4. Create/replace file `hosts` with the following content (assuming new node's IP is 1.2.3.4)
+4. Create/replace file `hosts` with the following content (assuming new node's IP is 192.0.2.1)
 ```
 [explorer]
-1.2.3.4
+192.0.2.1
 ```
 
 5. Configure the instance
@@ -198,7 +198,7 @@ cat group_vars/all.network group_vars/moc.example > group_vars/all
 ```
 MOC_KEYFILE: '{"address": ... }'
 ```
-Use `https://netstat.server.com` for `NETSTAT_SERVER` if you installed valid SSL certificates, or `http://1.2.3.4:3000` if you haven't.
+Use `https://netstat.server.com` for `NETSTAT_SERVER` if you installed valid SSL certificates, or `http://192.0.2.1:3000` if you haven't.
 
 3. Create an instance
 ```
@@ -206,10 +206,10 @@ ansible-playbook moc.yml
 ```
 Wait till the command completes, extract from logs and write down IP address and AWS InstanceID of the new node.
 
-4. Create/replace file `hosts` with the following content (assuming new node's IP is 1.2.3.4)
+4. Create/replace file `hosts` with the following content (assuming new node's IP is 192.0.2.1)
 ```
 [moc]
-1.2.3.4
+192.0.2.1
 ```
 
 5. Configure the instance
