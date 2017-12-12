@@ -46,8 +46,6 @@ https://github.com/oraclesorg/oracles-chain-spec
 
 ### Ansible playbook
 https://github.com/oraclesorg/deployment-playbooks
-
-#### What to replace:
 1. Create a spearate branch named `NetworkName`
 2. Open `group_vars/all.network` and the following variables with corresponding branch names (should be `NetworkName` mostly)
 * `SCRIPTS_MOC_BRANCH`
@@ -61,6 +59,59 @@ https://github.com/oraclesorg/deployment-playbooks
 * `PARITY_BIN_LOC` - url to parity binary
 
 ## Chapter III - in which MoC creates first nodes of the network
+1. Install ansible
+2. Clone https://github.com/oraclesorg/deployment-playbooks and `git checkout` to the correct branch.
+3. Prepare files with your ssh public keys, e.g.
+```
+cat ~/.ssh/id_rsa.pub > files/admins.pub
+cp files/admins.pub files/ssh_netstat.pub
+cp files/admins.pub files/ssh_bootnode.pub
+cp files/admins.pub files/ssh_explorer.pub
+cp files/admins.pub files/ssh_moc.pub
+cp files/admins.pub files/ssh_validator.pu
+```
+
+### Start with netstat server
+1. Create a file with a full config for this node type:
+```
+cat group_vars/all.network group_vars/netstat.example > group_vars/all
+```
+2. Open this file and fill missing values at the end
+3. Create an instance
+```
+ansible-playbook netstat.yml
+```
+Wait till the command completes, extract from logs and write down IP address and AWS InstanceID of the new node.
+4. Create file `hosts` with the following content (assuming new node's IP is 1.2.3.4)
+```
+[netstat]
+1.2.3.4
+```
+5. Configure the instance
+```
+ansible-playbook -i hosts site.yml -t netstat
+```
+If this command fails because host is unreachable over ssh, wait a minute and start again, it takes some time to reboot.
+6. If you plan on using Cloudflare and/or SSL Certificates for netstat, it's time to configure them. Then
+```
+ssh root@1.2.3.4
+```
+stop nginx
+```
+service nginx stop
+```
+backup current certificates:
+```
+cp -R /etc/nginx/ssl /etc/nginx/ssl.orig
+```
+then replace the content of `/etc/nginx/ssl/server.crt` and `/etc/nginx/ssl/server.key/` with your certificate and private key. Then start nginx again
+```
+service nginx start
+```
+and check if it's running
+```
+ps aux | grep nginx
+```
 
 ### DApps
 1. Keys generation  
