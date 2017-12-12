@@ -14,10 +14,53 @@ One way is to download `etherwallet-v*.*.*.*.zip` archive of the latest release 
 then unplug your computer from the Internet, extract zip archive and open `index.html` in your browser.
 Please be sure to use strong password, download keystore file `UTC--*--*`, your private key and keep them in a safe place.
 
-## Chapter II - in which MoC forks a lot of repos and replaces some text
+## Chapter II - in which MoC forks first portion of repos and replaces some text
 
 There are quite a few repositories that are used to run the network. You will need to fork them and later update parameters.
 Please be consistent with naming of branches and use `NetworkName`.
+
+### Configs on azure
+https://github.com/oraclesorg/deployment-azure/tree/dev-mainnet
+1. Create a separate branch named `NetworkName`
+2. Open `nodes/bootnodes.txt` and remove all lines from this file
+3. Don't change anything else, this repository is used only for configs now
+
+### POA Network Consensus contract
+https://github.com/oraclesorg/poa-network-consensus-contracts
+1. Create a separate branch named `NetworkName`
+2. Clone it on your local machine
+3. Install `python3`, `pip3`, `solc`: **make sure to use binary package for solc, not the one from npm** http://solidity.readthedocs.io/en/develop/installing-solidity.html#binary-packages
+4. Install `pip3 install solidity-flattener`
+5. Run `npm install`
+6. Run `./make_flat.sh` to generate flat versions of contracts. They will saved to `flat/`
+7. Open [Remix](http://remix.ethereum.org/) in your browser, copy-paste code of `PoaNetworkConsensus_flat`, press "Start to compile".
+8. On "Run" tab select "Javascript VM" as environment, "PoaNetworkConsensus" as your contract, in "Create" field paste MoC's address "0x..." and click "Create"
+9. After the contract is compiled click "Details" button and copy it's bytecode
+
+### Chain.json
+https://github.com/oraclesorg/oracles-chain-spec
+1. Create a separate branch named `NetworkName`
+2. In "params" block, change networkID to your `NetworkID` in hex.
+3. Scroll down to "accounts" block and replace constructor for "0xf472e0e43570b9afaab67089615080cf7c20018d" with bytecode you obtained from POA Network Consensus contract "0x606060..."
+4. Replace address of account with huge amount of money with your MoC address
+
+### Ansible playbook
+https://github.com/oraclesorg/deployment-playbooks
+
+#### What to replace:
+1. Create a spearate branch named `NetworkName`
+2. Open `group_vars/all.network` and the following variables with corresponding branch names (should be `NetworkName` mostly)
+* `SCRIPTS_MOC_BRANCH`
+* `SCRIPTS_VALIDATOR_BRANCH`
+* `TEMPLATES_BRANCH`
+* `GENESIS_BRANCH`
+3. Replace `MOC_ADDRESS` with your MoC address
+4. If you forked repos to your own github account, also replace the `MAIN_REPO_FETCH` value with your account name.
+5. You may also want to replace
+* `NODE_SOURCE_DEB` - node.js version
+* `PARITY_BIN_LOC` - url to parity binary
+
+## Chapter III - in which MoC creates first nodes of the network
 
 ### DApps
 1. Keys generation  
@@ -30,51 +73,6 @@ https://github.com/oraclesorg/oracles-dapps-validators
 #### What to replace:
 1. in each dapp go to `assets/javascripts/config.json` and change networkID to new network's `NetworkID`
 
-### Contract
-https://github.com/oraclesorg/oracles-contract
-
-#### What to replace:
-1. open `src/Owned.sol` file and update `owner` variable in `function Owned()`
-2. clone the repository
-3. make sure you have the latest version of `truffle` installed:
-```
-sudo npm -g install truffle
-```
-3. do `npm install` in the repository
-4. open a new tab and run
-```
-make testrpc
-```
-5. in the first tab run
-```
-truffle compile
-```
-6. when compilation is completed go to `build/contracts` folder, you will later need `bytecode` and `abi` properties from the following `json` files:
-```
-BallotsManager.json
-BallotsStorage.json
-KeysManager.json
-KeysStorage.json
-ValidatorsManager.json
-ValidatorsStorage.json
-```
-
-### Repository with `chain.json`
-https://github.com/oraclesorg/oracles-chain-spec
-
-#### What to replace:
-1. in `spec.json` update address for the `owner` in `accounts` section (so that `owner` has nonzero balance)
-2. place new contract's abi code in the following accounts' `constructor` fields:
-```
-0xf472e0e43570b9afaab67089615080cf7c20018d - ValidatorsStorage
-0xbbeeea48d60b8c24eaefa334a503509e23d5e515 - ValidatorsManager
-0xeb1352fa30033da7f2a7b50a033ed47ef4b178a6 - KeysStorage
-0x8c9b4b504e6ffe7bc2f2811abc1fe0a2ef87fa5b - KeysManager
-0xdebe80f4800a23db154d023190d0658c1a6c033a - BallotsStorage
-0xfd3c58bc0dc90c4d09b79e99a7ef6318e2342100 - BallotsManager
-```
-3. change `params.networkID` to new network's `NetworkID` in hex format.
-
 ### Repository with scripts for `owner` node
 https://github.com/oraclesorg/oracles-scripts-owner
 
@@ -86,57 +84,6 @@ https://github.com/oraclesorg/oracles-scripts-validator
 
 #### What to replace:
 Unless you updated contract's code besides changing `owner`, you don't need to update anything, because only ABI is used in this repo.
-
-### Azure templates
-https://github.com/oraclesorg/deployment-azure
-
-#### What to replace:
-0. open `nodes/bootnodes.txt` and remove it's entire content
-1. when you've done that, you will have to open each of azure templates one by one
-* `nodes/bootnode/template.json`
-* `nodes/mining-node/template.json`
-* `nodes/netstats-server/template.json`
-* `nodes/owner/template.json`
-
-scroll down to `variables` section and change the `TEMPLATES_BRANCH` value to `NetworkName`, e.g.
-```
-...
-  "variables": {
-    "TEMPLATES_BRANCH": "dev-mainnet",
-...
-```
-If you forked the original repo to your account, also replace the `MAIN_REPO_FETCH` value with your account name, e.g.
-```
-...
-  "variables": {
-    "TEMPLATES_BRANCH": "dev-mainnet",
-    "MAIN_REPO_FETCH": "oraclesorg",
-...
-```
-
-2. edit `nodes/common.vars` and replace branch names of repositories where necessary
-
-3. update links of buttons in README.md  
-Namely, in each button you need to replace _url encoded_ link to _raw code_ (https://raw.githubusercontent.com/...) of the node's template.json after https://portal.azure.com/#create/Microsoft.Template/uri/  
-You can use https://www.url-encode-decode.com/ to perform url encoding.
-
-This is an example:
-```
-[![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Foraclesorg%2Fdeployment-azure%2Fdev-mainnet%2Fnodes%2Fmining-node%2Ftemplate.json)
-```
-
-### Ansible playbook
-https://github.com/oraclesorg/deployment-playbooks
-
-#### What to replace:
-Open `group_vars/all.network` and replace with `NetworkName`
-* `TEMPLATES_BRANCH`
-* `SCRIPTS_OWNER_BRANCH` 
-* `SCRIPTS_VALIDATOR_BRANCH`
-* `GENESIS_BRANCH`
-* `OWNER_ADDRESS`
-
-If you forked the original repo to your account, also replace the `MAIN_REPO_FETCH` value with your account name.
 
 ## Chapter III - in which MoC creates first nodes of the new network
 There is a "chicken and egg" problem here, because you first need to create bootnode and netstats server, however bootnode needs to send statistics to netstats and netstats needs to connect to a bootnode. It seems to be easier to start from netstats.
