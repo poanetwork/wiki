@@ -23,16 +23,16 @@ if not - install it following instructions from [here](https://pip.pypa.io/en/st
 python get-pip.py
 ```
 
-3. use `pip` to install the following packages:
-```
-sudo pip install boto
-sudo pip install boto3
-```
-
 ### 3. ansible
 1. follow [this instruction](http://docs.ansible.com/ansible/latest/intro_installation.html) to install ansible. For example, you can use `pip` to do it:
 ```
 sudo pip install ansible
+```
+
+2. use `pip` to install the following packages:
+```
+sudo pip install boto
+sudo pip install boto3
 ```
 
 ### 4. SSH keys
