@@ -286,7 +286,8 @@ https://github.com/oraclesorg/oracles-scripts-owner/tree/mainnet
 1. Update `contracts.KeysManager.addr` in `config.json` to the one you obtained when deploying other contracts of consensus (same thing as you did manually on moc's node).
 
 ### Repository with scripts for `validator` node
-https://github.com/oraclesorg/oracles-scripts-validator
+https://github.com/oraclesorg/oracles-scripts-validator/tree/mainnet
+1. Update `contracts.KeysManager.addr` in `config.json` to the one you obtained when deploying other contracts of consensus (same thing as you did manually on moc's node).
 
 ## Chapter VI - in which MoC gives initial keys to first validators and hopes for the best
 For each validator, you will need to provide:
