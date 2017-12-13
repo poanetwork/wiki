@@ -24,7 +24,7 @@ python get-pip.py
 ```
 
 ### 3. ansible
-1. follow [this instruction](http://docs.ansible.com/ansible/latest/intro_installation.html) to install ansible. For example, you can use `pip` to do it:
+1. follow [this guide](http://docs.ansible.com/ansible/latest/intro_installation.html) to install ansible. For example, you can use `pip` to do it:
 ```
 sudo pip install ansible
 ```
@@ -46,7 +46,7 @@ if you get error that directory does not exist or the directory is empty, you ne
 ```
 ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 ```
-insert your email address there and strong password. By default, keys will be saved to `~/.ssh/` and named `id_rsa` with your public key being `~/.ssh/id_rsa.pub`.
+insert your email address there and a strong password. By default, keys will be saved to `~/.ssh/` and named `id_rsa` with your public key being `~/.ssh/id_rsa.pub`.
 
 ### 5. aws cli
 1. check if you have aws cli installed
@@ -98,12 +98,35 @@ cp files/admins.pub files/ssh_validator.pub
 cat group_vars/all.network group_vars/validator.example > group_vars/all
 ```
 
-4. choose subnet:
+4. to choose subnet run the following command
 ```
 aws ec2 describe-subnets
 ```
+select any subnet with "State": "available" and non-zero "AvailableIpAddressCount". You need to save "SubnetId" of this subnet for later use.
 
-5. other parameters
+5. open `group_vars/all` and edit the following configuration options:
+* `access_key` - your AWS "Access Key ID"
+* `secret_key` - your AWS "Secret Access Key"
+* `awskeypair_name` - name of ssh keypair you uploaded on AWS (by default `id_rsa`)
+* `vpc_subnet_id` - insert "SubnetId" that you chose. Resulting line should look like this:
+```
+vpc_subnet_id: "subnet-..."
+```
+* `NODE_FULLNAME` - enter your full name (this will be visible to other members of the network)
+* `NODE_ADMIN_EMAIL` - enter your public email (this will be visible to other members of the network)
+* `NETSTATS_SERVER` - this should be a url provided to you by the Master of Ceremony
+* `NETSTATS_SECRET` - this should be a secret code provided to you by the Master of Ceremony
+* `MINING_KEYFILE` - insert _content_ of your mining keystore file. Resulting value should be enclosed in single quotes and look similar to this:
+```
+MINING_KEYFILE: '{"address":"..."}'
+```
+* `MINING_ADDRESS` - insert your mining key address, e.g.
+```
+MINING_ADDRESS: "0x..."
+```
+* `MINING_KEYPASS` - insert your mining key's passphrase
+
+6. examine values in `image` and `region` properties. If your AWS region doesn't match the one in `region` you need to replace `region` with the correct one and select image from this list https://cloud-images.ubuntu.com/locator/ec2/ Open this page, scroll down, choose your region from the first ("Zone") dropdown list, choose `xenial` from the second ("Name") dropdown list and `hvm:ebs-ssd` from the fifth ("Instance type"). This should limit you to a single option, copy value from "AMI-ID" column and paste it in `image` property.
 
 
 ## Deployment
