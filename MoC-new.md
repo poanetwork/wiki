@@ -38,11 +38,27 @@ https://github.com/oraclesorg/poa-network-consensus-contracts
 9. After the contract is compiled click "Details" button and copy it's bytecode
 
 ### Chain.json
-https://github.com/oraclesorg/oracles-chain-spec
+https://github.com/oraclesorg/poa-chain-spec
 1. Create a separate branch named `NetworkName`
-2. In "params" block, change networkID to your `NetworkID` in hex.
-3. Scroll down to "accounts" block and replace constructor for "0xf472e0e43570b9afaab67089615080cf7c20018d" with bytecode you obtained from POA Network Consensus contract "0x606060..."
-4. Replace address of account with huge amount of money with your MoC address
+
+2. Change "name" to `NetworkName` or maybe something like it.
+
+3. In "params" block, change networkID to your `NetworkID` in hex.
+
+**NOTE**: When creating Core and Sokol, there are additional steps:  
+3.a. in "params" block change `stepDuration` to `5` (number)
+```
+"stepDuration": 5,
+```
+3.b. in "params" block add the following lines to swith unlces off:
+```
+    "maximumUncleCountTransition": 0,
+    "maximumUncleCount": 0
+```
+
+4. Scroll down to "accounts" block and replace constructor for "0xf472e0e43570b9afaab67089615080cf7c20018d" with bytecode you obtained from POA Network Consensus contract "0x606060..."
+
+5. Replace address of account with huge amount of money with your MoC address
 
 ### Ansible playbook
 https://github.com/oraclesorg/deployment-playbooks
@@ -248,7 +264,7 @@ to distribute tokens.
 
 9. **To generate initial keys** go to
 ```
-cd ~/oracles-scripts-owner
+cd ~/poa-scripts-owner
 ```
 open `config.json` and under "contracts.KeysManager" block replace "addr" with KeysManager contract's address that you obtained while deploying other contracts from the consensus. Don't change ABI unless you've updated contract's code. Then do
 ```
@@ -274,7 +290,7 @@ pm2 list
 ## Chapter IV - in which MoC prepares other repositories
 
 ### DApp - Keys generation  
-https://github.com/oraclesorg/oracles-dapps-keys-generation/tree/mainnet
+https://github.com/oraclesorg/poa-dapps-keys-generation/tree/mainnet
 
 1. in `src/getWeb3.js` change number to `NetworkID`
     switch (netId) {
@@ -282,11 +298,11 @@ https://github.com/oraclesorg/oracles-dapps-keys-generation/tree/mainnet
 2. in `src/keysManager.js` change `KEYS_MANAGER_ADDRESS` to the one you obtained when deploying other contracts of consensus
 
 ### Repository with scripts for `owner` node
-https://github.com/oraclesorg/oracles-scripts-owner/tree/mainnet
+https://github.com/oraclesorg/poa-scripts-owner/tree/mainnet
 1. Update `contracts.KeysManager.addr` in `config.json` to the one you obtained when deploying other contracts of consensus (same thing as you did manually on moc's node).
 
 ### Repository with scripts for `validator` node
-https://github.com/oraclesorg/oracles-scripts-validator/tree/mainnet
+https://github.com/oraclesorg/poa-scripts-validator/tree/mainnet
 1. Update `contracts.KeysManager.addr` in `config.json` to the one you obtained when deploying other contracts of consensus (same thing as you did manually on moc's node).
 
 ## Chapter VI - in which MoC gives initial keys to first validators and hopes for the best
