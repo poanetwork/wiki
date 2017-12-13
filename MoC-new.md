@@ -292,6 +292,15 @@ su moc
 pm2 restart all
 pm2 list
 ```
+12. Close external access to MoC's node: edit `group_vars/all` and set
+```
+allow_moc_ssh: false
+allow_moc_p2p: false
+```
+then run
+```
+ansible-playbook moc-access.yml
+```
 
 ## Chapter IV - in which MoC prepares other repositories
 
