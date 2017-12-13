@@ -85,6 +85,7 @@ you should see your keypair name in the list.
 1. clone repository with ansible playbooks
 ```
 git clone https://github.com/oraclesorg/deployment-playbooks.git
+cd deployment-playbooks
 ```
 
 2. prepare files with ssh keys
@@ -128,11 +129,57 @@ MINING_ADDRESS: "0x..."
 
 6. examine values in `image` and `region` properties. If your AWS region doesn't match the one in `region` you need to replace `region` with the correct one and select image from this list https://cloud-images.ubuntu.com/locator/ec2/ Open this page, scroll down, choose your region from the first ("Zone") dropdown list, choose `xenial` from the second ("Name") dropdown list and `hvm:ebs-ssd` from the fifth ("Instance type"). This should limit you to a single option, copy value from "AMI-ID" column and paste it in `image` property.
 
+7. you may also choose a different value for the `validator_instance_type`. We recommend using `m5.large`, but you can select another instance available in your region, see this list https://aws.amazon.com/ec2/pricing/on-demand/
 
 ## Deployment
-
 ### Create instance
+1. with all options configured, you first need to create an instance:
+```
+ansible-playbook validator.yml
+```
+this script will ask you for your SSH key passphrase.
+
+2. after this process is complete, examine script's output and write down IP (e.g. `192.0.2.1`) address and AWS InstanceID (e.g. `i-0123456789abcdef0`) for later use.
 
 ### Configure instance
+1. create file `hosts` with the following content (assuming IP address is `192.0.2.1`)
+```
+[validator]
+192.0.2.1
+```
+
+2. run this script to configure the instance
+```
+ansible-playbook -i hosts site.yml -t validator
+```
+if you get an error that host cannot be reached over SSH, please wait a minute and start again. This error may appear because instance is rebooted after creation, and this may take some time to complete.
+
+3. open the url for `NETSTAT_SERVER` and check if your node appeared in the list
 
 ### Close external access
+1. if all worked fine and your node appeared on the list with the same block number as other nodes, you need to close access to your node. Edit `group_vars/all` and set these options to `false`:
+```
+allow_validator_ssh: false
+allow_validator_p2p: false
+```
+then run
+```
+ansible-playbook validator-access.yml
+```
+
+2. if you later need to revoke access change necessary options to `true` and run the script again. E.g. to revoke ssh access to your node, set `allow_validator_ssh: true`.
+
+NOTE: this script applies simultaneously to all your instances with security group named `validator-security`. This note is relevant only if you have several instances of validator nodes running in the same region.
+
+### Remove instance
+In case you want to remove your instance
+
+a. do it via AWS GUI: open AWS management console https://console.aws.amazon.com/ec2/v2/home#Instances check the instance you want to remove, click Actions > Instance State > Terminate.
+
+b. do it via aws cli: get AWS Instance ID (the one you saved previously, or you can look it up in AWS management console) and run
+```
+aws ec2 terminate-instances --instance-ids i-0123456789abcdef0
+```
+(replace `i-0123456789abcdef0` with your actual AWS InstanceID).
+
+NOTE: this operation is irrevertable and if need be, you'll have to create a new instance from scratch.
