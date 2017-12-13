@@ -316,7 +316,7 @@ For each validator, you will need to provide:
 * initial key's address
 * initial key's keystore file
 * initial key's password
-* netstats server's IP
+* netstats server url
 * netstats password
 * link to the correct README
 * link to the KeysGenerator DApp
