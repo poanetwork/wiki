@@ -44,7 +44,7 @@ Steps 2-6 should be done if there are no files in `flat/` folder
 https://github.com/oraclesorg/poa-chain-spec
 1. Create a separate branch named `NetworkName`
 
-2. Change "name" to `NetworkName` or maybe something like it.
+2. Change "name" to `NetworkName`.
 
 3. In "params" block, change networkID to your `NetworkID` in hex.
 
@@ -58,6 +58,7 @@ https://github.com/oraclesorg/poa-chain-spec
     "maximumUncleCountTransition": 0,
     "maximumUncleCount": 0
 ```
+3.c make sure all unnecessary contracts are removed from "accounts" block, only the one in "safeContract" should be left.
 
 4. Scroll down to "accounts" block and replace constructor for "0xf472e0e43570b9afaab67089615080cf7c20018d" with bytecode you obtained from POA Network Consensus contract "0x606060..."
 
@@ -71,6 +72,7 @@ https://github.com/oraclesorg/deployment-playbooks
 * `SCRIPTS_VALIDATOR_BRANCH`
 * `TEMPLATES_BRANCH`
 * `GENESIS_BRANCH`
+* `GEMESIS_NETWORK_NAME` - **make sure it matches `name` in `spec.json`**
 3. Replace `MOC_ADDRESS` with your MoC address
 4. If you forked repos to your own github account, also replace the `MAIN_REPO_FETCH` value with your account name.
 5. You may also want to replace
