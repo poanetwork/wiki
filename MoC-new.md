@@ -119,7 +119,13 @@ ansible-playbook -i hosts site.yml -t netstat
 ```
 If this command fails because host is unreachable over ssh, wait a minute and start again, it takes some time to reboot.
 
-6. If you plan on using Cloudflare and/or SSL Certificates for netstat, it's time to configure them. Then
+6. Login as root and edit site config for nginx - uncomment the following lines in `/etc/nginx/conf.d/default.conf`:
+```
+    add_header Access-Control-Allow-Origin "*";
+    add_header Access-Control-Allow-Headers "Origin, X-Requested-With, Content-Type, Accept";
+```
+
+7. If you plan on using Cloudflare and/or SSL Certificates for netstat, it's time to configure them. Then
 ```
 ssh root@192.0.2.1
 ```
@@ -178,6 +184,8 @@ systemctl restart poa-parity
 
 8. You may also create a number of "decoy" bootnodes, that will serve to connect nodes of the network, but will not be listed in the public file.
 
+9. If you need to do this, select a number of bootnodes and configure Cloudflare balancer on them.
+
 **NOTE**: if you notice that nodes quickly appear and disappear in netstat's dashboard, do the following:
 ```
 ssh root@netstat.ip
@@ -210,7 +218,13 @@ Wait till the command completes, extract from logs and write down IP address and
 ansible-playbook -i hosts site.yml -t explorer
 ```
 
-6. If you plan on using Cloudflare/SSL Certificates for the explorer, this is the time to do it. Follow the procedure analogous to netstat server.
+6. Login as root and edit site config for nginx - uncomment the following lines in `/etc/nginx/conf.d/default.conf`:
+```
+    add_header Access-Control-Allow-Origin "*";
+    add_header Access-Control-Allow-Headers "Origin, X-Requested-With, Content-Type, Accept";
+```
+
+7. If you plan on using Cloudflare/SSL Certificates for the explorer, this is the time to do it. Follow the procedure analogous to netstat server.
 
 ### Create MoC's instance, finish the deployment of consensus contracts and generate initial keys
 1. Create a file with a full config for this node:
@@ -314,6 +328,9 @@ https://github.com/oraclesorg/poa-dapps-keys-generation/tree/mainnet
     switch (netId) {
 
 2. in `src/keysManager.js` change `KEYS_MANAGER_ADDRESS` to the one you obtained when deploying other contracts of consensus
+
+### DApp - other DApps?
+
 
 ### Repository with scripts for `moc` node
 https://github.com/oraclesorg/poa-scripts-moc/tree/mainnet
