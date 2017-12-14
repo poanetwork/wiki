@@ -281,9 +281,10 @@ Script will output initial key's address, password and location of keystore file
 
 Repeat this step as many times as necessary.
 
-10. Edit `~/node.toml` and comment out the `unlock=["0x...]` line, then relogin back as `root` and restart parity:
+10. Relogin back as `root`, edit `node.toml` to comment out the `unlock=["0x...]` line, then restart parity:
 ```
 exit
+nano node.toml
 systemctl restart oracles-parity
 ```
 11. You may also have to restart `pm2` if it disconnects while parity restarts:
