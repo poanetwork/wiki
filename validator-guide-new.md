@@ -1,4 +1,11 @@
-## Prerequisites
+## Exchange your initial keys for mining, payout and voting keys
+1. Start Chrome
+2. Connect to the network in MetaMask - click on the network name in the top left corner of plugin's window and in the dropdown list select "Custom RPC", enter URL that was provided to you by the Master of Ceremony. Wait till the MetaMask connects to the network
+3. Open DApp http://example.com
+4. Click "Generate keys", confirm transaction.
+5. **Be sure to copy address, password and download keystore file for each key without closing browser's tab**. There is no way to get this data once you close the tab.
+
+## Validator's node Setup prerequisites
 
 ### 1. git
 1. check that you have git installed
