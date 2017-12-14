@@ -171,7 +171,7 @@ then open bootnodes.txt on azure and insert enode on a new line at the end of fi
 
 7. When you're done creating as many public bootnodes as necessary, it is recommended to login to each one of them, update local version of `/home/bootnode/bootnodes.txt` and restart parity with
 ```
-systemctl restart oracles-parity
+systemctl restart poa-parity
 ```
 
 8. You may also create a number of "decoy" bootnodes, that will serve to connect nodes of the network, but will not be listed in the public file.
@@ -179,7 +179,7 @@ systemctl restart oracles-parity
 **NOTE**: if you notice that nodes quickly appear and disappear in netstat's dashboard, do the following:
 ```
 ssh root@netstat.ip
-systemctl restart oracles-dashboard
+systemctl restart poa-dashboard
 ```
 This should fix the problem from now on. 
 
@@ -241,7 +241,7 @@ ansible-playbook -i hosts site.yml -t moc
 6. After node was created, connect to it via `ssh root@...` first, edit `node.toml` and uncomment `unlock=...` line
 ```
 nano /home/moc/node.toml
-systemctl restart oracles-parity
+systemctl restart poa-parity
 ```
 
 7. Then relogin as unpriviledged  user `moc` and clone (via https) POA Network Consensus contract repository
@@ -260,7 +260,7 @@ copy and save the output as it contains addresses to which other contracts were 
 
 8. To distribute initial tokens, go to (you are under `moc` user, not `root`!)
 ```
-cd ~/oracles-scripts-owner/distributeTokens
+cd ~/poa-scripts-moc/distributeTokens
 ```
 Upload csv file with `wallet,tokens` list, then edit `.env` file: replace `FAT_BALANCE` with your MoC address and `FILENAME_CSV_INVESTORS` with the csv file name. Run 
 ```
@@ -285,7 +285,7 @@ Repeat this step as many times as necessary.
 ```
 exit
 nano node.toml
-systemctl restart oracles-parity
+systemctl restart poa-parity
 ```
 11. You may also have to restart `pm2` if it disconnects while parity restarts:
 ```
@@ -313,8 +313,8 @@ https://github.com/oraclesorg/poa-dapps-keys-generation/tree/mainnet
 
 2. in `src/keysManager.js` change `KEYS_MANAGER_ADDRESS` to the one you obtained when deploying other contracts of consensus
 
-### Repository with scripts for `owner` node
-https://github.com/oraclesorg/poa-scripts-owner/tree/mainnet
+### Repository with scripts for `moc` node
+https://github.com/oraclesorg/poa-scripts-moc/tree/mainnet
 1. Update `contracts.KeysManager.addr` in `config.json` to the one you obtained when deploying other contracts of consensus (same thing as you did manually on moc's node).
 
 ### Repository with scripts for `validator` node
