@@ -22,6 +22,10 @@ Please be consistent with naming of branches and use `NetworkName`.
 ### Configs on azure
 https://github.com/oraclesorg/deployment-azure/tree/dev-mainnet
 1. Create a separate branch named `NetworkName`
+```
+git checkout dev-mainnet
+git checkout -b NetworkName dev-mainnet
+```
 2. Open `nodes/bootnodes.txt` and remove all lines from this file
 3. Don't change anything else, this repository is used only for configs now
 
@@ -42,10 +46,7 @@ Steps 2-6 should be done if there are no files in `flat/` folder
 ### Chain.json
 https://github.com/oraclesorg/poa-chain-spec
 1. Create a separate branch named `NetworkName`
-```
-git checkout dev-mainnet
-git checkout -b NetworkName dev-mainnet
-```
+
 2. Change "name" to `NetworkName`.
 
 3. In "params" block, change networkID to your `NetworkID` in hex.
