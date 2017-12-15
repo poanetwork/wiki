@@ -42,7 +42,10 @@ Steps 2-6 should be done if there are no files in `flat/` folder
 ### Chain.json
 https://github.com/oraclesorg/poa-chain-spec
 1. Create a separate branch named `NetworkName`
-
+```
+git checkout dev-mainnet
+git checkout -b NetworkName dev-mainnet
+```
 2. Change "name" to `NetworkName`.
 
 3. In "params" block, change networkID to your `NetworkID` in hex.
