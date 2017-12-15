@@ -88,6 +88,11 @@ aws ec2 describe-key-pairs
 ```
 you should see your keypair name in the list.
 
+8. list available subnets
+```
+aws ec2 describe-subnets
+```
+
 ## Download and configure playbook
 1. clone repository with ansible playbooks
 ```
