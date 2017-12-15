@@ -28,7 +28,6 @@ https://github.com/oraclesorg/deployment-azure/tree/dev-mainnet
 ### POA Network Consensus contract
 https://github.com/oraclesorg/poa-network-consensus-contracts
 1. Create a separate branch named `NetworkName`
-
 Steps 2-6 should be done if there are no files in `flat/` folder  
 2. Clone it to your local machine
 3. Install `python3`, `pip3`, `solc`: **make sure to use binary package for solc, not the one from npm** http://solidity.readthedocs.io/en/develop/installing-solidity.html#binary-packages
