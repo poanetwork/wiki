@@ -10,7 +10,7 @@ Please, check [Ceremony](./ceremony.md) section.
 
 ## Current members
 
-To check, who are already have authority in Oracles network, go to [Validators Dapp](https://oraclesorg.github.io/oracles-dapps-validators/).
+To check, who are already have authority in Oracles network, go to [Validators Dapp](https://oraclesorg.github.io/poa-dapps-validators/).
 
 ## Join the network
 
