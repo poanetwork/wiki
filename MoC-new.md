@@ -86,14 +86,30 @@ https://github.com/oraclesorg/deployment-playbooks
 * select a better `*_instance_type` (m5.large?) (see https://aws.amazon.com/ec2/pricing/on-demand/)
 
 ## Chapter III - in which MoC takes a deep breath and creates first nodes of the network
-0. It is assumed that you have set up AWS account and uploaded your ssh keys. To list available vpc subnets, run:
+### Configuring AWS
+1. register (if you haven't already) and login to the AWS management console https://aws.amazon.com/console/
+
+2. to create credentials for cli, open IAM home https://console.aws.amazon.com/iam/home then click "Add user" pick a username, and check "Programmatic access" for "Access type". Click "Next"
+
+3. you can choose any of the available options, but "Attach existing policies directly" is the simplest one. In the list of policy types check "AmazonEC2FullAccess". Review your account and click "Create user" to proceed.
+
+4. it is very important that you copy "Access Key ID" and "Secret Access Key" without leaving this page, because there is no other way to retrieve "Secret Access Key" later and you will have to start again and create another user.
+
+5. when you've copied and saved your AWS secret keys, next step is to upload your SSH public key. In the top left corner of the page select "Services > EC2". On the left sidebar select "Network & Security" > "Key Pairs". Click "Import Key Pair". Browse your filesystem for the public key. You can give a name to this keypair, otherwise base name of the file will be used (by default `id_rsa`).
+
+6. configure aws cli:
 ```
-aws ec2 describe-subnets
+aws configure
 ```
-to list available ssh keys run:
+provide your credentials, choose region for your account (e.g. `us-east-2`) and output format (`json` is recommended).
+
+7. check that keypair was correctly imported:
 ```
-aws ec2 describe-keypairs
+aws ec2 describe-key-pairs
 ```
+you should see your keypair name in the list.
+
+### Run ansible playbooks
 1. Install ansible, `boto` and `boto3` packages
 ```
 pip install boto
