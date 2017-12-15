@@ -97,12 +97,15 @@ aws ec2 describe-key-pairs
 you should see your keypair name in the list.
 
 ## Download and configure playbook
+
 You may need to add your github info, if you haven't already.  This may require the creation of a new "Personal Access Token".
 
-1. clone repository with ansible playbooks
+1. clone repository with ansible playbooks and checkout branch with the NetworkName (e.g. sokol) you want to join
+
 ```
 git clone https://github.com/oraclesorg/deployment-playbooks.git
 cd deployment-playbooks
+git checkout NetworkName
 ```
 
 2. prepare files with ssh keys
@@ -149,6 +152,7 @@ MINING_KEYFILE: '{"address":"..."}'
 MINING_ADDRESS: "0x..."
 ```
 * `MINING_KEYPASS` - insert your mining key's passphrase
+* please double-check with Master of Ceremony on what is the current Block Gas Limit in the network and compare it to the value in `BLK_GAS_LIMI` option.
 
 6. examine values in `image` and `region` properties. If your AWS region doesn't match the one in `region` you need to replace `region` with the correct one and select image from this list https://cloud-images.ubuntu.com/locator/ec2/ 
 
