@@ -304,7 +304,7 @@ git checkout  <correct branch name>
 cd poa-network-consensus-contracts
 npm install
 ```
-and run the following command to deploy other contracts from the consensus:
+and run the following command to deploy other contracts from the consensus (change `POA_NETWORK_CONSENSUS_ADDRESS` accordingly if you changed `safeContract` in spec.json):
 ```
 POA_NETWORK_CONSENSUS_ADDRESS=0xf472e0e43570b9afaab67089615080cf7c20018d MASTER_OF_CEREMONY=<MOC_ADDRESS> ./node_modules/.bin/truffle migrate --reset --network sokol
 ```
