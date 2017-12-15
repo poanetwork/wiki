@@ -86,6 +86,14 @@ https://github.com/oraclesorg/deployment-playbooks
 * select a better `*_instance_type` (m5.large?) (see https://aws.amazon.com/ec2/pricing/on-demand/)
 
 ## Chapter III - in which MoC takes a deep breath and creates first nodes of the network
+0. It is assumed that you have set up AWS account and uploaded your ssh keys. To list available vpc subnets, run:
+```
+aws ec2 describe-subnets
+```
+to list available ssh keys run:
+```
+aws ec2 describe-keypairs
+```
 1. Install ansible
 2. Clone https://github.com/oraclesorg/deployment-playbooks and `git checkout` to the correct branch.
 3. Prepare files with your ssh public keys, e.g.
