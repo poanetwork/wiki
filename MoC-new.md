@@ -109,6 +109,11 @@ aws ec2 describe-key-pairs
 ```
 you should see your keypair name in the list.
 
+8. to list available subnets:
+```
+aws ec2 describe-subnets
+```
+
 ### Run ansible playbooks
 1. Install ansible, `boto` and `boto3` packages
 ```
