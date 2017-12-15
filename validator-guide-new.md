@@ -136,7 +136,7 @@ MINING_ADDRESS: "0x..."
 
 6. examine values in `image` and `region` properties. If your AWS region doesn't match the one in `region` you need to replace `region` with the correct one and select image from this list https://cloud-images.ubuntu.com/locator/ec2/ Open this page, scroll down, choose your region from the first ("Zone") dropdown list, choose `xenial` from the second ("Name") dropdown list and `hvm:ebs-ssd` from the fifth ("Instance type"). This should limit you to a single option, copy value from "AMI-ID" column and paste it in `image` property.
 
-7. you may also choose a different value for the `validator_instance_type`. We recommend using `m5.large`, but you can select another instance available in your region, see this list https://aws.amazon.com/ec2/pricing/on-demand/
+7. you may also choose a different value for the `validator_instance_type`. For `region: "us-east-2"` we recommend using `m5.large`, but you can select another instance available in your region, see this list https://aws.amazon.com/ec2/pricing/on-demand/
 
 ## Deployment
 ### Create instance
@@ -144,7 +144,7 @@ MINING_ADDRESS: "0x..."
 ```
 ansible-playbook validator.yml
 ```
-this script will ask you for your SSH key passphrase.
+this script will ask you for your SSH key passphrase unless you didn't set a passphrase or you entered it recently.
 
 2. after this process is complete, examine script's output and write down IP (e.g. `192.0.2.1`) address and AWS InstanceID (e.g. `i-0123456789abcdef0`) for later use.
 
@@ -174,7 +174,7 @@ then run
 ansible-playbook validator-access.yml
 ```
 
-2. if you later need to revoke access change necessary options to `true` and run the script again. E.g. to revoke ssh access to your node, set `allow_validator_ssh: true`.
+2. if you later need to re-enable access, change necessary options to `true` and run the script again. E.g. to re-enable ssh access to your node, set `allow_validator_ssh: true`.
 
 NOTE: this script applies simultaneously to all your instances with security group named `validator-security`. This note is relevant only if you have several instances of validator nodes running in the same region.
 
