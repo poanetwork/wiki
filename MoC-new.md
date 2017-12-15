@@ -196,7 +196,7 @@ ansible-playbook bootnode.yml
 ```
 Wait till the command completes, extract from logs and write down IP address and AWS InstanceID of the new node.
 
-4. Create/replace file `hosts` with the following content (assuming new node's IP is 192.0.2.1)
+4. Create/add to file `hosts` the following content (assuming new node's IP is 192.0.2.1)
 ```
 [bootnode]
 192.0.2.1
