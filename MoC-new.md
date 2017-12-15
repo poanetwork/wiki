@@ -348,12 +348,12 @@ https://github.com/oraclesorg/poa-scripts-validator/tree/mainnet
 ## Chapter VI - in which MoC changes links in Validator's README
 1. Supply the validator's README with the correct Keys Exchange DApp url: https://github.com/oraclesorg/oracles-wiki/blob/master/validator-guide-new.md#exchange-your-initial-keys-for-mining-payout-and-voting-keys
 
-## Chapter VI - in which MoC gives initial keys to first validators and hopes for the best
+## Chapter VII - in which MoC gives initial keys to first validators and hopes for the best
 For each validator, you will need to provide:
 * initial key's address
 * initial key's keystore file
 * initial key's password
 * netstats server url
 * netstats password
-* link to the correct README
+* link to the correct validator's README
 * link to the KeysGenerator DApp
