@@ -337,11 +337,16 @@ https://github.com/oraclesorg/poa-dapps-keys-generation/tree/mainnet
 
 ### Repository with scripts for `moc` node
 https://github.com/oraclesorg/poa-scripts-moc/tree/mainnet
-1. Update `contracts.KeysManager.addr` in `config.json` to the one you obtained when deploying other contracts of consensus (same thing as you did manually on moc's node).
+(same steps as you did manually on moc's node):
+1. Update `contracts.KeysManager.addr` in `config.json` to the one you obtained when deploying other contracts of consensus 
+2. Update `FAT_BALANCE` to MoC's address.
 
 ### Repository with scripts for `validator` node
 https://github.com/oraclesorg/poa-scripts-validator/tree/mainnet
 1. Update `contracts.KeysManager.addr` in `config.json` to the one you obtained when deploying other contracts of consensus (same thing as you did manually on moc's node).
+
+## Chapter VI - in which MoC changes links in Validator's README
+1. Supply the validator's README with the correct Keys Exchange DApp url: https://github.com/oraclesorg/oracles-wiki/blob/master/validator-guide-new.md#exchange-your-initial-keys-for-mining-payout-and-voting-keys
 
 ## Chapter VI - in which MoC gives initial keys to first validators and hopes for the best
 For each validator, you will need to provide:
