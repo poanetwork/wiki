@@ -94,7 +94,10 @@ to list available ssh keys run:
 ```
 aws ec2 describe-keypairs
 ```
-1. Install ansible
+1. Install ansible and `boto3` package
+```
+pip install boto3
+```
 2. Clone https://github.com/oraclesorg/deployment-playbooks and `git checkout` to the correct branch.
 3. Prepare files with your ssh public keys, e.g.
 ```
