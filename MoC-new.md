@@ -75,7 +75,7 @@ https://github.com/oraclesorg/deployment-playbooks
 * `SCRIPTS_VALIDATOR_BRANCH`
 * `TEMPLATES_BRANCH`
 * `GENESIS_BRANCH`
-* `GEMESIS_NETWORK_NAME` - **make sure it matches `name` in `spec.json`**
+* `GENESIS_NETWORK_NAME` - **make sure it matches `name` in `spec.json`**
 3. Replace `MOC_ADDRESS` with your MoC address
 4. If you forked repos to your own github account, also replace the `MAIN_REPO_FETCH` value with your account name.
 5. You may also want to replace
