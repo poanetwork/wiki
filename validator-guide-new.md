@@ -138,7 +138,7 @@ MINING_ADDRESS: "0x..."
 
 6. examine values in `image` and `region` properties. If your AWS region doesn't match the one in `region` you need to replace `region` with the correct one and select image from this list https://cloud-images.ubuntu.com/locator/ec2/ Open this page, scroll down, choose your region from the first ("Zone") dropdown list, choose `xenial` from the second ("Name") dropdown list and `hvm:ebs-ssd` from the fifth ("Instance type"). This should limit you to a single option, copy value from "AMI-ID" column and paste it in `image` property.
 
-7. you may also choose a different value for the `validator_instance_type`. For `region: "us-east-2"` we recommend using `m5.large`, but you can select another instance available in your region, see this list https://aws.amazon.com/ec2/pricing/on-demand/
+7. you may also choose a different value for the `validator_instance_type`. For `region: "us-east-2"` we recommend using `t2.large`, but you can select another instance available in your region, see this list https://aws.amazon.com/ec2/pricing/on-demand/
 
 ## Deployment
 ### Create instance
