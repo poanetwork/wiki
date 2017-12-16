@@ -83,7 +83,7 @@ https://github.com/oraclesorg/deployment-playbooks
 * `PARITY_BIN_LOC` - url to parity binary
 * change `region`
 * change `image` (see https://cloud-images.ubuntu.com/locator/ec2/)
-* select a better `*_instance_type` (m5.large?) (see https://aws.amazon.com/ec2/pricing/on-demand/)
+* select a better `*_instance_type` (t2.large?) (see https://aws.amazon.com/ec2/pricing/on-demand/)
 
 ## Chapter III - in which MoC takes a deep breath and creates first nodes of the network
 ### Configuring AWS
