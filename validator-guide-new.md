@@ -91,7 +91,7 @@ you should see your keypair name in the list.
 ## Download and configure playbook
 1. clone repository with ansible playbooks and checkout branch with the NetworkName (e.g. sokol) you want to join
 ```
-git clone https://github.com/oraclesorg/deployment-playbooks.git
+git clone -b core https://github.com/oraclesorg/deployment-playbooks.git
 cd deployment-playbooks
 git checkout NetworkName
 ```
