@@ -44,7 +44,7 @@ cp group_vars/all.network group_vars.bootnode.example > group_vars/all
 
 10. run ansible playbook
 ```
-ansible-playbook -i hosts site.yml -t bootnode
+ansible-playbook -i hosts site.yml
 ```
 
 11. open `NETSTATS_SERVER` url in the browser and check that the node named `NODE_FULLNAME` appeared in the list
