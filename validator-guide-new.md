@@ -1,7 +1,7 @@
 ## Exchange your initial keys for mining, payout and voting keys
 1. Start Chrome
-2. Connect to the network in MetaMask - click on the network name in the top left corner of plugin's window and in the dropdown list select "Custom RPC", enter URL that was provided to you by the Master of Ceremony. Wait till the MetaMask connects to the network
-3. Open DApp http://example.com
+2. Connect to the network in MetaMask - click on the network name in the top left corner of plugin's window and in the dropdown list select "Custom RPC", enter URL that was provided to you by the Master of Ceremony ([https://core.poa.network](https://core.poa.network)). Wait till the MetaMask connects to the network
+3. Open DApp [https://oraclesorg.github.io/poa-dapps-keys-generation/](https://oraclesorg.github.io/poa-dapps-keys-generation/)
 4. Click "Generate keys", confirm transaction.
 5. **Be sure to copy address, password and download keystore file for each key (mining, payout, voting) without closing browser's tab**. There is no way to get this data once you close the tab. Keep it in a safe place.
 
@@ -103,7 +103,7 @@ You may need to add your github info, if you haven't already.  This may require 
 1. clone repository with ansible playbooks and checkout branch with the NetworkName (e.g. sokol) you want to join
 
 ```
-git clone https://github.com/oraclesorg/deployment-playbooks.git
+git clone -b core https://github.com/oraclesorg/deployment-playbooks.git
 cd deployment-playbooks
 git checkout NetworkName
 ```
@@ -159,6 +159,7 @@ MINING_ADDRESS: "0x..."
 Open this page, scroll down, choose your region from the first ("Zone") dropdown list, choose `xenial` from the second ("Name") dropdown list and `hvm:ebs-ssd` from the fifth ("Instance type"). This should limit you to a single option, copy value from "AMI-ID" column and paste it in `image` property.
 
 7. you may also choose a different value for the `validator_instance_type`. For `region: "us-east-2"` we recommend using `m4.xlarge`. Confirm your option of the types of instances available in your region,via: https://aws.amazon.com/ec2/pricing/on-demand/
+
 
 ## Deployment
 ### Create instance

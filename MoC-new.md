@@ -14,7 +14,7 @@ One way is to download `etherwallet-v*.*.*.*.zip` archive of the latest release 
 then unplug your computer from the Internet, extract zip archive and open `index.html` in your browser.
 Please be sure to use strong password, download keystore file `UTC--*--*`, your private key and keep them in a safe place.
 
-## Chapter II - in which MoFC forks first portion of repos and replaces some text
+## Chapter II - in which MoC forks first portion of repos and replaces some text
 
 There are quite a few repositories that are used to run the network. You will need to fork them and later update parameters.
 Please be consistent with naming of branches and use `NetworkName`.
@@ -83,7 +83,7 @@ https://github.com/oraclesorg/deployment-playbooks
 * `PARITY_BIN_LOC` - url to parity binary
 * change `region`
 * change `image` (see https://cloud-images.ubuntu.com/locator/ec2/)
-* select a better `*_instance_type` (m5.large?) (see https://aws.amazon.com/ec2/pricing/on-demand/)
+* select a better `*_instance_type` (t2.large?) (see https://aws.amazon.com/ec2/pricing/on-demand/)
 
 ## Chapter III - in which MoC takes a deep breath and creates first nodes of the network
 ### Configuring AWS
