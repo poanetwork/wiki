@@ -1,3 +1,5 @@
+0. make sure you have Python 2 (versions 2.6 or 2.7) or Python 3 (versions 3.5 and higher) installed on your local machine (Windows isn’t supported for the control machine)
+
 1. setup an Ubuntu 16.04 server
 
 2. create a user `ubuntu` that can execute `sudo` without password
