@@ -4,7 +4,7 @@
 
 2. create a user `ubuntu` that can execute `sudo` without password
 
-3. create security group that allows connections on `22` and `30303` ports
+3. create security group that allows connections on `22` and `30303` ports only
 
 4. download playbook
 ```
