@@ -64,23 +64,31 @@ if not - install it following [these instructions](http://docs.aws.amazon.com/cl
 ```
 pip install awscli --upgrade --user
 ```
+Mac systems with homebrew installed:
+```
+brew install awscli
+```
 
 ## Configuring AWS
-1. register (if you haven't already) and login to the AWS management console https://aws.amazon.com/console/
+1. Register (if you haven't already) and login to the AWS management console: https://aws.amazon.com/console/
 
-2. to create credentials for cli, open IAM home https://console.aws.amazon.com/iam/home then click "Add user" pick a username, and check "Programmatic access" for "Access type". Click "Next"
+2. to create credentials for cli, open IAM home https://console.aws.amazon.com/iam/home, select "Users" on the left hand side mav bar and then click "Add user".  Pick a username, and check "Programmatic access" for "Access type". Click "Next:Permissions"
 
-3. you can choose any of the available options, but "Attach existing policies directly" is the simplest one. In the list of policy types check "AmazonEC2FullAccess". Review your account and click "Create user" to proceed.
+3. you can choose any of the available options, but "Attach existing policies directly" is the simplest one. In the list of policy types search for and then check "AmazonEC2FullAccess". Click "Next:Review".  Review your account and click "Create user" to proceed.
 
-4. it is very important that you copy "Access Key ID" and "Secret Access Key" without leaving this page, because there is no other way to retrieve "Secret Access Key" later and you will have to start again and create another user.
+4. it is very important that you copy "Access Key ID" and "Secret Access Key" without leaving this page, because there is no other way to retrieve "Secret Access Key" later and you will have to start again and create another user. After copying this important information, select "Close". 
 
-5. when you've copied and saved your AWS secret keys, next step is to upload your SSH public key. In the top left corner of the page select "Services > EC2". On the left sidebar select "Network & Security" > "Key Pairs". Click "Import Key Pair". Browse your filesystem for the public key. You can give a name to this keypair, otherwise base name of the file will be used (by default `id_rsa`).
+5. after you've copied and saved your AWS secret keys, the next step is to upload your SSH public key. In the top left corner of the page select "Services -> EC2". On the left sidebar select "Network & Security" -> "Key Pairs". Click "Import Key Pair". Give a name to this keypair, otherwise base name of the file will be used (by default `id_rsa`). Browse your filesystem for the public key, or copy/paste:
+```
+pbcopy < ~/.ssh/id_rsa.pub
+```
+This will copy your public key into your clipboard and can then be pasted.
 
 6. configure aws cli:
 ```
 aws configure
 ```
-provide your credentials, choose region for your account (e.g. `us-east-2`) and output format (`json` is recommended).
+provide your credentials (Access Key ID and Secret Access Key) from earlier. Choose a region for your account (e.g. `us-east-2`) and output format (`json` is recommended).
 
 7. check that keypair was correctly imported:
 ```
@@ -89,7 +97,11 @@ aws ec2 describe-key-pairs
 you should see your keypair name in the list.
 
 ## Download and configure playbook
+
+You may need to add your github info, if you haven't already.  This may require the creation of a new "Personal Access Token".
+
 1. clone repository with ansible playbooks and checkout branch with the NetworkName (e.g. sokol) you want to join
+
 ```
 git clone -b core https://github.com/oraclesorg/deployment-playbooks.git
 cd deployment-playbooks
@@ -111,13 +123,19 @@ cat group_vars/all.network group_vars/validator.example > group_vars/all
 ```
 aws ec2 describe-subnets
 ```
-select any subnet with "State": "available" and non-zero "AvailableIpAddressCount". You need to save "SubnetId" of this subnet for later use.
+select any subnet with "State": "available" and non-zero "AvailableIpAddressCount". You need to copy/save "SubnetId" of this subnet for later use.
 
 5. open `group_vars/all` and edit the following configuration options:
+```
+nano group_vars/all
+```
+
+Make the following edits:
+
 * `access_key` - your AWS "Access Key ID"
 * `secret_key` - your AWS "Secret Access Key"
 * `awskeypair_name` - name of ssh keypair you uploaded on AWS (by default `id_rsa`)
-* `vpc_subnet_id` - insert "SubnetId" that you chose. Resulting line should look like this:
+* `vpc_subnet_id` - insert "SubnetId" that you chose. The next line should look like this:
 ```
 vpc_subnet_id: "subnet-..."
 ```
@@ -136,13 +154,16 @@ MINING_ADDRESS: "0x..."
 * `MINING_KEYPASS` - insert your mining key's passphrase
 * please double-check with Master of Ceremony on what is the current Block Gas Limit in the network and compare it to the value in `BLK_GAS_LIMI` option.
 
-6. examine values in `image` and `region` properties. If your AWS region doesn't match the one in `region` you need to replace `region` with the correct one and select image from this list https://cloud-images.ubuntu.com/locator/ec2/ Open this page, scroll down, choose your region from the first ("Zone") dropdown list, choose `xenial` from the second ("Name") dropdown list and `hvm:ebs-ssd` from the fifth ("Instance type"). This should limit you to a single option, copy value from "AMI-ID" column and paste it in `image` property.
+6. examine values in `image` and `region` properties. If your AWS region doesn't match the one in `region` you need to replace `region` with the correct one and select image from this list https://cloud-images.ubuntu.com/locator/ec2/ 
 
-7. you may also choose a different value for the `validator_instance_type`. For `region: "us-east-2"` we recommend using `t2.large`, but you can select another instance available in your region, see this list https://aws.amazon.com/ec2/pricing/on-demand/
+Open this page, scroll down, choose your region from the first ("Zone") dropdown list, choose `xenial` from the second ("Name") dropdown list and `hvm:ebs-ssd` from the fifth ("Instance type"). This should limit you to a single option, copy value from "AMI-ID" column and paste it in `image` property.
+
+7. you may also choose a different value for the `validator_instance_type`. For `region: "us-east-2"` we recommend using `m4.xlarge`. Confirm your option of the types of instances available in your region,via: https://aws.amazon.com/ec2/pricing/on-demand/
+
 
 ## Deployment
 ### Create instance
-1. with all options configured, you first need to create an instance:
+1. with all options configured, you first need to create an instance: (you should still be in: ~/deployment-playbooks)
 ```
 ansible-playbook validator.yml
 ```
