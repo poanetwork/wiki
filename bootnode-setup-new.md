@@ -54,12 +54,3 @@ ansible-playbook -i hosts site.yml -t bootnode
 curl --data '{"method":"parity_enode","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
 ```
 copy `enode` uri and send it to Master of Ceremony
-
-13. (optional - if your bootnode is one of bootnodes for cloudflare balancer): to replace SSL certificates for nginx login as root, stop nginx
-```
-service nginx stop
-```
-replace existing `/etc/nginx/ssl/server.crt` and `/etc/nginx/ssl/server.key` with correct certificate and private key files. Restart nginx:
-```
-service nginx start
-```
