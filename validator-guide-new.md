@@ -180,7 +180,7 @@ this script will ask you for your SSH key passphrase unless you didn't set a pas
 
 2. run this script to configure the instance
 ```
-ansible-playbook -i hosts site.yml -t validator
+ansible-playbook -i hosts site.yml
 ```
 if you get an error that host cannot be reached over SSH, please wait a minute and start again. This error may appear because instance is rebooted after creation, and this may take some time to complete.
 
