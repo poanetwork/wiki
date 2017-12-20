@@ -13,7 +13,7 @@ git checkout core
 
 4. create configuration file
 ```
-cp group_vars/all.network group_vars/bootnode.example > group_vars/all
+cat group_vars/all.network group_vars/bootnode.example > group_vars/all
 ```
 
 5. put ssh public keys (in format "ssh AAA...") that need access to the server to both files
