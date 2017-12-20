@@ -151,7 +151,7 @@ Wait till the command completes, extract from logs and write down IP address and
 
 5. Configure the instance
 ```
-ansible-playbook -i hosts site.yml -t netstat
+ansible-playbook -i hosts site.yml -l 192.0.2.1
 ```
 If this command fails because host is unreachable over ssh, wait a minute and start again, it takes some time to reboot.
 
@@ -206,7 +206,7 @@ Wait till the command completes, extract from logs and write down IP address and
 
 5. Configure the instance
 ```
-ansible-playbook -i hosts site.yml -t bootnode
+ansible-playbook -i hosts site.yml -l 192.0.2.1
 ```
 
 6. When creating first few bootnodes, you need to update `nodes/bootnodes.txt` file in your branch of azure repository, as it will contain enodes of "public" bootnodes. To get enode, ssh to the node and run:
@@ -253,7 +253,7 @@ Wait till the command completes, extract from logs and write down IP address and
 
 5. Configure the instance
 ```
-ansible-playbook -i hosts site.yml -t explorer
+ansible-playbook -i hosts site.yml -l 192.0.2.1
 ```
 
 6. Login as root and edit site config for nginx - uncomment the following lines in `/etc/nginx/conf.d/default.conf`:
@@ -292,7 +292,7 @@ Wait till the command completes, extract from logs and write down IP address and
 
 5. Configure the instance
 ```
-ansible-playbook -i hosts site.yml -t moc
+ansible-playbook -i hosts site.yml -l 192.0.2.1
 ```
 6. After node was created, connect to it via `ssh root@...` first, edit `node.toml` and uncomment `unlock=...` line
 ```
