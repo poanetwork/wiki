@@ -61,4 +61,12 @@ curl --data '{"method":"parity_enode","params":[],"id":1,"jsonrpc":"2.0"}' -H "C
 ```
 copy `enode` uri and send it to Master of Ceremony
 
-13. restrict incoming connections to the server to ports `22`, `443` and `30303` only
+13. restrict incoming connections to the server to ports `22`, `443` and `30303` only. This depends on your hosting. Probably you can configure security groups. Or you can use `ufw`:
+```
+    sudo ufw enable
+    sudo ufw allow 443
+    sudo ufw allow 22
+    sudo ufw allow 30303/tcp
+    sudo ufw allow 30303/udp
+    sudo ufw default deny incoming
+```
