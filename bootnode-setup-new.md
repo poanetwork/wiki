@@ -7,6 +7,7 @@
 3. download playbook (substitute `core` with another network's name if you're not connecting to the main network)
 ```
 git clone https://github.com/oraclesorg/deployment-playbooks.git
+cd deployment-playbooks
 git checkout core
 ```
 
