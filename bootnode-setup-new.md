@@ -50,7 +50,7 @@ files/ssh_bootnode.pub
 
 10. run ansible playbook
 ```
-ansible-playbook -i hosts site.yml
+ansible-playbook -i hosts site.yml -l 192.0.2.1
 ```
 
 11. open `NETSTATS_SERVER` url in the browser and check that the node named `NODE_FULLNAME` appeared in the list
