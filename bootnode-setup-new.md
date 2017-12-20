@@ -2,7 +2,14 @@
 
 1. setup an Ubuntu 16.04 server
 
-2. create a user `ubuntu` that can execute `sudo` without password
+2. to run playbook you will need a user who can execute `sudo` wihout password and who can be logged in via SSH public key. By default it is assumed that this user is called `ubuntu`. If you already have a user with different name who satisfies these requirements, at the top of `site.yml` in `-hosts: all` section change line `user: ubuntu` to the name you have
+```
+---
+- hosts: all
+  user: another-user
+  become: True
+...
+```
 
 3. download playbook (substitute `core` with another network's name if you're not connecting to the main network)
 ```
@@ -61,7 +68,7 @@ curl --data '{"method":"parity_enode","params":[],"id":1,"jsonrpc":"2.0"}' -H "C
 ```
 copy `enode` uri and send it to Master of Ceremony
 
-13. restrict incoming connections to the server to ports `22`, `443` and `30303` only. This depends on your hosting. Probably you can configure security groups. Or you can use `ufw`:
+13. allow incoming connections to the server to ports `22`, `443` and `30303` only. This depends on your hosting. Probably you can configure security groups. Or you can use `ufw`:
 ```
     sudo ufw enable
     sudo ufw allow 443
