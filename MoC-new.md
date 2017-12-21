@@ -209,11 +209,15 @@ Wait till the command completes, extract from logs and write down IP address and
 ansible-playbook -i hosts site.yml -l 192.0.2.1
 ```
 
-6. When creating first few bootnodes, you need to update `nodes/bootnodes.txt` file in your branch of azure repository, as it will contain enodes of "public" bootnodes. To get enode, ssh to the node and run:
+6. When creating first few bootnodes, you need to update `nodes/bootnodes.txt` file in your branch of azure repository, as it will contain enodes of "public" bootnodes. To get enode, ssh to the node and grep logs:
 ```
-curl --data '{"method":"parity_enode","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+grep enode /home/bootnode/logs/parity.log
 ```
-then open bootnodes.txt on azure and insert enode on a new line at the end of file
+then open bootnodes.txt on azure and insert enode on a new line at the end of file. If enode is not found, restart parity
+```
+systemctl restart poa-parity
+```
+and try again.
 
 7. When you're done creating as many public bootnodes as necessary, it is recommended to login to each one of them, update local version of `/home/bootnode/bootnodes.txt` and restart parity with
 ```
