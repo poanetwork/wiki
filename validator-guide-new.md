@@ -190,7 +190,6 @@ if you get an error that host cannot be reached over SSH, please wait a minute a
 1. if all worked fine and your node appeared on the list with the same block number as other nodes, you need to close access to your node. Edit `group_vars/all` and set these options to `false`:
 ```
 allow_validator_ssh: false
-allow_validator_p2p: false
 ```
 then run
 ```
