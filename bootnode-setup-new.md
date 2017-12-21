@@ -1,4 +1,6 @@
-0. make sure you have Python 2 (versions 2.6 or 2.7) or Python 3 (versions 3.5 and higher) installed on your local machine (Windows isn’t supported for the control machine) and Ansible v2.3+
+## How to setup a bootnode not on AWS.
+
+0. make sure you have Python 2 (versions 2.6 or 2.7) or Python 3 (versions 3.5 and higher) installed on your local machine (Windows isn't supported for the control machine) and Ansible v2.3+
 
 1. setup an Ubuntu 16.04 server
 
@@ -10,6 +12,7 @@
   become: True
 ...
 ```
+_NOTE_: playbook will additionally create a new unprivileged user named `bootnode`.
 
 3. download playbook (substitute `core` with another network's name if you're not connecting to the main network)
 ```
@@ -18,17 +21,17 @@ cd deployment-playbooks
 git checkout core
 ```
 
-4. create configuration file
-```
-cat group_vars/all.network group_vars/bootnode.example > group_vars/all
-```
-
-5. put ssh public keys (in format "ssh AAA...") that need access to the server to both files
+4. put ssh public keys (in format "ssh AAA...") that need access to the server to both files
 ```
 files/admins.pub
 files/ssh_bootnode.pub
 ```
 (one key per line)
+
+5. create configuration file
+```
+cat group_vars/all.network group_vars/bootnode.example > group_vars/all
+```
 
 6. edit the `group_vars/all` file and comment out parameters corresponding to aws:
 ```
@@ -44,10 +47,14 @@ files/ssh_bootnode.pub
 * `NETSTATS_SERVER`
 * `NETSTATS_SECRET`
 
-8. comment out this line in `site.yml` in `hosts: bootnode` section
+8. set the following options as follows:
 ```
-#- include: bootnode-access.yml
+allow_bootnode_ssh: true
+allow_bootnode_p2p: true
+allow_bootnode_rpc: false
+associate_bootnode_elastic_ip: false
 ```
+_Double check that_ `allow_bootnode_ssh` _is_ `true` _otherwise you won't be able to connect to the node_.
 
 9. create file `hosts` with the server's ip address (e.g. 192.0.2.1):
 ```
@@ -67,18 +74,8 @@ ansible-playbook -i hosts site.yml -l 192.0.2.1
 ssh root@192.0.2.1
 grep enode /home/bootnode/logs/parity.log
 ```
-copy `enode` uri and send it to Master of Ceremony. If it is not found, restart parity
+copy `enode` uri and send it to Master of Ceremony. If this line is not found, restart parity
 ```
 systemctl restart poa-parity
 ```
 and try again.
-
-13. allow incoming connections to the server to ports `22`, `443` and `30303` only. This depends on your hosting. Probably you can configure security groups. Or you can use `ufw` (under `root`):
-```
-ufw enable
-ufw allow 443
-ufw allow 22
-ufw allow 30303/tcp
-ufw allow 30303/udp
-ufw default deny incoming
-```
