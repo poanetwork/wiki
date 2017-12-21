@@ -41,7 +41,7 @@ cat group_vars/all.network group_vars/bootnode.example > group_vars/all
 #vpc_subnet_id
 ```
 
-7. set values for the following parameters in `group_vars/all`:
+7. set values given to you by Master of Ceremony for the following parameters in `group_vars/all`:
 * `NODE_FULLNAME`
 * `NODE_ADMIN_EMAIL`
 * `NETSTATS_SERVER`
