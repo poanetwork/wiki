@@ -62,18 +62,23 @@ ansible-playbook -i hosts site.yml -l 192.0.2.1
 
 11. open `NETSTATS_SERVER` url in the browser and check that the node named `NODE_FULLNAME` appeared in the list
 
-12. login to the node under `root` and run the following command:
+12. login to the node and get enode from parity logs:
 ```
-curl --data '{"method":"parity_enode","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+ssh root@192.0.2.1
+grep enode /home/bootnode/logs/parity.log
 ```
-copy `enode` uri and send it to Master of Ceremony
+copy `enode` uri and send it to Master of Ceremony. If it is not found, restart parity
+```
+systemctl restart poa-parity
+```
+and try again.
 
-13. allow incoming connections to the server to ports `22`, `443` and `30303` only. This depends on your hosting. Probably you can configure security groups. Or you can use `ufw`:
+13. allow incoming connections to the server to ports `22`, `443` and `30303` only. This depends on your hosting. Probably you can configure security groups. Or you can use `ufw` (under `root`):
 ```
-    sudo ufw enable
-    sudo ufw allow 443
-    sudo ufw allow 22
-    sudo ufw allow 30303/tcp
-    sudo ufw allow 30303/udp
-    sudo ufw default deny incoming
+ufw enable
+ufw allow 443
+ufw allow 22
+ufw allow 30303/tcp
+ufw allow 30303/udp
+ufw default deny incoming
 ```
