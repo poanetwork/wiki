@@ -1,4 +1,4 @@
-## How to setup a bootnode not on AWS.
+## How to setup a bootnode on not-AWS.
 
 0. make sure you have Python 2 (versions 2.6 or 2.7) or Python 3 (versions 3.5 and higher) installed on your local machine (Windows isn't supported for the control machine) and Ansible v2.3+
 
@@ -79,3 +79,10 @@ copy `enode` uri and send it to Master of Ceremony. If this line is not found, r
 systemctl restart poa-parity
 ```
 and try again.
+
+_NOTE_ if after parity restart you notice that on `NETSTATS_SERVER` url your node starts to fall behind other nodes (block number is less than on other nodes), try to restart statistics service (assuming you are connected as `root`):
+```
+su bootnode
+pm2 restart all
+```
+after that refresh `NETSTATS_SERVER` url and check again your node's block number.
