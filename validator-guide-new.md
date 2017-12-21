@@ -1,3 +1,7 @@
+#### Last Updated: 2017/12/21
+#### Changelog:
+- **2017/12/21**: Rewrite part about security groups (how to close access). Add description of the option to use elastic IP.
+
 ## Exchange your initial keys for mining, payout and voting keys
 1. Start Chrome
 2. Connect to the network in MetaMask - click on the network name in the top left corner of plugin's window and in the dropdown list select "Custom RPC", enter URL that was provided to you by the Master of Ceremony ([https://core.poa.network](https://core.poa.network)). Wait till the MetaMask connects to the network
@@ -152,7 +156,10 @@ MINING_KEYFILE: '{"address":"..."}'
 MINING_ADDRESS: "0x..."
 ```
 * `MINING_KEYPASS` - insert your mining key's passphrase
-* please double-check with Master of Ceremony on what is the current Block Gas Limit in the network and compare it to the value in `BLK_GAS_LIMI` option.
+* please double-check with Master of Ceremony on what is the current Block Gas Limit in the network and compare it to the value in `BLK_GAS_LIMIT` option.
+* `allow_validator_ssh` - leave this value set to `true` if you plan to access your node over ssh later
+* `allow_validator_p2p` - set this value to `true` to make your node discoverable by peers
+* `associate_validator_elastic_ip` - set this to `true` if you want to configure AWS Elastic IP for this node
 
 6. examine values in `image` and `region` properties. If your AWS region doesn't match the one in `region` you need to replace `region` with the correct one and select image from this list https://cloud-images.ubuntu.com/locator/ec2/ 
 
@@ -180,23 +187,21 @@ this script will ask you for your SSH key passphrase unless you didn't set a pas
 
 2. run this script to configure the instance
 ```
-ansible-playbook -i hosts site.yml -l 192.0.2.1
+ansible-playbook -i hosts site.yml
 ```
 if you get an error that host cannot be reached over SSH, please wait a minute and start again. This error may appear because instance is rebooted after creation, and this may take some time to complete.
 
 3. open the url for `NETSTAT_SERVER` and check if your node appeared in the list
 
-### Close external access
-1. if all worked fine and your node appeared on the list with the same block number as other nodes, you need to close access to your node. Edit `group_vars/all` and set these options to `false`:
-```
-allow_validator_ssh: false
-```
-then run
-```
-ansible-playbook validator-access.yml
-```
+### Configure access to your node
+Later, you may wish to change access options for your node. For example, initially you might have disabled access over ssh but now want to re-enable it. These options are set by parameters:
+* `allow_validator_ssh` - `true`/`false` - allow/deny access over ssh
+* `allow_validator_p2p` - `true`/`false` - allow/deny peer-discovery
 
-2. if you later need to re-enable access, change necessary options to `true` and run the script again. E.g. to re-enable ssh access to your node, set `allow_validator_ssh: true`.
+When you make changes, rerun the playbook:
+```
+ansible-playbook -i hosts site.yml
+```
 
 NOTE: this script applies simultaneously to all your instances with security group named `validator-security`. This note is relevant only if you have several instances of validator nodes running in the same region.
 
