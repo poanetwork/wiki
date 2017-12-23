@@ -70,7 +70,7 @@ This command will copy your public key to your clipboard. Then switch back to yo
 Second half of the fields should look similar to this (values will be different in your case)
 ![wizard-2](./docs/bootnodeSetup/deployment2.png)
 
-15. Click "Purchase". In case of errors please double check that you have completed the steps above and all fields are filled with correct values. If the error persists you can file a bug report [here](https://github.com/oraclesorg/deployment-azure/issues/new). Please provide as detailed a description as possible, one or several screenshots, so that values in all fields will be visible to us. Also provide a screenshot with the error message.
+15. Click "Purchase". In case of errors please double check that you have completed the steps above and all fields are filled with correct values. If the error persists you can file a bug report [here](https://github.com/poanetwork/deployment-azure/issues/new). Please provide as detailed a description as possible, one or several screenshots, so that values in all fields will be visible to us. Also provide a screenshot with the error message.
 
 16. After that, you will be taken to your azure dashboard. Look for a box similar to this  
 ![Deployment in progress](./docs/bootnodeSetup/deploy_new_deployment.png)  
@@ -130,7 +130,7 @@ This is an example output:
 ![grep_enode](./docs/bootnodeSetup/bns_enode.png)
 
 copy enode url address, its format is `enode://<128 hex characters>@ip_address:30300`.  
-In repository, open file [`TestTestNet/mining-node/node.toml`](https://github.com/oraclesorg/deployment-azure/blob/AlphaTestTestNet/TestTestNet/mining-node/node.toml) and replace the value in `bootnodes` parameter with the url above like so:
+In repository, open file [`TestTestNet/mining-node/node.toml`](https://github.com/poanetwork/deployment-azure/blob/AlphaTestTestNet/TestTestNet/mining-node/node.toml) and replace the value in `bootnodes` parameter with the url above like so:
 ```
 ...
 bootnodes=["enode://<128 hex characters>@ip_address:30300"]
@@ -154,16 +154,16 @@ Repeat the procedure to generate as many keys as necessary (12 in the current co
 ## 5. Warnings
 It is important to note, that each deployment pulls some files from external repositories:
 
-* spec.json (_aka_ genesis.json) and currency transferring scripts are pulled from [oracles-scripts](https://github.com/oraclesorg/oracles-scripts)
-* contract's constructor used in spec.json is the same as in [oracles-contract](https://github.com/oraclesorg/oracles-contract)
-* chain explorer is pulled from [this repo](https://github.com/oraclesorg/chain-explorer)
-* eth-net-intelligence-api is using this [repo](https://github.com/oraclesorg/eth-net-intelligence-api)
-* eth-netstats dashboard is pulled from [eth-netstats](https://github.com/oraclesorg/eth-netstats)
-* initial keys are generate using [this script](https://github.com/oraclesorg/oracles-initial-keys), which has a `config.json` file with contract definition in it.
+* spec.json (_aka_ genesis.json) and currency transferring scripts are pulled from [oracles-scripts](https://github.com/poanetwork/oracles-scripts)
+* contract's constructor used in spec.json is the same as in [oracles-contract](https://github.com/poanetwork/oracles-contract)
+* chain explorer is pulled from [this repo](https://github.com/poanetwork/chain-explorer)
+* eth-net-intelligence-api is using this [repo](https://github.com/poanetwork/eth-net-intelligence-api)
+* eth-netstats dashboard is pulled from [eth-netstats](https://github.com/poanetwork/eth-netstats)
+* initial keys are generate using [this script](https://github.com/poanetwork/oracles-initial-keys), which has a `config.json` file with contract definition in it.
 
 There are other repositories involved in the workflow:
-* DApps repositories: [voting](https://github.com/oraclesorg/oracles-dapps-voting), [key-generation](https://github.com/oraclesorg/oracles-dapps-keys-generation), [validators](https://github.com/oraclesorg/oracles-dapps-validators)
-* [faucet](https://github.com/oraclesorg/oracles-faucet)
+* DApps repositories: [voting](https://github.com/poanetwork/oracles-dapps-voting), [key-generation](https://github.com/poanetwork/oracles-dapps-keys-generation), [validators](https://github.com/poanetwork/oracles-dapps-validators)
+* [faucet](https://github.com/poanetwork/oracles-faucet)
 
 and other repositories https://github.com/oraclesorg
 

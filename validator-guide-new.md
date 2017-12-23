@@ -107,7 +107,7 @@ You may need to add your github info, if you haven't already.  This may require 
 1. clone repository with ansible playbooks and checkout branch with the NetworkName (e.g. sokol) you want to join
 
 ```
-git clone -b core https://github.com/oraclesorg/deployment-playbooks.git
+git clone -b core https://github.com/poanetwork/deployment-playbooks.git
 cd deployment-playbooks
 git checkout NetworkName
 ```

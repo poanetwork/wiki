@@ -89,7 +89,7 @@ This command will copy your public key to your clipboard. Then switch back to yo
 Second half of the fields should look similar to this (values will be different in your case)
 ![wizard-2](./docs/ceremony/deploy_wizard2.png)
 
-17. Click "Purchase". In case of errors please double check that you have completed the steps above and all fields are filled with correct values. If the error persists you can file a bug report [here](https://github.com/oraclesorg/deployment-azure/issues/new). Please provide as detailed a description as possible, one or several screenshots, so that values in all fields will be visible to us. Also provide a screenshot with the error message.
+17. Click "Purchase". In case of errors please double check that you have completed the steps above and all fields are filled with correct values. If the error persists you can file a bug report [here](https://github.com/poanetwork/deployment-azure/issues/new). Please provide as detailed a description as possible, one or several screenshots, so that values in all fields will be visible to us. Also provide a screenshot with the error message.
 
 18. After that, you will be taken to your azure dashboard. Look for a box similar to this  
 ![Deployment in progress](./docs/ceremony/deploy_new_deployment.png)  

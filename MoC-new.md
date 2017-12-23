@@ -20,7 +20,7 @@ There are quite a few repositories that are used to run the network. You will ne
 Please be consistent with naming of branches and use `NetworkName`.
 
 ### Configs on azure
-https://github.com/oraclesorg/deployment-azure/tree/dev-mainnet
+https://github.com/poanetwork/deployment-azure/tree/dev-mainnet
 1. Create a separate branch named `NetworkName`
 ```
 git checkout dev-mainnet
@@ -30,7 +30,7 @@ git checkout -b NetworkName dev-mainnet
 3. Don't change anything else, this repository is used only for configs now
 
 ### POA Network Consensus contract
-https://github.com/oraclesorg/poa-network-consensus-contracts
+https://github.com/poanetwork/poa-network-consensus-contracts
 1. Create a separate branch named `NetworkName`
 Steps 2-6 should be done if there are no files in `flat/` folder  
 2. Clone it to your local machine
@@ -44,7 +44,7 @@ Steps 2-6 should be done if there are no files in `flat/` folder
 9. After the contract is compiled click "Details" button and copy it's bytecode
 
 ### Chain.json
-https://github.com/oraclesorg/poa-chain-spec
+https://github.com/poanetwork/poa-chain-spec
 1. Create a separate branch named `NetworkName`
 
 2. Change "name" to `NetworkName`.
@@ -68,7 +68,7 @@ https://github.com/oraclesorg/poa-chain-spec
 5. Replace address of account with huge amount of money with your MoC address
 
 ### Ansible playbook
-https://github.com/oraclesorg/deployment-playbooks
+https://github.com/poanetwork/deployment-playbooks
 1. Create a separate branch named `NetworkName`
 2. Open `group_vars/all.network` and replace the following variables with corresponding branch names (should be `NetworkName` mostly)
 * `SCRIPTS_MOC_BRANCH`
@@ -120,7 +120,7 @@ aws ec2 describe-subnets
 pip install boto
 pip install boto3
 ```
-2. Clone https://github.com/oraclesorg/deployment-playbooks and `git checkout` to the correct branch.
+2. Clone https://github.com/poanetwork/deployment-playbooks and `git checkout` to the correct branch.
 3. Prepare files with your ssh public keys, e.g.
 ```
 cat ~/.ssh/id_rsa.pub > files/admins.pub
@@ -307,7 +307,7 @@ systemctl restart poa-parity
 7. Then relogin as unpriviledged  user `moc` and clone (via https) POA Network Consensus contract repository
 ```
 su moc
-git clone https://github.com/oraclesorg/poa-network-consensus-contracts.git
+git clone https://github.com/poanetwork/poa-network-consensus-contracts.git
 git checkout  <correct branch name>
 cd poa-network-consensus-contracts
 npm install
@@ -366,7 +366,7 @@ ansible-playbook moc-access.yml
 ## Chapter IV - in which MoC prepares other repositories
 
 ### DApp - Keys generation  
-https://github.com/oraclesorg/poa-dapps-keys-generation/tree/mainnet
+https://github.com/poanetwork/poa-dapps-keys-generation/tree/mainnet
 
 1. in `src/getWeb3.js` change number to `NetworkID`
     switch (netId) {
@@ -377,19 +377,19 @@ https://github.com/oraclesorg/poa-dapps-keys-generation/tree/mainnet
 
 
 ### Repository with scripts for `moc` node
-https://github.com/oraclesorg/poa-scripts-moc/tree/mainnet
+https://github.com/poanetwork/poa-scripts-moc/tree/mainnet
 (same steps as you did manually on moc's node):
 1. Create a branch named `NetworkName` from mainnet branch.
 2. Update `contracts.KeysManager.addr` in `config.json` to the one you obtained when deploying other contracts of consensus 
 3. Update `FAT_BALANCE` to MoC's address.
 
 ### Repository with scripts for `validator` node
-https://github.com/oraclesorg/poa-scripts-validator/tree/mainnet
+https://github.com/poanetwork/poa-scripts-validator/tree/mainnet
 1. Create a branch named `NetworkName` from mainnet branch.
 2. Update `contracts.KeysManager.addr` in `config.json` to the one you obtained when deploying other contracts of consensus (same thing as you did manually on moc's node).
 
 ## Chapter VI - in which MoC changes links in Validator's README
-1. Supply the validator's README with the correct Keys Exchange DApp url: https://github.com/oraclesorg/oracles-wiki/blob/master/validator-guide-new.md#exchange-your-initial-keys-for-mining-payout-and-voting-keys
+1. Supply the validator's README with the correct Keys Exchange DApp url: https://github.com/poanetwork/oracles-wiki/blob/master/validator-guide-new.md#exchange-your-initial-keys-for-mining-payout-and-voting-keys
 
 ## Chapter VII - in which MoC gives initial keys to first validators and hopes for the best
 For each validator, you will need to provide:

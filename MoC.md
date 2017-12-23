@@ -21,17 +21,17 @@ Please be consistent with naming of branches and use `NetworkName`.
 
 ### DApps
 1. Keys generation  
-https://github.com/oraclesorg/oracles-dapps-keys-generation
+https://github.com/poanetwork/oracles-dapps-keys-generation
 2. Voting  
-https://github.com/oraclesorg/oracles-dapps-voting
+https://github.com/poanetwork/oracles-dapps-voting
 3. Validators list  
-https://github.com/oraclesorg/oracles-dapps-validators
+https://github.com/poanetwork/oracles-dapps-validators
 
 #### What to replace:
 1. in each dapp go to `assets/javascripts/config.json` and change networkID to new network's `NetworkID`
 
 ### Contract
-https://github.com/oraclesorg/oracles-contract
+https://github.com/poanetwork/oracles-contract
 
 #### What to replace:
 1. open `src/Owned.sol` file and update `owner` variable in `function Owned()`
@@ -60,7 +60,7 @@ ValidatorsStorage.json
 ```
 
 ### Repository with `chain.json`
-https://github.com/oraclesorg/oracles-chain-spec
+https://github.com/poanetwork/oracles-chain-spec
 
 #### What to replace:
 1. in `spec.json` update address for the `owner` in `accounts` section (so that `owner` has nonzero balance)
@@ -76,19 +76,19 @@ https://github.com/oraclesorg/oracles-chain-spec
 3. change `params.networkID` to new network's `NetworkID` in hex format.
 
 ### Repository with scripts for `owner` node
-https://github.com/oraclesorg/oracles-scripts-owner
+https://github.com/poanetwork/oracles-scripts-owner
 
 #### What to replace:
 Unless you updated contract's code besides changing `owner`, you don't need to update anything, because only ABI is used in this repo.
 
 ### Repository with scripts for `validator` node
-https://github.com/oraclesorg/oracles-scripts-validator
+https://github.com/poanetwork/oracles-scripts-validator
 
 #### What to replace:
 Unless you updated contract's code besides changing `owner`, you don't need to update anything, because only ABI is used in this repo.
 
 ### Azure templates
-https://github.com/oraclesorg/deployment-azure
+https://github.com/poanetwork/deployment-azure
 
 #### What to replace:
 0. open `nodes/bootnodes.txt` and remove it's entire content
@@ -126,7 +126,7 @@ This is an example:
 ```
 
 ### Ansible playbook
-https://github.com/oraclesorg/deployment-playbooks
+https://github.com/poanetwork/deployment-playbooks
 
 #### What to replace:
 Open `group_vars/all.network` and replace with `NetworkName`
@@ -329,7 +329,7 @@ Remove or comment `unlock=...` line from `node.toml` and restart parity again.
 
 ## Chapter VI - in which MoC takes a little break to update links in README
 If new network is of main-net variety, for user's convenience please update the link in the button in README from master branch
-https://github.com/oraclesorg/deployment-azure
+https://github.com/poanetwork/deployment-azure
 to point to the mining-node's template
 
 ## Chapter VII - in which MoC gives initial keys to first validators and hopes for the best
