@@ -1,6 +1,6 @@
 # Ceremony
 
-If you have an invitation from Oracles network, you'll be able to generate your production keys through [Ceremony Dapp](https://oraclesorg.github.io/oracles-dapps-keys-generation/) 
+If you have an invitation from Oracles network, you'll be able to generate your production keys through [Ceremony Dapp](https://poanetwork.github.io/oracles-dapps-keys-generation/) 
 
 1. Import your initial key to Oracles plugin: browse keystore file, received from invitation, and enter password for the key (See [Importing of keys](./MetaMask-connect.md#importing-of-keys)).
 
