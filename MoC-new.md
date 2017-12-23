@@ -26,8 +26,7 @@ https://github.com/poanetwork/deployment-azure/tree/dev-mainnet
 git checkout dev-mainnet
 git checkout -b NetworkName dev-mainnet
 ```
-2. Open `nodes/bootnodes.txt` and remove all lines from this file
-3. Don't change anything else, this repository is used only for configs now
+2. Don't change anything else, this repository is used only for configs now
 
 ### POA Network Consensus contract
 https://github.com/poanetwork/poa-network-consensus-contracts
@@ -66,6 +65,8 @@ https://github.com/poanetwork/poa-chain-spec
 4. Scroll down to "accounts" block and replace constructor for "0xf472e0e43570b9afaab67089615080cf7c20018d" with bytecode you obtained from POA Network Consensus contract "0x606060..."
 
 5. Replace address of account with huge amount of money with your MoC address
+
+6. Open `bootnodes.txt` and remove all lines from this file
 
 ### Ansible playbook
 https://github.com/poanetwork/deployment-playbooks
@@ -209,17 +210,17 @@ Wait till the command completes, extract from logs and write down IP address and
 ansible-playbook -i hosts site.yml -l 192.0.2.1
 ```
 
-6. When creating first few bootnodes, you need to update `nodes/bootnodes.txt` file in your branch of azure repository, as it will contain enodes of "public" bootnodes. To get enode, ssh to the node and grep logs:
+6. When creating first few bootnodes, you need to update `bootnodes.txt` file in your branch of chain-spec repository, as it will contain enodes of "public" bootnodes. To get enode, ssh to the node and grep logs:
 ```
 grep enode /home/bootnode/logs/parity.log
 ```
-then open bootnodes.txt on azure and insert enode on a new line at the end of file. If enode is not found, restart parity
+then open bootnodes.txt in chain-spec repository and insert enode on a new line at the end of file. If enode is not found, restart parity
 ```
 systemctl restart poa-parity
 ```
 and try again.
 
-7. When you're done creating as many public bootnodes as necessary, it is recommended to login to each one of them, update local version of `/home/bootnode/bootnodes.txt` and restart parity with
+7. When you're done creating as many public bootnodes as necessary, it is recommended to login as root to each one of them, update local version of `/home/bootnode/bootnodes.txt` and restart parity with
 ```
 systemctl restart poa-parity
 ```
