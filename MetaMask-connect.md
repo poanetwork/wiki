@@ -1,4 +1,4 @@
-## Connect to Oracles network via MetaMask
+## Connect to POA Network via MetaMask
 
 ### Install MetaMask plugin for Google Chrome
 Install the MetaMask plugin from [Google Chrome Store](https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn)
@@ -10,7 +10,7 @@ _Note that this plugin is currently available only for Google Chrome v59.0.3071.
 
 ![Step1](./docs/metaMaskConnect/DefaultMM_Step1.png)
 
-2. Enter the RPC connection url `http://testnet.oracles.org:8545` (however, if master of the ceremony explicitly provided you with another connection url you should use it).
+2. Enter the RPC connection url `http://sokol.poa.network` (however, if master of the ceremony explicitly provided you with another connection url you should use it).
 
 Note: _url on the screenshot below is just an example_
 

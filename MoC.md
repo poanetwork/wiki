@@ -21,17 +21,17 @@ Please be consistent with naming of branches and use `NetworkName`.
 
 ### DApps
 1. Keys generation  
-https://github.com/poanetwork/oracles-dapps-keys-generation
+https://github.com/poanetwork/poa-dapps-keys-generation
 2. Voting  
-https://github.com/poanetwork/oracles-dapps-voting
+https://github.com/poanetwork/poa-dapps-voting
 3. Validators list  
-https://github.com/poanetwork/oracles-dapps-validators
+https://github.com/poanetwork/poa-dapps-validators
 
 #### What to replace:
 1. in each dapp go to `assets/javascripts/config.json` and change networkID to new network's `NetworkID`
 
 ### Contract
-https://github.com/poanetwork/oracles-contract
+https://github.com/poanetwork/poa-network-consensus-contracts
 
 #### What to replace:
 1. open `src/Owned.sol` file and update `owner` variable in `function Owned()`
@@ -60,7 +60,7 @@ ValidatorsStorage.json
 ```
 
 ### Repository with `chain.json`
-https://github.com/poanetwork/oracles-chain-spec
+https://github.com/poanetwork/poa-chain-spec
 
 #### What to replace:
 1. in `spec.json` update address for the `owner` in `accounts` section (so that `owner` has nonzero balance)
@@ -76,13 +76,13 @@ https://github.com/poanetwork/oracles-chain-spec
 3. change `params.networkID` to new network's `NetworkID` in hex format.
 
 ### Repository with scripts for `owner` node
-https://github.com/poanetwork/oracles-scripts-owner
+https://github.com/poanetwork/poa-scripts-moc
 
 #### What to replace:
 Unless you updated contract's code besides changing `owner`, you don't need to update anything, because only ABI is used in this repo.
 
 ### Repository with scripts for `validator` node
-https://github.com/poanetwork/oracles-scripts-validator
+https://github.com/poanetwork/poa-scripts-validator
 
 #### What to replace:
 Unless you updated contract's code besides changing `owner`, you don't need to update anything, because only ABI is used in this repo.
@@ -301,7 +301,7 @@ ansible-playbook -i hosts site.yml -t owner
 If you see an error that host is unavailable over SSH, wait a few minutes and try again, as it probably has not yet completed rebooting.
 
 ## Chapter IV - in which MoC joins governance contracts
-Log in to owner's node, go to `oracles-scripts-owner/joinContracts` folder and run
+Log in to owner's node, go to `poa-scripts-moc/joinContracts` folder and run
 ```
 node joinContracts.js
 ```
@@ -317,7 +317,7 @@ restart parity
 sudo systemctl restart oracles-parity
 ```
 
-switch to `oracles-scripts-owner/generateInitialKey` folder and run the script to generate initial key
+switch to `poa-scripts-moc/generateInitialKey` folder and run the script to generate initial key
 ```
 node generateInitialKey.js
 ```

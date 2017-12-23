@@ -1,6 +1,6 @@
-# Oracles network wiki
+# POA Network wiki
 
-## Installing MetaMask plugin and connecting to the Oracles network.
+## Installing MetaMask plugin and connecting to the POA Network.
 
 Please, check [MetaMask plugin and keys](./MetaMask-connect.md) section
 
@@ -10,11 +10,11 @@ Please, check [Ceremony](./ceremony.md) section.
 
 ## Current members
 
-To check, who are already have authority in Oracles network, go to [Validators Dapp](https://oraclesorg.github.io/poa-dapps-validators/).
+To check, who are already have authority in POA Network, go to [Validators Dapp](https://poanetwork.github.io/poa-dapps-validators/).
 
 ## Join the network
 
-Joining to the Oracles network is managing by [Governance Dapp](https://poanetwork.github.io/oracles-dapps-voting/).
+Joining to the POA Network is managing by [Governance Dapp](https://poanetwork.github.io/poa-dapps-voting/).
 
 ## Governance
 
@@ -22,7 +22,7 @@ Please, check [Governance](./governance.md) section.
 
 ## Boot node setup (creating your own network)
 
-If you want to create a separate network based on Oracles, please use this [Boot node setup guide](./bootnode-setup.md) to setup your own Oracles network.
+If you want to create a separate network based on POA, please use this [Boot node setup guide](./bootnode-setup.md) to setup your own POA Network.
 
 ## Delete mining node
 To delete the mining node that you've created previously during Ceremony, please refer to [this guide](./delete-node.md).
