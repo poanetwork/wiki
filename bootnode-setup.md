@@ -165,6 +165,6 @@ There are other repositories involved in the workflow:
 * DApps repositories: [voting](https://github.com/poanetwork/oracles-dapps-voting), [key-generation](https://github.com/poanetwork/oracles-dapps-keys-generation), [validators](https://github.com/poanetwork/oracles-dapps-validators)
 * [faucet](https://github.com/poanetwork/oracles-faucet)
 
-and other repositories https://github.com/oraclesorg
+and other repositories https://github.com/poanetwork
 
 Should a separate network be created, it is important that code from these repositories be inspected for any dependencies on the current network id (`0xc0ffee == 12648430`) or particular accounts (e.g. owner's account address is `0xdd0bb0e2a1594240fed0c2f2c17c1e9ab4f87126`).
