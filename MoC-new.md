@@ -281,6 +281,13 @@ MOC_KEYFILE: '{"address": ... }'
 ```
 Use `https://netstat.example.com` for `NETSTAT_SERVER` if you installed valid SSL certificates, or `http://192.0.2.1:3000` if you haven't.
 
+3. If you want to close external access to your node, set:
+```
+allow_moc_ssh: false
+allow_moc_p2p: false
+```
+If this is the first time you create moc's node, don't set `allow_moc_ssh` to `false`, because you will need to connect to it later.
+
 **Don't forget to update NODE_FULL_NAME and NODE_ADMIN_EMAIL**
 
 3. Create an instance
@@ -354,14 +361,14 @@ su moc
 pm2 restart all
 pm2 list
 ```
-12. Close external access to MoC's node: edit `group_vars/all` and set
+12. (optional) To close external access to MoC's node: edit `group_vars/all` and set
 ```
 allow_moc_ssh: false
 allow_moc_p2p: false
 ```
-then run
+then rerun
 ```
-ansible-playbook moc-access.yml
+ansible-playbook -i hosts site.yml
 ```
 
 ## Chapter IV - in which MoC prepares other repositories
