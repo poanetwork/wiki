@@ -146,7 +146,7 @@ node ./generateInitialKey.js
 
 Navigate to the DApps url in your browser (http://8.8.8.8:8180) and confirm two transactions to the newly created accounts.
 
-In the end, the script should print out the address, password and save private key to `initialKeysDemo` folder.
+In the end, the script should print out the address, password and save private key to `output` folder.
 ![initial_keys_generated](./docs/bootnodeSetup/bns_new_initial_key.png)
 
 Repeat the procedure to generate as many keys as necessary (12 in the current contract). These are the keys you'll have to distribute among your first notaries.
