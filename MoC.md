@@ -110,7 +110,7 @@ If you forked the original repo to your account, also replace the `MAIN_REPO_FET
 ...
   "variables": {
     "TEMPLATES_BRANCH": "dev-mainnet",
-    "MAIN_REPO_FETCH": "oraclesorg",
+    "MAIN_REPO_FETCH": "poanetwork",
 ...
 ```
 
@@ -122,7 +122,7 @@ You can use https://www.url-encode-decode.com/ to perform url encoding.
 
 This is an example:
 ```
-[![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Foraclesorg%2Fdeployment-azure%2Fdev-mainnet%2Fnodes%2Fmining-node%2Ftemplate.json)
+[![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fpoanetwork%2Fdeployment-azure%2Fdev-mainnet%2Fnodes%2Fmining-node%2Ftemplate.json)
 ```
 
 ### Ansible playbook

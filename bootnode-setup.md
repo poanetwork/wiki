@@ -36,16 +36,16 @@ ssh-keygen -t rsa
 9. Do not close PuTTY just yet.
 
 ## 3. Virtual machine setup.
-On this step you will create azure virtual machine from a template by filling in a number of fields with data obtained on previous steps. After virtual machine deployment is complete, it will automatically start new Oracles-PoA network.
+On this step you will create azure virtual machine from a template by filling in a number of fields with data obtained on previous steps. After virtual machine deployment is complete, it will automatically start new PoA network.
 
 1. Hold <kbd>cmd ⌘</kbd> (on Mac OS X) or <kbd>CTRL</kbd> (on Windows PC) and click on the "Deploy to Azure" button below. This will open a separate browser tab, lead you to azure portal and launch "Custom deployment" wizard (alternatively, you can right-click on the button and select "Open in New Tab")  
-[![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Foraclesorg%2Fdeployment-azure%2FAlphaTestTestNet%2FTestTestNet%2Fbootnode%2Ftemplate.json)
+[![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fpoanetwork%2Fdeployment-azure%2FAlphaTestTestNet%2FTestTestNet%2Fbootnode%2Ftemplate.json)
 
 2. A new browser tab will be opened. Double-check address bar that you are connected to `https://portal.azure.com` and that secure connection sign is present (e.g. 🔒, exact representation may differ by browser). Fill the necessary fields as described below:
 3. **Subscription**: Select the azure subsciption you want to link virtual machine to.
-4. **Resource group**: Choose "Create new" Resource group and input a name for the resource group. This name will be displayed on your azure dashboard, it will not be used in the Oracles-PoA network, so choose a name that would make it clear _to you_ what this resource group represents. However, Azure imposes certain restrictions on a resource group name: it can only include upper case and lower case latin letters, numbers (e.g. _a_, _B_, _5_), periods, underscores, hyphens and parenthesis, cannot contain spaces (` `) and cannot end in a period. An example of a correct name is `oracles-poa`. After you've typed in the name, make sure a green check mark ✓ appears on the right.
+4. **Resource group**: Choose "Create new" Resource group and input a name for the resource group. This name will be displayed on your azure dashboard, it will not be used in the PoA network, so choose a name that would make it clear _to you_ what this resource group represents. However, Azure imposes certain restrictions on a resource group name: it can only include upper case and lower case latin letters, numbers (e.g. _a_, _B_, _5_), periods, underscores, hyphens and parenthesis, cannot contain spaces (` `) and cannot end in a period. An example of a correct name is `oracles-poa`. After you've typed in the name, make sure a green check mark ✓ appears on the right.
 5. **Location**: Select a location to where the virtual machine will be deployed.
-6. **Node Full Name**: Enter full name of the bootnode. This will be displayed in the Oracles-PoA network usage info page and visible to other users of the network.
+6. **Node Full Name**: Enter full name of the bootnode. This will be displayed in the PoA network usage info page and visible to other users of the network.
 7. **Node Admin Email**: Enter admin email address for your network.
 8. **Owner Key File**: Open owner's keyfile in a text editor (e.g. "TextEdit.app" on Mac OS X or Notepad on Windows). The content of this file is in JSON format (should consist of words in double-quotes `"` separated from other words or numbers by semicolons `:`, nested into curly brackets `{...}`). Select this file's _entire content_, copy it and paste into this field. When you paste it, the actual content will not be displayed, because it is treated as a secured password, instead you'll see black dots.
 
@@ -53,7 +53,7 @@ At this step, you should see a window similar to this (values will be different 
 ![wizard-1](./docs/bootnodeSetup/deployment1.png)
 
 9. **Owner Keypass**: Enter owner's passphrase (password) for the mining key. The content of the field will be hidden, instead you'll see black dots.
-10. **Admin username**: Think up a login account name on your virtual machine. It may contain only lower case latin letters and numbers, also it should start with a letter. An example of a valid username is `azureuser`. This name will not be used in the Oracles-PoA network, and is only used to identify you when connecting to the virtual machine.
+10. **Admin username**: Think up a login account name on your virtual machine. It may contain only lower case latin letters and numbers, also it should start with a letter. An example of a valid username is `azureuser`. This name will not be used in the PoA network, and is only used to identify you when connecting to the virtual machine.
 
 11. **Ssh Public Key**:  
 * _On Mac OS X_: switch to the "Terminal" application opened on the previous step and paste the following command into the terminal, then hit ENTER
@@ -154,16 +154,17 @@ Repeat the procedure to generate as many keys as necessary (12 in the current co
 ## 5. Warnings
 It is important to note, that each deployment pulls some files from external repositories:
 
-* spec.json (_aka_ genesis.json) and currency transferring scripts are pulled from [oracles-scripts](https://github.com/poanetwork/oracles-scripts)
-* contract's constructor used in spec.json is the same as in [oracles-contract](https://github.com/poanetwork/oracles-contract)
+* spec.json (_aka_ genesis.json) is pulled from [poa-chain-spec](https://github.com/poanetwork/poa-chain-spec)
+* currency transferring scripts is pulled from [poa-scripts-validator](https://github.com/poanetwork/poa-scripts-validator)
+* contract's constructor used in spec.json is the [POA Network consensus contract](https://github.com/poanetwork/poa-network-consensus-contracts/blob/master/contracts/PoaNetworkConsensus.sol)
 * chain explorer is pulled from [this repo](https://github.com/poanetwork/chain-explorer)
 * eth-net-intelligence-api is using this [repo](https://github.com/poanetwork/eth-net-intelligence-api)
 * eth-netstats dashboard is pulled from [eth-netstats](https://github.com/poanetwork/eth-netstats)
-* initial keys are generate using [this script](https://github.com/poanetwork/oracles-initial-keys), which has a `config.json` file with contract definition in it.
+* initial keys are generated using [this script](https://github.com/poanetwork/poa-scripts-moc/blob/master/generateInitialKey/generateInitialKey.js), which has a [config.json](https://github.com/poanetwork/poa-scripts-moc/blob/master/config.json) file with contract definition in it.
 
 There are other repositories involved in the workflow:
-* DApps repositories: [voting](https://github.com/poanetwork/oracles-dapps-voting), [key-generation](https://github.com/poanetwork/oracles-dapps-keys-generation), [validators](https://github.com/poanetwork/oracles-dapps-validators)
-* [faucet](https://github.com/poanetwork/oracles-faucet)
+* DApps repositories: [voting](https://github.com/poanetwork/poa-dapps-voting), [key-generation](https://github.com/poanetwork/poa-dapps-keys-generation), [validators](https://github.com/poanetwork/poa-dapps-validators)
+* [faucet](https://github.com/poanetwork/poa-faucet)
 
 and other repositories https://github.com/poanetwork
 
