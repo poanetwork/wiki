@@ -392,7 +392,7 @@ https://github.com/poanetwork/poa-scripts-moc/tree/master
 3. Update `FAT_BALANCE` to MoC's address.
 
 ### Repository with scripts for `validator` node
-https://github.com/poanetwork/poa-scripts-validator/tree/mainnet
+https://github.com/poanetwork/poa-scripts-validator/tree/master
 1. Create a branch named `NetworkName` from mainnet branch.
 2. Update `contracts.KeysManager.addr` in `config.json` to the one you obtained when deploying other contracts of consensus (same thing as you did manually on moc's node).
 
