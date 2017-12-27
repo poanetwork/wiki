@@ -4,8 +4,8 @@
 
 ## Exchange your initial keys for mining, payout and voting keys
 1. Start Chrome
-2. Connect to the network in MetaMask - click on the network name in the top left corner of plugin's window and in the dropdown list select "Custom RPC", enter URL that was provided to you by the Master of Ceremony ([https://core.poa.network](https://core.poa.network)). Wait till the MetaMask connects to the network
-3. Open DApp [https://poanetwork.github.io/poa-dapps-keys-generation/](https://poanetwork.github.io/poa-dapps-keys-generation/)
+2. Connect to the network in MetaMask - click on the network name in the top left corner of plugin's window and in the dropdown list select "Custom RPC", enter URL that was provided to you by the Master of Ceremony (For Core network: [https://core.poa.network](https://core.poa.network) for Sokol testnet [https://sokol.poa.network](https://sokol.poa.network)). Wait till the MetaMask connects to the network
+3. Open Keys DApp: for Core network: [https://poanetwork.github.io/poa-dapps-keys-generation/](https://poanetwork.github.io/poa-dapps-keys-generation/), for Sokol testnet: [https://sokol-ceremony.poa.network/](https://sokol-ceremony.poa.network/)
 4. Click "Generate keys", confirm transaction.
 5. **Be sure to copy address, password and download keystore file for each key (mining, payout, voting) without closing browser's tab**. There is no way to get this data once you close the tab. Keep it in a safe place.
 
@@ -107,7 +107,10 @@ You may need to add your github info, if you haven't already.  This may require 
 1. clone repository with ansible playbooks and checkout branch with the NetworkName (e.g. sokol) you want to join
 
 ```
+# for core mainnet
 git clone -b core https://github.com/poanetwork/deployment-playbooks.git
+# OR for sokol testnet
+git clone -b sokol https://github.com/poanetwork/deployment-playbooks.git
 cd deployment-playbooks
 git checkout NetworkName
 ```
@@ -176,7 +179,7 @@ ansible-playbook validator.yml
 ```
 this script will ask you for your SSH key passphrase unless you didn't set a passphrase or you entered it recently.
 
-2. after this process is complete, examine script's output and write down IP (e.g. `192.0.2.1`) address and AWS InstanceID (e.g. `i-0123456789abcdef0`) for later use.
+2. after this process is complete, examine script's output and write down IP (e.g. `192.0.2.1`) address and AWS InstanceID (e.g. `i-0123456789abcdef0`) for later use. If you chose to use elastic IP, write down node's final IP address.
 
 ### Configure instance
 1. create file `hosts` with the following content (assuming IP address is `192.0.2.1`)
