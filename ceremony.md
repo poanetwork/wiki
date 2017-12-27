@@ -1,6 +1,8 @@
 # Ceremony
 
-If you have an invitation from POA Network, you'll be able to generate your production keys through [Ceremony Dapp](https://poanetwork.github.io/poa-dapps-keys-generation/) 
+If you have an invitation from POA Network, you'll be able to generate your production keys through desired networks Ceremony Dapp.
+- [Core Ceremony Dapp](https://poanetwork.github.io/poa-dapps-keys-generation/) 
+- [Sokol Ceremony Dapp](https://sokol-ceremony.poa.network/)
 
 1. Import your initial key to POA plugin: browse keystore file, received from invitation, and enter password for the key (See [Importing of keys](./MetaMask-connect.md#importing-of-keys)).
 
