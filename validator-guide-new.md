@@ -1,5 +1,6 @@
 #### Last Updated: 2017/12/21
 #### Changelog:
+- **2017/12/27**: Add info about Sokol testnet
 - **2017/12/21**: Rewrite part about security groups (how to close access). Add description of the option to use elastic IP.
 
 ## Exchange your initial keys for mining, payout and voting keys
