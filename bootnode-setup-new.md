@@ -14,11 +14,17 @@
 ```
 _NOTE_: playbook will additionally create a new unprivileged user named `bootnode`.
 
-3. download playbook (substitute `core` with another network's name if you're not connecting to the main network)
+3. clone repository with ansible playbooks and checkout branch with the network name you want to join (e.g. `core` for mainnet and `sokol` for testnet)
+
 ```
 git clone https://github.com/poanetwork/deployment-playbooks.git
 cd deployment-playbooks
+# for core mainnet
 git checkout core
+# OR for sokol testnet
+git checkout sokol
+# check that you ended up on a correct branch (look where the `*` is)
+git branch
 ```
 
 4. put ssh public keys (in format "ssh AAA...") that need access to the server to both files
