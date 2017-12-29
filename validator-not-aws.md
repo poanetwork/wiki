@@ -50,6 +50,9 @@ cat group_vars/all.network group_vars/validator.example > group_vars/all
 7. set values for the following parameters:
 * `NODE_FULLNAME` - your real name (will be visible to other mebers of the network)
 * `NODE_ADMIN_EMAIL` - your public email address (will be visible to other members of the network)
+* `MINING_KEYFILE` - insert content of your mining keystore json file. Resulting value should be enclosed in single quotes and look similar to this: `MINING_KEYFILE: '{"address":"..."}'`
+* `MINING_ADDRESS` - insert your mining key address, e.g. `MINING_ADDRESS: "0x..."`
+* `MINING_KEYPASS` - insert your minng key password
 
 8. set values given to you by Master of Ceremony for the following parameters in `group_vars/all`:
 * `NETSTATS_SERVER`
