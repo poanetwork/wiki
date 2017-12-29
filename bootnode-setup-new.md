@@ -12,7 +12,7 @@
   become: True
 ...
 ```
-_NOTE_: playbook will additionally create a new unprivileged user named `bootnode`.
+_NOTE_: playbook will additionally create a new unprivileged user named `bootnode` and add your ssh public key to `root` account.
 
 3. clone repository with ansible playbooks and checkout branch with the network name you want to join (e.g. `core` for mainnet and `sokol` for testnet)
 
