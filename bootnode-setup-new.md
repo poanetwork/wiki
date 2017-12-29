@@ -4,7 +4,7 @@
 
 1. setup an Ubuntu 16.04 server
 
-2. to run playbook you will need a user who can execute `sudo` wihout password and who can be logged in via SSH public key. By default it is assumed that this user is called `ubuntu`. If you already have a user with different name who satisfies these requirements, at the top of `site.yml` in `-hosts: all` section change line `user: ubuntu` to the name you have
+2. to run playbook you will need a user on the server, who can execute `sudo` wihout password and who can be logged in via SSH public key. By default it is assumed that this user is called `ubuntu`. If you already have a user with different name who satisfies these requirements, at the top of `site.yml` in `-hosts: all` section change line `user: ubuntu` to the name you have
 ```
 ---
 - hosts: all
