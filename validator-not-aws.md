@@ -1,5 +1,4 @@
 ## How to setup validator's node on hosting other than AWS
-## How to setup a bootnode on not-AWS.
 
 0. make sure you have Python 2 (versions 2.6 or 2.7) or Python 3 (versions 3.5 and higher) installed on your local machine (Windows isn't supported for the control machine) and Ansible v2.3+
 
@@ -60,7 +59,7 @@ cat group_vars/all.network group_vars/validator.example > group_vars/all
 ```
 allow_validator_ssh: true
 allow_validator_p2p: true
-associate_bootnode_elastic_ip: false
+associate_validator_elastic_ip: false
 ```
 _Double check that_ `allow_validator_ssh` _is_ `true` _otherwise you won't be able to connect to the node_.
 
