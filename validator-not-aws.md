@@ -47,7 +47,7 @@ cat group_vars/all.network group_vars/validator.example > group_vars/all
 #vpc_subnet_id
 ```
 
-7. set values for the following parameters:
+7. set values for the following parameters in `group_vars/all`:
 * `NODE_FULLNAME` - your real name (will be visible to other mebers of the network)
 * `NODE_ADMIN_EMAIL` - your public email address (will be visible to other members of the network)
 * `MINING_KEYFILE` - insert content of your mining keystore json file. Resulting value should be enclosed in single quotes and look similar to this: `MINING_KEYFILE: '{"address":"..."}'`
@@ -58,7 +58,7 @@ cat group_vars/all.network group_vars/validator.example > group_vars/all
 * `NETSTATS_SERVER`
 * `NETSTATS_SECRET`
 
-9. set the following options as follows:
+9. set the following options as follows in `group_vars/all`:
 ```
 allow_validator_ssh: true
 allow_validator_p2p: true
