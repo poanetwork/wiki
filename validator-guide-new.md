@@ -7,8 +7,9 @@
 1. Start Chrome
 2. Connect to the network in MetaMask - click on the network name in the top left corner of plugin's window and in the dropdown list select "Custom RPC", enter URL that was provided to you by the Master of Ceremony (For Core network: [https://core.poa.network](https://core.poa.network) for Sokol testnet [https://sokol.poa.network](https://sokol.poa.network)). Wait till the MetaMask connects to the network
 3. Open Keys DApp: for Core network: [https://core-ceremony.poa.network/](https://core-ceremony.poa.network/), for Sokol testnet: [https://sokol-ceremony.poa.network/](https://sokol-ceremony.poa.network/)
-4. Click "Generate keys", confirm transaction.
-5. **Be sure to copy address, password and download keystore file for each key (mining, payout, voting) without closing browser's tab**. There is no way to get this data once you close the tab. Keep it in a safe place.
+4. Upload your initial key to MetaMask
+5. Click "Generate keys", confirm transaction.
+6. **Be sure to copy address, password and download keystore file for each key (mining, payout, voting) without closing browser's tab**. There is no way to get this data once you close the tab. Keep it in a safe place.
 
 ## Validator's node Setup prerequisites
 
