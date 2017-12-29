@@ -105,15 +105,17 @@ you should see your keypair name in the list.
 
 You may need to add your github info, if you haven't already.  This may require the creation of a new "Personal Access Token".
 
-1. clone repository with ansible playbooks and checkout branch with the NetworkName (e.g. sokol) you want to join
+1. clone repository with ansible playbooks and checkout branch with the network name you want to join (e.g. `core` for mainnet and `sokol` for testnet)
 
 ```
-# for core mainnet
-git clone -b core https://github.com/poanetwork/deployment-playbooks.git
-# OR for sokol testnet
-git clone -b sokol https://github.com/poanetwork/deployment-playbooks.git
+git clone https://github.com/poanetwork/deployment-playbooks.git
 cd deployment-playbooks
-git checkout NetworkName
+# for core mainnet
+git checkout core
+# OR for sokol testnet
+git checkout sokol
+# check that you ended up on a correct branch (look where the `*` is)
+git branch
 ```
 
 2. prepare files with ssh keys
