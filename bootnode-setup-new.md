@@ -57,7 +57,7 @@ cat group_vars/all.network group_vars/bootnode.example > group_vars/all
 ```
 allow_bootnode_ssh: true
 allow_bootnode_p2p: true
-allow_bootnode_rpc: true
+allow_bootnode_rpc: false
 associate_bootnode_elastic_ip: false
 ```
 _Double check that_ `allow_bootnode_ssh` _is_ `true` _otherwise you won't be able to connect to the node_.

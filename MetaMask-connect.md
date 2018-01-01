@@ -10,7 +10,10 @@ _Note that this plugin is currently available only for Google Chrome v59.0.3071.
 
 ![Step1](./docs/metaMaskConnect/DefaultMM_Step1.png)
 
-2. Enter the RPC connection url `http://sokol.poa.network` (however, if master of the ceremony explicitly provided you with another connection url you should use it).
+2. Enter the one of the RPC connection urls (however, if master of the ceremony explicitly provided you with another connection url you should use it).
+
+- POA Core Network: `https://core.poa.network`
+- POA Sokol Network: `https://sokol.poa.network`
 
 Note: _url on the screenshot below is just an example_
 

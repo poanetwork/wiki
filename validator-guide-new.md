@@ -1,5 +1,6 @@
 #### Last Updated: 2017/12/21
 #### Changelog:
+- **2018/01/01**: Add info for obtaining enode uri
 - **2017/12/27**: Add info about Sokol testnet
 - **2017/12/21**: Rewrite part about security groups (how to close access). Add description of the option to use elastic IP.
 
@@ -204,7 +205,7 @@ if you get an error that host cannot be reached over SSH, please wait a minute a
 Login to the node and get enode from parity logs:
 ```
 ssh root@192.0.2.1
-grep enode /home/bootnode/logs/parity.log
+grep enode /home/validator/logs/parity.log
 ```
 copy `enode` uri and send it to Master of Ceremony. If this line is not found, restart parity
 ```
@@ -214,7 +215,7 @@ and try again. If `enode` uri is still not found, use the commands below to rest
 
 _NOTE_ if after parity restart you notice that on `NETSTATS_SERVER` url your node starts to fall behind other nodes (block number is less than on other nodes), try to restart statistics service (assuming you are connected as `root`):
 ```
-su bootnode
+su validator
 pm2 restart all
 ```
 after that refresh `NETSTATS_SERVER` url and check again your node's block number. If your node is still not active or missing `enode`, log in to root account and reboot the OS. 
