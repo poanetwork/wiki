@@ -200,6 +200,29 @@ if you get an error that host cannot be reached over SSH, please wait a minute a
 
 3. open the url for `NETSTAT_SERVER` and check if your node appeared in the list
 
+### Obtaining enode uri for Master of Ceremony
+Login to the node and get enode from parity logs:
+```
+ssh root@192.0.2.1
+grep enode /home/bootnode/logs/parity.log
+```
+copy `enode` uri and send it to Master of Ceremony. If this line is not found, restart parity
+```
+systemctl restart poa-parity
+```
+and try again. If `enode` uri is still not found, use the commands below to restart all services.
+
+_NOTE_ if after parity restart you notice that on `NETSTATS_SERVER` url your node starts to fall behind other nodes (block number is less than on other nodes), try to restart statistics service (assuming you are connected as `root`):
+```
+su bootnode
+pm2 restart all
+```
+after that refresh `NETSTATS_SERVER` url and check again your node's block number. If your node is still not active or missing `enode`, log in to root account and reboot the OS. 
+```
+su 
+shutdown -r now
+```
+
 ### Configure access to your node
 Later, you may wish to change access options for your node. For example, initially you might have disabled access over ssh but now want to re-enable it. These options are set by parameters:
 * `allow_validator_ssh` - `true`/`false` - allow/deny access over ssh
