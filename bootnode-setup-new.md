@@ -84,11 +84,15 @@ copy `enode` uri and send it to Master of Ceremony. If this line is not found, r
 ```
 systemctl restart poa-parity
 ```
-and try again.
+and try again. If `enode` uri is still not found, use the commands below to restart all services.
 
 _NOTE_ if after parity restart you notice that on `NETSTATS_SERVER` url your node starts to fall behind other nodes (block number is less than on other nodes), try to restart statistics service (assuming you are connected as `root`):
 ```
 su bootnode
 pm2 restart all
 ```
-after that refresh `NETSTATS_SERVER` url and check again your node's block number.
+after that refresh `NETSTATS_SERVER` url and check again your node's block number. If your node is still not active or missing `enode`, log in to root account and reboot the OS. 
+```
+su 
+shutdown -r now
+```
