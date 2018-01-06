@@ -1,7 +1,4 @@
-![POA Network](https://github.com/poanetwork/wiki/raw/master/assets/imgs/banner.png)
-## POA Network Wiki pages
-
-
+![POA Network Wiki](https://github.com/poanetwork/wiki/raw/master/assets/imgs/banner.png)
 
 POA Network is the first Ethereum-based public network with Proof of Authority consensus, reached by independent validators. We are building a public network for smart contracts that combines speed, security, and cost efficiency. We see POA Network as a first step towards realizing our vision of horizontal blockchains scalability by creating a swarm of blockchains with Proof of Authority consensus, connected by interledger protocols. 
 
