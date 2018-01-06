@@ -1,4 +1,4 @@
-!(POA Network)[https://github.com/poanetwork/wiki/raw/master/assets/imgs/banner.png]
+![POA Network](https://github.com/poanetwork/wiki/raw/master/assets/imgs/banner.png)
 ## POA Network Wiki pages
 
 
