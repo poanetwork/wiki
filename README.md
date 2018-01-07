@@ -24,29 +24,40 @@ POA Network is the first Ethereum-based public network with Proof of Authority c
         * [Non-AWS](https://github.com/poanetwork/wiki/wiki/Bootnode-Setup-Non-AWS)
 * POA
     * [Papers](https://github.com/poanetwork/wiki/wiki/POA-Network-Papers)
-    * [What is POA](https://github.com/poanetwork/wiki/wiki/What-is-POA)
-    * [Governance](https://github.com/poanetwork/wiki/wiki/Governance-Process)
-    * [Role of Validator](https://github.com/poanetwork/wiki/wiki/Role-of-Validator)
+    * [What is POA](https://github.com/poanetwork/wiki/wiki/What-is-POA) WIP
+    * [Governance](https://github.com/poanetwork/wiki/wiki/Governance-Process) WIP
+    * [Role of Validator](https://github.com/poanetwork/wiki/wiki/Role-of-Validator) WIP
 
 ---
 
 __POA Network is NOT an ERC20 token, but is ERC20 Compatiable. POA has its own blockchain, networks and is the first of its kind. The network is a working progress, features and additions will be added/completed in a timely manner. If you are having any issues with any of POA services, please create a Github Issue in the `wiki` repository, thank you.__
 
-## POA.Network Resources
-- POA.Network Foundation Website: [https://poa.network/](https://poa.network/)
-- POA.Network Official Forum: [https://forum.poa.network/](https://forum.poa.network/)
-- POA.Network Sokol Faucet: [https://faucet-sokol.herokuapp.com/](https://faucet-sokol.herokuapp.com/)
+## POA Network Resources
+- POA Network Website: [https://poa.network/](https://poa.network/)
+- POA Network Forum: [https://forum.poa.network/](https://forum.poa.network/)
 
-### Available POA Networks
-- POA Core Network: `https://core.poa.network`
-- POA Sokol Network: `https://sokol.poa.network`
 
-### POA Network NetStats
-- POA Core NetStats: [https://core-netstat.poa.network/](https://core-netstat.poa.network/)
-- POA Sokol NetStats: [https://sokol-netstat.poa.network/](https://sokol-netstat.poa.network/)
-
-### POA Block Explorers
-- Official POA Core Explorer: [https://core-explorer.poa.network/](https://core-explorer.poa.network/)
-- Official POA Sokol Explorer: [https://sokol-explorer.poa.network/](https://sokol-explorer.poa.network/)
+### POA Network Block Explorers
+- Core (live) Explorer: [https://core-explorer.poa.network/](https://core-explorer.poa.network/)
 - Community Made POA Core Explorer: [https://poaexplorer.com/](https://poaexplorer.com/)    
-    Made by Telegram Community Member, Linsay Alcindor 
+    Made by Telegram Community Member, [Andrew Cravenho](https://github.com/acravenho)
+    
+    
+## For developers:
+
+### Core (live)
+
+- Core (live) RPC endpoint: `https://core.poa.network`
+- Core (live) Netstats: [https://core-netstat.poa.network/](https://core-netstat.poa.network/)
+
+### Sokol (test)
+
+- Sokol (test) RPC endpoint: `https://sokol.poa.network`
+- Sokol (test) Faucet: [https://faucet-sokol.herokuapp.com/](https://faucet-sokol.herokuapp.com/)
+- Sokol (test) Explorer: [https://sokol-explorer.poa.network/](https://sokol-explorer.poa.network/)
+- Sokol (test) Netstats: [https://sokol-netstat.poa.network/](https://sokol-netstat.poa.network/)
+
+
+
+
+
