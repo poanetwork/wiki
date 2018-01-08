@@ -22,6 +22,9 @@ POA Network is the first Ethereum-based public network with Proof of Authority c
     * Full/Boot Node Operator
         * [AWS](https://github.com/poanetwork/wiki/wiki/Bootnode-Setup-AWS)
         * [Non-AWS](https://github.com/poanetwork/wiki/wiki/Bootnode-Setup-Non-AWS)
+* Hard Forks
+    * Sokol
+        * [2018-01-08](https://github.com/poanetwork/wiki/wiki/HFs-Sokol-2018-01-08)
 * POA
     * [Papers](https://github.com/poanetwork/wiki/wiki/POA-Network-Papers)
     * [What is POA](https://github.com/poanetwork/wiki/wiki/What-is-POA)
