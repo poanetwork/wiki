@@ -30,6 +30,7 @@ POA Network is the first Ethereum-based public network with Proof of Authority c
     * [What is POA](https://github.com/poanetwork/wiki/wiki/What-is-POA)
     * Governance
         * [Governance Overview](https://github.com/poanetwork/wiki/wiki/Governance-Overview)
+        * [Ballots -- Overview, Life cycle & Limits](https://github.com/poanetwork/wiki/wiki/Ballots----)
     * [Role of Validator](https://github.com/poanetwork/wiki/wiki/Role-of-Validator)
 
 ---
