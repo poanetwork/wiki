@@ -7,7 +7,7 @@ POA Network is the first Ethereum-based public network with Proof of Authority c
 * Getting Started
     * [Installation](https://github.com/poanetwork/wiki/wiki/POA-Installation)
     * Wallets
-        * [MetaMask](POA-Network-on-MetaMask)
+        * [MetaMask](https://github.com/poanetwork/wiki/wiki/POA-Network-on-MetaMask)
         * [MEW](https://github.com/poanetwork/wiki/wiki/POA-Network-on-MEW)
         * [Ledger](https://github.com/poanetwork/wiki/wiki/POA-Network-on-Ledger)
         * [Trezor](https://github.com/poanetwork/wiki/wiki/POA-Network-on-Trezor)
@@ -22,7 +22,7 @@ POA Network is the first Ethereum-based public network with Proof of Authority c
     * Full/Boot Node Operator
         * [AWS](https://github.com/poanetwork/wiki/wiki/Bootnode-Setup-AWS)
         * [Non-AWS](https://github.com/poanetwork/wiki/wiki/Bootnode-Setup-Non-AWS)
-    * [Non-AWS Node Setup](Non-AWS-Node-Setup)
+    * [Non-AWS Node Setup](https://github.com/poanetwork/wiki/wiki/Non-AWS-Node-Setup)
 * Hard Forks
     * Sokol
         * [2018-01-08](https://github.com/poanetwork/wiki/wiki/HFs-Sokol-2018-01-08)
