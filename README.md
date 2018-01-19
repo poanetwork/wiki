@@ -13,6 +13,10 @@ POA Network is the first Ethereum-based public network with Proof of Authority c
         * [Trezor](https://github.com/poanetwork/wiki/wiki/POA-Network-on-Trezor)
         * [Trust](https://github.com/poanetwork/wiki/wiki/POA-Network-on-Trust-Wallet)
     * [Exchanges](https://github.com/poanetwork/wiki/wiki/POA-on-Exchanges)
+    * Additional Resources
+      * [MetaMask Tutorial](https://docs.google.com/document/d/1mON7oqGTgr5aq00Q982LPtD5IvhQNATMUe8Q3p9v7dM/edit?usp=sharing)
+      * [Key Management Tutorial](https://docs.google.com/document/d/1EItXLZv1ma-pOZOTnWh4NSdpSh-8V71B49a-h8eec4E/edit?usp=sharing)
+      * [Installation Checklist](https://docs.google.com/document/d/1-1COzMXZen2gWUz94Tf4SQo7QRCAgTFW6Pd8TupT38s/edit?usp=sharing)
     * [FAQ](https://github.com/poanetwork/wiki/wiki/Frequently-Asked-Questions)
 * Roles
     * [Master of Ceremony](https://github.com/poanetwork/wiki/wiki/Master-of-Ceremony-Setup)
