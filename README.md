@@ -77,5 +77,5 @@ Sokol Validator DApp URLs: ( For now -- please use the following URLs )
 
 Ballot Finalization Order:
 
-Swap Keys: Voting/Payout first, then mining
-Add Validator:  Mining first, voting/payout later
+- Swap Keys: Voting/Payout first, then mining
+- Add Validator:  Mining first, voting/payout later
