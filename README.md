@@ -73,5 +73,5 @@ __POA Network is NOT an ERC20 token, but is ERC20 Compatiable. POA has its own b
 Sokol Validator DApp URLs: ( For now -- please use the following URLs )
 
 - Validators DApp: [https://poanetwork.github.io/poa-dapps-validators/](https://poanetwork.github.io/poa-dapps-validators/)
-- Voting DApp: [https://poanetwork.github.io/poa-dapps-validators/](https://poanetwork.github.io/poa-dapps-validators/)
+- Voting DApp: [https://poanetwork.github.io/poa-dapps-voting/](https://poanetwork.github.io/poa-dapps-voting/)
 
