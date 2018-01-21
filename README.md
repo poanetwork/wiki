@@ -75,3 +75,7 @@ Sokol Validator DApp URLs: ( For now -- please use the following URLs )
 - Validators DApp: [https://poanetwork.github.io/poa-dapps-validators/](https://poanetwork.github.io/poa-dapps-validators/)
 - Voting DApp: [https://poanetwork.github.io/poa-dapps-voting/](https://poanetwork.github.io/poa-dapps-voting/)
 
+Ballot Finalization Order:
+
+Swap Keys: Voting/Payout first, then mining
+Add Validator:  Mining first, voting/payout later
