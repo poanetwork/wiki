@@ -38,6 +38,7 @@ POA Network is the first Ethereum-based public network with Proof of Authority c
     * Governance
         * [Governance Overview](https://github.com/poanetwork/wiki/wiki/Governance-Overview)
         * [Ballots -- Overview, Life cycle & Limits](https://github.com/poanetwork/wiki/wiki/Ballots-Overview.-Life-cycle-and-limits/)
+        * [Manage Validator Ballots]( https://github.com/poanetwork/wiki/wiki/Manage-Validator-Ballots)
     * Role of Validator
         * [Overview](https://github.com/poanetwork/wiki/wiki/Role-of-Validator) 
         * [Validator Keys and Passwords](https://github.com/poanetwork/wiki/wiki/Validator-Keys-and-Passwords)
@@ -76,7 +77,3 @@ Sokol Validator DApp URLs: ( For now -- please use the following URLs )
 - Validators DApp: [https://poanetwork.github.io/poa-dapps-validators/](https://poanetwork.github.io/poa-dapps-validators/)
 - Voting DApp: [https://poanetwork.github.io/poa-dapps-voting/](https://poanetwork.github.io/poa-dapps-voting/)
 
-Ballot Finalization Order:
-
-- Swap Keys: Voting/Payout first, then mining
-- Add Validator:  Mining first, voting/payout later
