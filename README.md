@@ -70,7 +70,7 @@ __POA Network is NOT an ERC20 token, but is ERC20 Compatiable. POA has its own b
 - Sokol (test) RPC endpoint: `https://sokol.poa.network`
 - Sokol (test) Faucet: [https://faucet-sokol.herokuapp.com/](https://faucet-sokol.herokuapp.com/)
 - Sokol (test) Explorer: [https://sokol-explorer.poa.network/](https://sokol-explorer.poa.network/)
-- Sokol (test) Netstats: [https://sokol-netstat.poa.network/](https://sokol-netstat.poa.network/)☺
+- Sokol (test) Netstats: [https://sokol-netstat.poa.network/](https://sokol-netstat.poa.network/)
 
 ## For validators:
 
