@@ -72,8 +72,11 @@ __POA Network is NOT an ERC20 token, but is ERC20 Compatiable. POA has its own b
 - Sokol (test) Explorer: [https://sokol-explorer.poa.network/](https://sokol-explorer.poa.network/)
 - Sokol (test) Netstats: [https://sokol-netstat.poa.network/](https://sokol-netstat.poa.network/)☺
 
-Sokol Validator DApp URLs: ( For now -- please use the following URLs )
+## For validators:
 
-- Validators DApp: [https://poanetwork.github.io/poa-dapps-validators/](https://poanetwork.github.io/poa-dapps-validators/)
-- Voting DApp: [https://poanetwork.github.io/poa-dapps-voting/](https://poanetwork.github.io/poa-dapps-voting/)
+Validator DApp URLs (Core/Sokol):
+
+- Validators DApp: [https://validators.poa.network/](https://validators.poa.network/)
+- Voting DApp: [https://voting.poa.network/](https://voting.poa.network/)
+- Ceremony DApp: [https://ceremony.poa.network/](https://ceremony.poa.network/)
 
