@@ -33,6 +33,7 @@ POA Network is the first Ethereum-based public network with Proof of Authority c
     * Core
         * [2018-01-29](https://github.com/poanetwork/wiki/wiki/HFs-Core-2018-01-29)
 * POA
+    * [Token Supply](https://github.com/poanetwork/wiki/wiki/POA-Token-Supply)
     * [Papers](https://github.com/poanetwork/wiki/wiki/POA-Network-Papers)
     * [What is POA](https://github.com/poanetwork/wiki/wiki/What-is-POA)
     * Governance
@@ -80,4 +81,3 @@ Validator DApp URLs (Core/Sokol):
 - Validators DApp: [https://validators.poa.network/](https://validators.poa.network/)
 - Voting DApp: [https://voting.poa.network/](https://voting.poa.network/)
 - Ceremony DApp: [https://ceremony.poa.network/](https://ceremony.poa.network/)
-
