@@ -65,6 +65,8 @@ __POA Network is NOT an ERC20 token, but is ERC20 Compatiable. POA has its own b
 
 ### Core (live)
 
+- Core (live) RPC infura.io endpoint: `https://poa.infura.io`
+- Core (live) RPC infura.io WebSocket endpoint: `wss://poa.infura.io/ws`
 - Core (live) RPC endpoint: `https://core.poa.network`
 - Core (live) Netstats: [https://core-netstat.poa.network/](https://core-netstat.poa.network/)
 
