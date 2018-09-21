@@ -7,6 +7,7 @@ POA Network is the first Ethereum-based public network with Proof of Authority c
 * Getting Started
     * [Installation](https://github.com/poanetwork/wiki/wiki/POA-Installation)
     * Wallets
+        * [Nifty Wallet](https://github.com/poanetwork/wiki/wiki/POA-Network-on-Nifty-Wallet)
         * [MetaMask](https://github.com/poanetwork/wiki/wiki/POA-Network-on-MetaMask)
         * [MEW](https://github.com/poanetwork/wiki/wiki/POA-Network-on-MEW)
         * [Ledger](https://github.com/poanetwork/wiki/wiki/POA-Network-on-Ledger)
