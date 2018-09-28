@@ -60,7 +60,8 @@ __POA Network is NOT an ERC20 token but is ERC20 Compatible. POA has its own blo
 
 ### POA Network Block Explorers
 - Core (live) Explorer: [https://core-explorer.poa.network/](https://core-explorer.poa.network/)
-- Community Made POA Core Explorer: [https://poaexplorer.com/](https://poaexplorer.com/)    
+- Blockscout POA Core Explorer: [https://blockscout.com/poa/core](https://blockscout.com/poa/core)
+- Community Made POA Core Explorer: [https://poaexplorer.com/](https://poaexplorer.com/)
     Made by Telegram Community Member, [Andrew Cravenho](https://github.com/acravenho)
     
     
@@ -77,8 +78,10 @@ __POA Network is NOT an ERC20 token but is ERC20 Compatible. POA has its own blo
 
 - Sokol (test) RPC endpoint: `https://sokol.poa.network`
 - Sokol (test) Faucet: [https://faucet-sokol.herokuapp.com/](https://faucet-sokol.herokuapp.com/)
-- Sokol (test) Explorer: [https://sokol-explorer.poa.network/](https://sokol-explorer.poa.network/)
 - Sokol (test) Netstats: [https://sokol-netstat.poa.network/](https://sokol-netstat.poa.network/)
+- Sokol (test) Explorer: [https://sokol-explorer.poa.network/](https://sokol-explorer.poa.network/)
+- Sokol (test) Blockscout Explorer: [https://blockscout.com/poa/sokol](https://blockscout.com/poa/sokol)
+- Sokol (test) Community Made Explorer: [https://sokol.poaexplorer.com/](https://sokol.poaexplorer.com/)
 
 ## For validators:
 
