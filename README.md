@@ -49,6 +49,8 @@ POA Network is the first Ethereum-based public network with Proof of Authority c
     * Role of Validator
         * [Overview](https://github.com/poanetwork/wiki/wiki/Role-of-Validator) 
         * [Validator Keys and Passwords](https://github.com/poanetwork/wiki/wiki/Validator-Keys-and-Passwords)
+* POA Network bridged to stable ERC20 coin
+    * [How to launch](https://github.com/poanetwork/wiki/wiki/How-to-launch-POA-Network-bridged-to-stable-ERC20-coin)
 
 ---
 
