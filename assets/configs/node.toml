@@ -1,0 +1,17 @@
+[parity]
+chain = "spec.json"
+base_path = "datadir"
+
+[rpc]
+cors=["all"]
+
+[account]
+password = ["moc.pass"]
+unlock = ["0xa335b951b812a1128b8eb09c1e27081b502680e6"]
+
+[mining]
+min_gas_price = 1000000000 # 1 Gwei/gas
+force_sealing = true
+engine_signer = "0xa335b951b812a1128b8eb09c1e27081b502680e6"
+gas_floor_target = "10000000" # max block size (gas per block)
+reseal_on_txs = "none"
