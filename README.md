@@ -15,6 +15,7 @@ POA Network is the first Ethereum-based public network with Proof of Authority c
         * [Trust](https://github.com/poanetwork/wiki/wiki/POA-Network-on-Trust-Wallet)
     * [Exchanges](https://github.com/poanetwork/wiki/wiki/POA-on-Exchanges)
     * Additional Resources
+      * [Zendesk Guides](https://poanet.zendesk.com/hc/en-us)
       * [MetaMask Tutorial](https://docs.google.com/document/d/1mON7oqGTgr5aq00Q982LPtD5IvhQNATMUe8Q3p9v7dM/edit?usp=sharing)
       * [Key Management Tutorial](https://docs.google.com/document/d/1EItXLZv1ma-pOZOTnWh4NSdpSh-8V71B49a-h8eec4E/edit?usp=sharing)
       * [Installation Checklist](https://docs.google.com/document/d/1-1COzMXZen2gWUz94Tf4SQo7QRCAgTFW6Pd8TupT38s/edit?usp=sharing)
