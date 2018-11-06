@@ -2,7 +2,7 @@
 
 # POA Network Wiki
 
-POA Network is the first Ethereum-based public network with Proof of Authority consensus, reached by independent validators. We are building a public network for smart contracts that combines speed, security, and cost efficiency. We see POA Network as a first step towards realizing our vision of horizontal blockchains scalability by creating a swarm of blockchains with Proof of Authority consensus, connected by interledger protocols. 
+POA Network is the first Ethereum-based public network with Proof of Authority consensus, reached by independent validators. We provide a public network for smart contracts that combines speed, security, and cost efficiency. POA Network's long-term vision is to create horizontal blockchain scalability through a swarm of Proof of Authority consensus blockchains connected by interledger protocols. 
 
 * Getting Started
     * [Installation](https://github.com/poanetwork/wiki/wiki/POA-Installation)
@@ -15,6 +15,7 @@ POA Network is the first Ethereum-based public network with Proof of Authority c
         * [Trust](https://github.com/poanetwork/wiki/wiki/POA-Network-on-Trust-Wallet)
     * [Exchanges](https://github.com/poanetwork/wiki/wiki/POA-on-Exchanges)
     * Additional Resources
+      * [Zendesk Guides](https://poanet.zendesk.com/hc/en-us)
       * [MetaMask Tutorial](https://docs.google.com/document/d/1mON7oqGTgr5aq00Q982LPtD5IvhQNATMUe8Q3p9v7dM/edit?usp=sharing)
       * [Key Management Tutorial](https://docs.google.com/document/d/1EItXLZv1ma-pOZOTnWh4NSdpSh-8V71B49a-h8eec4E/edit?usp=sharing)
       * [Installation Checklist](https://docs.google.com/document/d/1-1COzMXZen2gWUz94Tf4SQo7QRCAgTFW6Pd8TupT38s/edit?usp=sharing)
@@ -36,10 +37,12 @@ POA Network is the first Ethereum-based public network with Proof of Authority c
         * [2018-01-29](https://github.com/poanetwork/wiki/wiki/HFs-Core-2018-01-29)
         * [2018-10-22](https://github.com/poanetwork/wiki/wiki/HFs-Core-2018-10-22)
 * POA
+    * [About POA](https://github.com/poanetwork/wiki/wiki/What-is-POA)
+    * [White Paper](https://github.com/poanetwork/wiki/wiki/POA-Network-Whitepaper)
     * [Token Sale Info](https://github.com/poanetwork/wiki/wiki/POA-Token-Sale-Info)
     * [Token Supply](https://github.com/poanetwork/wiki/wiki/POA-Token-Supply)
-    * [Papers](https://github.com/poanetwork/wiki/wiki/POA-Network-Papers)
-    * [What is POA](https://github.com/poanetwork/wiki/wiki/What-is-POA)
+    * [Security Audits](https://github.com/poanetwork/wiki/wiki/POA-Network-Audits)
+    
     * Governance
         * [Governance Overview](https://github.com/poanetwork/wiki/wiki/Governance-Overview)
         * [Ballots -- Overview, Life cycle & Limits](https://github.com/poanetwork/wiki/wiki/Ballots-Overview.-Life-cycle-and-limits/)
@@ -54,21 +57,20 @@ POA Network is the first Ethereum-based public network with Proof of Authority c
 
 ---
 
-__POA Network is NOT an ERC20 token but is ERC20 Compatible. POA has its own blockchain, networks and is the first of its kind. The network is a working progress, features and additions will be added/completed in a timely manner. If you are having any issues with any of POA services, please create a Github Issue in the `wiki` repository, thank you.__
+__POA Network is NOT an ERC20 token but is ERC20 Compatible. POA has its own blockchain, and is the first of its kind. The network is continously evolving, features and additions are added and completed on a regular basis. If you are having any issues with any POA services, please create a Github Issue in the `wiki` repository. Thank you!__
 
 ## POA Network Resources
 - POA Network Website: [https://poa.network/](https://poa.network/)
 - POA Network Forum: [https://forum.poa.network/](https://forum.poa.network/)
+- Medium Channel:  [Medium: https://medium.com/poa-network](https://medium.com/poa-network)
 
 
 ### POA Network Block Explorers
-- Core (live) Explorer: [https://core-explorer.poa.network/](https://core-explorer.poa.network/)
 - Blockscout POA Core Explorer: [https://blockscout.com/poa/core](https://blockscout.com/poa/core)
-- Community Made POA Core Explorer: [https://poaexplorer.com/](https://poaexplorer.com/)
-    Made by Telegram Community Member, [Andrew Cravenho](https://github.com/acravenho)
+- Lightweight Core Explorer: [https://core-explorer.poa.network/](https://core-explorer.poa.network/)
     
     
-## For developers:
+## For Developers:
 
 ### Core (live)
 
@@ -86,7 +88,7 @@ __POA Network is NOT an ERC20 token but is ERC20 Compatible. POA has its own blo
 - Sokol (test) Blockscout Explorer: [https://blockscout.com/poa/sokol](https://blockscout.com/poa/sokol)
 - Sokol (test) Community Made Explorer: [https://sokol.poaexplorer.com/](https://sokol.poaexplorer.com/)
 
-## For validators:
+## For Validators:
 
 Validator DApp URLs (Core/Sokol):
 
