@@ -55,6 +55,8 @@ POA Network is the first Ethereum-based public network with Proof of Authority c
 * POA Network bridged to stable ERC20 coin
     * [How to launch](https://github.com/poanetwork/wiki/wiki/How-to-launch-POA-Network-bridged-to-stable-ERC20-coin)
 
+* Technical guides
+    * [How to setup and configure AWS AutoScaling](https://github.com/poanetwork/wiki/wiki/AWS-AutoScaling)
 ---
 
 __POA Network is NOT an ERC20 token but is ERC20 Compatible. POA has its own blockchain, and is the first of its kind. The network is continously evolving, features and additions are added and completed on a regular basis. If you are having any issues with any POA services, please create a Github Issue in the `wiki` repository. Thank you!__
