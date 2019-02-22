@@ -40,6 +40,7 @@ POA Network is the first Ethereum-based public network with Proof of Authority c
         * [2018-10-22](https://github.com/poanetwork/wiki/wiki/HFs-Core-2018-10-22)
     * xDai
         * [2019-01-11](https://github.com/poanetwork/wiki/wiki/HFs-xDai-2019-01-11)
+        * [2019-03-06](https://github.com/poanetwork/wiki/wiki/HFs-xDai-2019-03-06)
 * POA
     * [About POA](https://github.com/poanetwork/wiki/wiki/What-is-POA)
     * [White Paper](https://github.com/poanetwork/wiki/wiki/POA-Network-Whitepaper)
